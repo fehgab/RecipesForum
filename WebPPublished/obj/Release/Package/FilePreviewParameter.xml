@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="recipesforum" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\Webportálok\ fejlesztése\\Projects\\WebPPublished\\WebPPublished\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\Webportálok\ fejlesztése\\Projects\\WebPPublished\\WebPPublished\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="OnlineDB-Web.config Connection String" description="" value="Data Source=tcp:qn7slvlmfo.database.windows.net,1433;Initial Catalog=RecipeDB;Integrated Security=False;User ID=FG@qn7slvlmfo;Password={Recept2015};Connect Timeout=30;Encrypt=True" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Webportálok\ fejlesztése\\Projects\\WebPPublished\\WebPPublished\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='OnlineDB']/@connectionString" />
+  </parameter>
+</parameters>

@@ -1,0 +1,98 @@
+﻿@model WebPPublished.Models.Recipes
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Recipes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Category_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PageNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PageNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SumRating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SumRating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RaitingCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RaitingCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ingredients)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ingredients)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrepareTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrepareTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HowToPrepare)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HowToPrepare)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FriendlyUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FriendlyUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PictureUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PictureUrl)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

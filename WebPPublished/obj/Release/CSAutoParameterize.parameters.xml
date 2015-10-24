@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="OnlineDB-Web.config Connection String" description="OnlineDB Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:qn7slvlmfo.database.windows.net,1433;Database=RecipeDB;User ID=FG@qn7slvlmfo;Password={Recept2015};Trusted_Connection=False;Encrypt=True;Connection Timeout=30;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Webportálok\ fejlesztése\\Projects\\WebPPublished\\WebPPublished\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='OnlineDB']/@connectionString" />
+  </parameter>
+  <parameter name="OnlineDB_DatabasePublish-Web.config Connection String" description="OnlineDB_DatabasePublish Connection String used in web.config by the application to access the database." defaultValue="OnlineDB_DatabasePublish.ConnetionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Webportálok\ fejlesztése\\Projects\\WebPPublished\\WebPPublished\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='OnlineDB_DatabasePublish']/@connectionString" />
+  </parameter>
+</parameters>
