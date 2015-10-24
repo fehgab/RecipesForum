@@ -67,8 +67,8 @@ D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\bin\Microsoft.
 D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\WebPPublished.dll
 D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\WebPPublished.pdb
 D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\Web.csprojResolveAssemblyReference.cache
-D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\WebPPublished.Migrations.update.resources
 D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\Web.csproj.GenerateResource.Cache
+D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\WebPPublished.Migrations.update.resources
 D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\WebPPublished.Migrations.update1.resources
 D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\WebPPublished.Migrations.u.resources
 D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\WebPPublished.Migrations.u1.resources
