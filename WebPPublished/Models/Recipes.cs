@@ -42,6 +42,9 @@ namespace WebPPublished.Models
         public virtual int CategoryID { get; set; }
         [ForeignKey("CategoryID")]
         public virtual Categories Category { get; set; }
+        public virtual string UserID { get; set; }
+        [ForeignKey("UserID")]
+        public virtual ApplicationUser User { get; set; }
 
         //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         //public virtual ICollection<Comment> Comments { get; set; }

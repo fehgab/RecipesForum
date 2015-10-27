@@ -28,6 +28,17 @@ namespace WebPPublished.Migrations
             }
         }
 
+        private string GetUserId(string adminUser)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var id = context.Users
+                    .Where(p => p.UserName == adminUser)
+                    .Select(ApplicationUsers.SelectHeader).First().Id;
+                return id;
+            }
+        }
+
         protected override void Seed(WebPPublished.Models.ApplicationDbContext context)
         {
             if (!context.Roles.Any(r => r.Name == "Administrators"))
@@ -99,6 +110,7 @@ namespace WebPPublished.Migrations
             context.Recipes.AddOrUpdate(
             new Recipes
             {
+                UserID = GetUserId("Admin"),
                 CategoryID = GetCategoryId("Desszert"),
                 Title = "Túrós gombóc",
                 Ingredients = "Tej, búzadara, túró, cukor",
@@ -109,6 +121,7 @@ namespace WebPPublished.Migrations
             },
              new Recipes
              {
+                 UserID = GetUserId("Admin"),
                  CategoryID = GetCategoryId("Reggeli"),
                  Title = "Rántotta",
                  Ingredients = "tojás, kolbász, szalonna, só",
@@ -119,6 +132,7 @@ namespace WebPPublished.Migrations
              },
              new Recipes
              {
+                 UserID = GetUserId("Admin"),
                  CategoryID = GetCategoryId("Fõétel"),
                  Title = "Paprikás csirke",
                  Ingredients = "csirkecomb, paprika, hagyma, paradicsom, só",
@@ -129,6 +143,7 @@ namespace WebPPublished.Migrations
              },
              new Recipes
              {
+                 UserID = GetUserId("Admin"),
                  CategoryID = GetCategoryId("Elõétel"),
                  Title = "Hús leves",
                  Ingredients = "Fél csirke, répa, krumpli, só",

@@ -18,5 +18,15 @@ namespace WebPPublished.Manager
                 return topProducts;
             }
         }
+        public List<RecipeHeaderData> GetUserRecipes(string UserName)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var UserRecipes = context.Recipes
+                    .Where(p => p.User.UserName == UserName)
+                    .Select(Recipes.SelectHeader).Take(10).ToList();
+                return UserRecipes;
+            }
+        }
     }
 }

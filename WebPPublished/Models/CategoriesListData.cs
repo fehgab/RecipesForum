@@ -11,5 +11,6 @@ namespace WebPPublished.Models
         public CategoryHeaderData SelectedCategory { get; set; }
         public List<CategoryHeaderData> AllCategory { get; set; }
         public List<RecipeHeaderData> Recipes { get; set; }
+        public Recipes RecipesDB { get; set; }
     }
 }

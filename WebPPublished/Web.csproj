@@ -175,26 +175,24 @@
     <Compile Include="Controllers\RecipesController.cs" />
     <Compile Include="DTO\CategoryHeaderData.cs" />
     <Compile Include="DTO\RecipeHeaderData.cs" />
+    <Compile Include="DTO\UserHeaderData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Manager\CategoryManager.cs" />
     <Compile Include="Manager\RecipeManager.cs" />
-    <Compile Include="Migrations\201510240722388_update.cs" />
-    <Compile Include="Migrations\201510240722388_update.Designer.cs">
-      <DependentUpon>201510240722388_update.cs</DependentUpon>
+    <Compile Include="Manager\UserManager.cs" />
+    <Compile Include="Migrations\201510250713124_update.cs" />
+    <Compile Include="Migrations\201510250713124_update.Designer.cs">
+      <DependentUpon>201510250713124_update.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201510240727273_update1.cs" />
-    <Compile Include="Migrations\201510240727273_update1.Designer.cs">
-      <DependentUpon>201510240727273_update1.cs</DependentUpon>
+    <Compile Include="Migrations\201510250749302_update1.cs" />
+    <Compile Include="Migrations\201510250749302_update1.Designer.cs">
+      <DependentUpon>201510250749302_update1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201510240740283_u.cs" />
-    <Compile Include="Migrations\201510240740283_u.Designer.cs">
-      <DependentUpon>201510240740283_u.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201510240847002_u1.cs" />
-    <Compile Include="Migrations\201510240847002_u1.Designer.cs">
-      <DependentUpon>201510240847002_u1.cs</DependentUpon>
+    <Compile Include="Migrations\201510271836350_u.cs" />
+    <Compile Include="Migrations\201510271836350_u.Designer.cs">
+      <DependentUpon>201510271836350_u.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -205,7 +203,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Recipes.cs" />
     <Compile Include="Models\Recipes.Selector.cs" />
-    <Compile Include="Models\UserProfiles.cs" />
+    <Compile Include="Models\Users.Selector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -290,17 +288,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201510240722388_update.resx">
-      <DependentUpon>201510240722388_update.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201510250713124_update.resx">
+      <DependentUpon>201510250713124_update.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201510240727273_update1.resx">
-      <DependentUpon>201510240727273_update1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201510250749302_update1.resx">
+      <DependentUpon>201510250749302_update1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201510240740283_u.resx">
-      <DependentUpon>201510240740283_u.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201510240847002_u1.resx">
-      <DependentUpon>201510240847002_u1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201510271836350_u.resx">
+      <DependentUpon>201510271836350_u.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

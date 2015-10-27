@@ -71,4 +71,3 @@ D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\Web.
 D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\WebPPublished.Migrations.update.resources
 D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\WebPPublished.Migrations.update1.resources
 D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\WebPPublished.Migrations.u.resources
-D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\WebPPublished.Migrations.u1.resources
