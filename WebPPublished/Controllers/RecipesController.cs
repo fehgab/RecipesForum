@@ -1,13 +1,18 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using WebPPublished.DTO;
+using WebPPublished.Helpers;
 using WebPPublished.Manager;
 using WebPPublished.Models;
 
@@ -38,44 +43,46 @@ namespace WebPPublished.Controllers
         {
             var model = new CategoriesListData();
             model.AllCategory = new CategoryManager().GetAllCategory();
+            model.RecipesDB = new Recipes();
             return View(model);
         }
 
-        private string GetUserId()
-        {
-            var manager = new UserManager();
-            string id = manager.GetUserIdByName(User.Identity.Name);
-            return id;
-        }
         // POST: Recipes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserId,Category_ID,Title,Ingredients,PrepareTime,HowToPreparel,PictureUrl")] Recipes model)
+        public async Task<ActionResult> Create(CategoriesListData model, HttpPostedFileBase picture)
         {
-            var list = new CategoriesListData();
-            list.AllCategory = new CategoryManager().GetAllCategory();
-            list.RecipesDB = model;
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var recipe = new Recipes
-                {
-                    CategoryID = model.CategoryID,
-                    Title = model.Title,
-                    HowToPrepare = model.HowToPrepare,
-                    Ingredients = model.Ingredients,
-                    PrepareTime = model.PrepareTime,
-                    UserID = GetUserId(),
-                    FriendlyUrl = model.Title.Replace(" ","_"),
-                    PictureUrl = model.PictureUrl
-                };
-                db.Recipes.Add(recipe);
-                db.SaveChanges();
-                return RedirectToAction("Details");
-             }
-        return View(list);
-    }
+                model.AllCategory = new CategoryManager().GetAllCategory();
+                return View(model);
+            }
+            var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var user = await userManager.FindByIdAsync(User.Identity.GetUserId());
+
+            var pictureUrl = FileHelper.GetFileName(user.UserName, picture);
+            if (pictureUrl != null)
+            {
+                picture.SaveAs(Path.Combine(Server.MapPath("~"), "Upload\\Images", pictureUrl));
+            }
+
+            var recipe = new Recipes
+            {
+                CategoryID = model.RecipesDB.CategoryID,
+                Title = model.RecipesDB.Title,
+                HowToPrepare = model.RecipesDB.HowToPrepare,
+                Ingredients = model.RecipesDB.Ingredients,
+                PrepareTime = model.RecipesDB.PrepareTime,
+                UserID = user.Id,
+                FriendlyUrl = model.RecipesDB.Title.Replace(" ", "_"),
+                PictureUrl = pictureUrl
+            };
+            db.Recipes.Add(recipe);
+            db.SaveChanges();
+            return RedirectToAction("Details");
+        }
 
         // GET: Recipes/Edit/5
         public ActionResult Edit(int? id)

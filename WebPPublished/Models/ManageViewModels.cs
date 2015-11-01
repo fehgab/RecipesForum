@@ -14,6 +14,16 @@ namespace WebPPublished.Models
         public bool BrowserRemembered { get; set; }
     }
 
+    public class EditProfileViewModel
+    {
+        [Required]
+        public string DisplayName { get; set; }
+        [Required]
+        public string Email { get; set; }
+        [Required]
+        public string UserName { get; set; }
+    }
+
     public class ManageLoginsViewModel
     {
         public IList<UserLoginInfo> CurrentLogins { get; set; }

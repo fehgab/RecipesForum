@@ -179,6 +179,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Manager\CategoryManager.cs" />
     <Compile Include="Manager\RecipeManager.cs" />
     <Compile Include="Manager\UserManager.cs" />
@@ -193,6 +194,14 @@
     <Compile Include="Migrations\201510271836350_u.cs" />
     <Compile Include="Migrations\201510271836350_u.Designer.cs">
       <DependentUpon>201510271836350_u.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511010918304_update2.cs" />
+    <Compile Include="Migrations\201511010918304_update2.Designer.cs">
+      <DependentUpon>201511010918304_update2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511010926087_update3.cs" />
+    <Compile Include="Migrations\201511010926087_update3.Designer.cs">
+      <DependentUpon>201511010926087_update3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -219,6 +228,7 @@
     <None Include="Properties\PublishProfiles\recipesforum %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\recipesforum.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\FieldValidation.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -274,6 +284,7 @@
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Manage\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -296,6 +307,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201510271836350_u.resx">
       <DependentUpon>201510271836350_u.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511010918304_update2.resx">
+      <DependentUpon>201511010918304_update2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511010926087_update3.resx">
+      <DependentUpon>201511010926087_update3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -54,9 +54,9 @@ namespace WebPPublished
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "527071264133829",
+               appSecret: "8f5b85bbbe2e46f901d22449c8af0c92");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

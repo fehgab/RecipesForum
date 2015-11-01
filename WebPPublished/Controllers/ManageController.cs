@@ -61,6 +61,7 @@ namespace WebPPublished.Controllers
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                : message == ManageMessageId.EditProfileSuccess ? "Your profile was updated."
                 : "";
 
             var userId = User.Identity.GetUserId();
@@ -74,6 +75,39 @@ namespace WebPPublished.Controllers
             };
             return View(model);
         }
+
+        public async Task<ActionResult> EditProfile()
+        {
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            var model = new EditProfileViewModel
+            {
+                DisplayName = user.RealName,
+                Email = user.Email,
+                UserName = user.UserName
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> EditProfile(EditProfileViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            user.RealName = model.DisplayName;
+            user.Email = model.Email;
+            user.UserName = model.UserName;
+            var result = await UserManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", new { Message = ManageMessageId.EditProfileSuccess });
+            }
+            AddErrors(result);
+            return View(model);
+        }
 
         //
         // POST: /Manage/RemoveLogin
@@ -379,7 +413,8 @@ namespace WebPPublished.Controllers
             SetPasswordSuccess,
             RemoveLoginSuccess,
             RemovePhoneSuccess,
-            Error
+            Error,
+            EditProfileSuccess
         }
 
 #endregion

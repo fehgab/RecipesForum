@@ -8,12 +8,20 @@ namespace WebPPublished.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "User name")]
+        public string UserName { get; set; }
+
+        [Required]
+        [Display(Name = "Full name")]
+        public string DisplayName { get; set; }
     }
 
     public class ExternalLoginListViewModel
-    {
-        public string ReturnUrl { get; set; }
-    }
+        {
+            public string ReturnUrl { get; set; }
+        }
 
     public class SendCodeViewModel
     {
@@ -49,7 +57,7 @@ namespace WebPPublished.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "UserName")]
+        [Display(Name = "User name")]
         public string UserName { get; set; }
 
         [Required]

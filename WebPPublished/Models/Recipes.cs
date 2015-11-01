@@ -31,12 +31,15 @@ namespace WebPPublished.Models
         [StringLength(100)]
         public string PictureUrl { get; set; }
 
+        [Required]
         [StringLength(500)]
         public string Ingredients { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string PrepareTime { get; set; }
 
+        [Required]
         [StringLength(500)]
         public string HowToPrepare { get; set; }
         public virtual int CategoryID { get; set; }
