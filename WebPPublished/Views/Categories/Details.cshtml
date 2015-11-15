@@ -1,4 +1,5 @@
-﻿@model WebPPublished.Models.CategoriesListData
+﻿@using PagedList.Mvc
+@model WebPPublished.Models.CategoriesListData
 
 @{ ViewBag.Title = "Kategória - " + @Model.SelectedCategory.DisplayName;
     var i = 0;
@@ -31,7 +32,7 @@
             </tr>
         }
 
-        <tr>
+        <tr onclick="location.href = '@(Url.Action("Comments","Comments", new {recipeId = @item.ID }))';"> 
             <td width="100" align="center"><img src="/Upload/Images/@item.PictureUrl" style="width:100%" /></td>
             <td width="100" align="center">@item.Title</td>
             <td width="100" align="center">@item.PrepareTime</td>
@@ -39,3 +40,14 @@
         </tr>
     }
 </table>
+@Html.PagedListPager(Model.Recipes, page => Url.Action("Details", new {friendlyUrl = Model.SelectedCategory.FriendlyUrl, pageNumber = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script>
+    jQuery(document).ready(function($) {
+        $(".clickable-row").click(function() {
+            window.document.location = $(this).data("href");
+        });
+    });
+</script>

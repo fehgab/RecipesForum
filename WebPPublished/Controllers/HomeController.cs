@@ -10,11 +10,11 @@ namespace WebPPublished.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(int pageNumber = 1)
         {
             var model = new CategoriesListData();
             model.AllCategory = new CategoryManager().GetAllCategory();
-            model.Recipes = new RecipeManager().GetAllRecipeHeaderData();
+            model.Recipes = new RecipeManager().GetAllRecipeHeaderData(pageNumber);
             return View(model);
         }
 

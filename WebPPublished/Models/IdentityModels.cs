@@ -41,5 +41,7 @@ namespace WebPPublished.Models
 
         public System.Data.Entity.DbSet<WebPPublished.Models.Categories> Categories { get; set; }
 
+        public System.Data.Entity.DbSet<WebPPublished.Models.Comments> Comments { get; set; }
+
     }
 }

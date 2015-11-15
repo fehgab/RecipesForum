@@ -1,4 +1,5 @@
-﻿@model WebPPublished.Models.CategoriesListData
+﻿@using PagedList.Mvc;
+@model WebPPublished.Models.CategoriesListData
 
 @{ ViewBag.Title = "Recept Fórum";
     var i = 0;
@@ -48,6 +49,7 @@
             </tr>
         }
     </table>
+    @Html.PagedListPager(Model.Recipes, page => Url.Action("Index", new { pageNumber = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
 </body>

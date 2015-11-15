@@ -29,12 +29,12 @@ namespace WebPPublished.Controllers
         }
 
         // GET: Recipes/Details/5
-        public ActionResult Details()
+        public ActionResult Details(int pageNumber = 1)
         {
             string name = User.Identity.Name;
             var model = new CategoriesListData();
             model.AllCategory = new CategoryManager().GetAllCategory();
-            model.Recipes = new RecipeManager().GetUserRecipes(name);
+            model.Recipes = new RecipeManager().GetUserRecipes(name, pageNumber);
             return View(model);
         }
 

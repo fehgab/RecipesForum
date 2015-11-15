@@ -14,6 +14,12 @@ namespace WebPPublished
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "CategoryList",
+                url: "{friendlyUrl}",
+                defaults: new { controller = "Categories", action = "Details" }
+                );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

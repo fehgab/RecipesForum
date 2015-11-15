@@ -23,12 +23,12 @@ namespace WebPPublished.Controllers
         }
 
         // GET: Categories/Details/5
-        public ActionResult Details(string friendlyUrl)
+        public ActionResult Details(string friendlyUrl, int pageNumber = 1)
         {
             var manager = new CategoryManager();
             var model = new CategoriesListData
             {
-                Recipes = manager.GetRecipesInCategory(friendlyUrl),
+                Recipes = manager.GetRecipesInCategory(friendlyUrl, pageNumber),
                 AllCategory = manager.GetAllCategory()
             };
             model.SelectedCategory = model.AllCategory.FirstOrDefault(c => c.FriendlyUrl == friendlyUrl);

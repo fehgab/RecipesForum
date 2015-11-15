@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,13 +19,15 @@ namespace WebPPublished.Manager
                 return allCategory;
             }
         }
-        public List<RecipeHeaderData> GetRecipesInCategory(string categoryUrl)
+        public IPagedList<RecipeHeaderData> GetRecipesInCategory(string categoryUrl, int pageNumber)
         {
             using (var context = new ApplicationDbContext())
             {
                 var recipesFromCategory = context.Recipes
-                    .Where(p => p.Category.FriendlyUrl == categoryUrl)
-                    .Select(Recipes.SelectHeader).Take(8).ToList();
+                    .Where(r => r.Category.FriendlyUrl == categoryUrl)
+                    .OrderBy(r => r.Title)
+                    .Select(Recipes.SelectHeader)
+                    .ToPagedList(pageNumber, 8);
                 return recipesFromCategory;
             }
         }

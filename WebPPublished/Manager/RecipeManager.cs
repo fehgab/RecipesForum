@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,22 +10,38 @@ namespace WebPPublished.Manager
 {
     public class RecipeManager
     {
-        public List<RecipeHeaderData> GetAllRecipeHeaderData()
+        public IPagedList<RecipeHeaderData> GetAllRecipeHeaderData(int pageNumber)
         {
             using (var context = new ApplicationDbContext())
             {
-                var topProducts = context.Recipes
-                    .Select(Recipes.SelectHeader).Take(8).ToList();
-                return topProducts;
+                var allRecipes = context.Recipes
+                    .OrderBy(r => r.Title)
+                    .Select(Recipes.SelectHeader)
+                    .ToPagedList(pageNumber, 8);
+                return allRecipes;
             }
         }
-        public List<RecipeHeaderData> GetUserRecipes(string UserName)
+
+        public RecipeHeaderData GetRecipeHeaderData(int recipeId)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var recipe = context.Recipes
+                    .Where(r => r.ID == recipeId)
+                    .Select(Recipes.SelectHeader).First();
+                return recipe;
+            }
+        }
+
+        public IPagedList<RecipeHeaderData> GetUserRecipes(string UserName, int pageNumber)
         {
             using (var context = new ApplicationDbContext())
             {
                 var UserRecipes = context.Recipes
                     .Where(p => p.User.UserName == UserName)
-                    .Select(Recipes.SelectHeader).Take(10).ToList();
+                    .OrderBy(r => r.Title)
+                    .Select(Recipes.SelectHeader)
+                    .ToPagedList(pageNumber, 8);
                 return UserRecipes;
             }
         }

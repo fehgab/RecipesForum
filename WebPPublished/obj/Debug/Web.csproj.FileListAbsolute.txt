@@ -73,3 +73,11 @@ D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\WebP
 D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\WebPPublished.Migrations.u.resources
 D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\WebPPublished.Migrations.update2.resources
 D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\WebPPublished.Migrations.update3.resources
+D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\WebPPublished.Migrations.update4.resources
+D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\WebPPublished.Migrations.update5.resources
+D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\bin\PagedList.dll
+D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\bin\PagedList.Mvc.dll
+D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\bin\PagedList.xml
+D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\bin\PagedList.Mvc.xml
+D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\WebPPublished.Migrations.updte.resources
+D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\WebPPublished.Migrations.update6.resources

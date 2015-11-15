@@ -50,6 +50,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -170,10 +178,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RecipesController.cs" />
     <Compile Include="DTO\CategoryHeaderData.cs" />
+    <Compile Include="DTO\CommentHeaderData.cs" />
     <Compile Include="DTO\RecipeHeaderData.cs" />
     <Compile Include="DTO\UserHeaderData.cs" />
     <Compile Include="Global.asax.cs">
@@ -181,6 +191,7 @@
     </Compile>
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Manager\CategoryManager.cs" />
+    <Compile Include="Manager\CommentManager.cs" />
     <Compile Include="Manager\RecipeManager.cs" />
     <Compile Include="Manager\UserManager.cs" />
     <Compile Include="Migrations\201510250713124_update.cs" />
@@ -203,11 +214,29 @@
     <Compile Include="Migrations\201511010926087_update3.Designer.cs">
       <DependentUpon>201511010926087_update3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511141003156_update4.cs" />
+    <Compile Include="Migrations\201511141003156_update4.Designer.cs">
+      <DependentUpon>201511141003156_update4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511141006202_update5.cs" />
+    <Compile Include="Migrations\201511141006202_update5.Designer.cs">
+      <DependentUpon>201511141006202_update5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511141351312_updte.cs" />
+    <Compile Include="Migrations\201511141351312_updte.Designer.cs">
+      <DependentUpon>201511141351312_updte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511150815067_update6.cs" />
+    <Compile Include="Migrations\201511150815067_update6.Designer.cs">
+      <DependentUpon>201511150815067_update6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.Selector.cs" />
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\CategoriesListData.cs" />
+    <Compile Include="Models\Comments.cs" />
+    <Compile Include="Models\Comments.Selector.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Recipes.cs" />
@@ -219,6 +248,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -285,6 +315,8 @@
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Manage\EditProfile.cshtml" />
+    <Content Include="Views\Comments\Comments.cshtml" />
+    <Content Include="Views\Comments\Comment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -313,6 +345,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511010926087_update3.resx">
       <DependentUpon>201511010926087_update3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511141003156_update4.resx">
+      <DependentUpon>201511141003156_update4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511141006202_update5.resx">
+      <DependentUpon>201511141006202_update5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511141351312_updte.resx">
+      <DependentUpon>201511141351312_updte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511150815067_update6.resx">
+      <DependentUpon>201511150815067_update6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
