@@ -1,39 +1,46 @@
 ﻿@using PagedList.Mvc
 @model WebPPublished.Models.CategoriesListData
-
 @{ ViewBag.Title = "Kommentek - " + Model.SelectedRecipe.Title;
     var i = 0;
 }
-<div>
-    <h4>Keresés: <input type="text" name="search_box"></h4>
-</div>
-<hr />
-<table>
-    <tr>
-        <td width="100" align="center">Kép</td>
-        <td width="100" align="center">Étel neve</td>
-        <td width="100" align="center">Elkészítési idő</td>
-        <td width="100" align="center">Hozzávalók</td>
-    </tr>
-    <tr>
-        <td width="100" align="center"><img src="/Upload/Images/@Model.SelectedRecipe.PictureUrl" style="width:100%" /></td>
-        <td width="100" align="center">@Model.SelectedRecipe.Title</td>
-        <td width="100" align="center">@Model.SelectedRecipe.PrepareTime</td>
-        <td width="100" align="center">@Model.SelectedRecipe.Ingredients</td>
-    </tr>
- 
-</table>
-@foreach (var item in @Model.Comments)
-{
-    <table>
-        <tr>
-            <td>@item.User.UserName</td>
-            <td>@item.CreateDate</td>
-        </tr>
-        <tr>
-            <td>@item.Text</td>
-        </tr>
-    </table>
-}
-@Html.PagedListPager(Model.Comments, page => Url.Action("Comments", new { recipeId = Model.SelectedRecipe.ID, pageNumber = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
 
+<div class="row">
+    <div class="col-md-12">
+        <h1>@Model.SelectedRecipe.Title</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <img src="/Upload/Images/@Model.SelectedRecipe.PictureUrl" class="img-responsive" />
+    </div>
+    <div class="col-md-8">
+        <div>
+            <h4>Elkészítési idő: @Model.SelectedRecipe.PrepareTime</h4>
+        </div>
+        <div>
+            <h4>Hozzávalók</h4>
+            <p>@Model.SelectedRecipe.Ingredients</p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <ul class="comments-list">
+            @foreach (var item in @Model.Comments)
+            {
+                <li>
+                    <div class="comment rounded">
+                        <div class="row">
+                            <div class="col-md-6"><span class="comment-username">@item.User.UserName</span></div>
+                            <div class="col-md-6 text-right"><span class="comment-datetime">@item.CreateDate</span></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 layout-padding"><div class="comment-text rounded">@item.Text</div></div>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+@Html.PagedListPager(Model.Comments, page => Url.Action("Comments", new { recipeId = Model.SelectedRecipe.ID, pageNumber = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)

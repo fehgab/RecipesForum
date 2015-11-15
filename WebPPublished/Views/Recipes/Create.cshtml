@@ -60,6 +60,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.RecipesDB.HowToPrepare, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
+                <textarea id="input" name="input"></textarea>
                 @Html.EditorFor(model => model.RecipesDB.HowToPrepare, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.RecipesDB.HowToPrepare, "", new { @class = "text-danger" })
             </div>

@@ -23,25 +23,31 @@ namespace WebPPublished.Models
 
         [Required]
         [StringLength(100)]
+        [Display(Name = "Étel neve")]
         public string Title { get; set; }
 
         [StringLength(100)]
         public string FriendlyUrl { get; set; }
 
         [StringLength(100)]
+        [Display(Name = "Kép")]
         public string PictureUrl { get; set; }
 
         [Required]
         [StringLength(500)]
+        [Display(Name = "Hozzávalók")]
         public string Ingredients { get; set; }
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Elkészítési idő")]
         public string PrepareTime { get; set; }
 
         [Required]
         [StringLength(500)]
+        [Display(Name = "Elkészítés")]
         public string HowToPrepare { get; set; }
+        [Display(Name = "Kategória")]
         public virtual int CategoryID { get; set; }
         [ForeignKey("CategoryID")]
         public virtual Categories Category { get; set; }

@@ -9,7 +9,7 @@ namespace WebPPublished.DTO
     public class CommentHeaderData
     {
         public int ID { get; set; }
-        public string CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
         public string Text { get; set; }
         public string UserId { get; set; }
         public int RecipeId { get; set; }

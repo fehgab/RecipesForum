@@ -1,43 +1,30 @@
 ﻿@using PagedList.Mvc;
 @model WebPPublished.Models.CategoriesListData
-
 @{ ViewBag.Title = "Recept Fórum";
     var i = 0;
 }
-<div>
-    <h4>Keresés: <input type="text" name="search_box"></h4>
-    @foreach (var item in @Model.AllCategory)
-    {
-        if (i == 0)
+<div class="table-responsive">
+    <table class="table table-hover text-center">
+        @foreach (var item in @Model.Recipes)
         {
-            <input type="button" onclick="location.href = '\@Url.Action("Index", "Home")';" value="Összes" />
-        }
-        <input type="button" onclick="location.href = '\@Url.Action("Details","Categories", new { @item.FriendlyUrl })';" value="@item.DisplayName" />
-        i = 1;
-    }
-</div>
-<hr />
-<table>
+            if (i == 0)
+            {
+                i = 1;
+                <tr>
+                    <td>Kép</td>
+                    <td>Étel neve</td>
+                    <td>Elkészítési idő</td>
+                    <td>Hozzávalók</td>
+                </tr>
+            }
 
-    @foreach (var item in @Model.Recipes)
-    {
-        if (i == 0)
-        {
-            i = 1;
-            <tr>
-                <td width="100" align="center">Kép</td>
-                <td width="100" align="center">Étel neve</td>
-                <td width="100" align="center">Elkészítési idő</td>
-                <td width="100" align="center">Hozzávalók</td>
+            <tr onclick="location.href = '@(Url.Action("Comments","Comments", new {recipeId = @item.ID }))';">
+                <td width="250"><img src="/Upload/Images/@item.PictureUrl" class="img-responsive"/></td>
+                <td>@item.Title</td>
+                <td>@item.PrepareTime</td>
+                <td>@item.Ingredients</td>
             </tr>
         }
-
-        <tr>
-            <td width="100" align="center"><img src="/Upload/Images/@item.PictureUrl" style="width:100%" /></td>
-            <td width="100" align="center">@item.Title</td>
-            <td width="100" align="center">@item.PrepareTime</td>
-            <td width="100" align="center">@item.Ingredients</td>
-        </tr>
-    }
-</table>
-@Html.PagedListPager(Model.Recipes, page => Url.Action("Index", new { pageNumber = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    </table>
+</div>
+        @Html.PagedListPager(Model.Recipes, page => Url.Action("Index", new { pageNumber = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)

@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
+                    <div class="col-md-offset-1 col-md-10">
                         <input type="submit" value="Log in" class="btn btn-default" />
                     </div>
                 </div>
@@ -48,16 +48,16 @@
             }
         </section>
     </div>
-    <div>
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-        <p>
-            @Html.ActionLink("Register as a new user", "Register")
-        </p>
+    <div class="form-group">
+            <section id="socialLoginForm">
+                <div class="col-md-offset-1 col-md-10">
+                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                </div>
+            </section>
+            <p>
+                @Html.ActionLink("Register as a new user", "Register")
+            </p>
     </div>
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

@@ -16,17 +16,6 @@
 </head>
 
 <body>
-    <div>
-        @foreach (var item in @Model.AllCategory)
-        {
-            if (i == 0)
-            {
-                <input type="button" onclick="location.href = '\@Url.Action("Index", "Home")';" value="Összes" />
-            }
-            <input type="button" onclick="location.href = '\@Url.Action("Details","Category", new { @item.FriendlyUrl })';" value="@item.DisplayName" />
-            i = 1;
-        }
-    </div>
     <table>
         @foreach (var item in @Model.Recipes)
         {

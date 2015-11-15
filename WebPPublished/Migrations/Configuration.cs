@@ -171,7 +171,7 @@ namespace WebPPublished.Migrations
                 context.Comments.AddOrUpdate(
                 new Comments
                 {
-                    CreatedDate = DateTime.Now.ToString(new CultureInfo("hu-HU")),
+                    CreatedDate = Convert.ToDateTime(DateTime.Now.ToString(new CultureInfo("hu-HU"))),
                     RecipesId = recipe.ID,
                     Text = "Ez az elsõ kommentem.",
                     UserId = GetUserId("admin")

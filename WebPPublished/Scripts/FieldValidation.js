@@ -18,4 +18,4 @@
         errorClass: defaultOptions.errorClass,
         validClass: defaultOptions.validClass,
     };
-})(jQuery);
+})(jQuery);

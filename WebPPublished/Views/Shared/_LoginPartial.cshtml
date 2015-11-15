@@ -5,13 +5,13 @@
     {
         @Html.AntiForgeryToken()
         <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Felhasználó profil" })
         </li>
         <li>
             @Html.ActionLink("Saját receptek", "Details", "Recipes", routeValues: null, htmlAttributes: new { title = "Saját receptek" })
         </li>
         <li>
-            @Html.ActionLink("Új recept","Create", "Recipes", routeValues: null, htmlAttributes: new { title = "Saját receptek" })
+            @Html.ActionLink("Új recept","Create", "Recipes", routeValues: null, htmlAttributes: new { title = "Új recept" })
         </li>
         <li>
             <a href="javascript:document.getElementById('logoutForm').submit()">Kijelentkezés</a>
@@ -20,6 +20,6 @@
 }
 else
 {
-    <button onclick="location.href='@Url.Action("Register", "Account")';">Regisztáció</button>
-    <button onclick="location.href='@Url.Action("Login", "Account")';">Bejelentkezés</button>
+    <li><a href="javascript:location.href='@Url.Action("Register", "Account")';">Regisztáció</a></li>
+    <li><a href="javascript:location.href='@Url.Action("Login", "Account")';">Bejelentkezés</a></li>
 }

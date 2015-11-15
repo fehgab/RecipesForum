@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    /*padding-top: 50px;*/
     padding-bottom: 20px;
 }
 
@@ -27,3 +27,53 @@ textarea {
 { 
 background-color:yellow 
 } 
+
+.dropdown-menu li a{
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+}
+.dropdown-menu li a:hover{
+    color: #262626;
+    text-decoration: none;
+    background-color: #f5f5f5;
+}
+.comments-list{
+    margin: 15px 0;
+    padding: 0;
+}
+.comments-list li{
+    margin-bottom: 15px;
+}
+.comments-list, comments-list li{
+    text-decoration: none;
+    list-style: none;
+}
+.comment{
+    background-color: #eee;
+    padding: 15px;
+}
+.comment-text{
+    padding: 10px;
+    background-color: white;
+}
+.layout-padding{
+    padding: 15px;
+}
+.rounded{
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.comment-datetime{
+    color: blue;
+}
+
+#Facebook{
+    width: 130px;
+    text-align: center;
+}

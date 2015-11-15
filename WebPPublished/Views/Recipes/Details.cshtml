@@ -2,7 +2,6 @@
 @model WebPPublished.Models.CategoriesListData
 
 @{ ViewBag.Title = "Recept Fórum";
-    var i = 0;
     var j = 0;
 }
 <!DOCTYPE html>
@@ -16,42 +15,31 @@
 </head>
 
 <body>
-    <div>
-        <h4>Keresés: <input type="text" name="search_box"></h4>
-        @foreach (var item in @Model.AllCategory)
-        {
-            if (i == 0)
+    <div class="table-responsive">
+        <table class="table table-hover text-center">
+            @foreach (var item in @Model.Recipes)
             {
-                <input type="button" onclick="location.href = '\@Url.Action("Index", "Home")';" value="Összes" />
-            }
-            <input type="button" onclick="location.href = '\@Url.Action("Details","Categories", new { @item.FriendlyUrl })';" value="@item.DisplayName" />
-            i = 1;
-        }
-    </div>
-    <hr />
-    <table>
-        @foreach (var item in @Model.Recipes)
-        {
-            if (j == 0)
-            {
-                j = 1;
-                <tr>
-                    <td width="100" align="center">Kép</td>
-                    <td width="100" align="center">Étel neve</td>
-                    <td width="100" align="center">Elkészítési idő</td>
-                    <td width="100" align="center">Hozzávalók</td>
+                if (j == 0)
+                {
+                    j = 1;
+                    <tr>
+                        <td>Kép</td>
+                        <td>Étel neve</td>
+                        <td>Elkészítési idő</td>
+                        <td>Hozzávalók</td>
+                    </tr>
+                }
+
+                <tr onclick="location.href = '@(Url.Action("Comments","Comments", new {recipeId = @item.ID }))';">
+                    <td width="250"><img src="/Upload/Images/@item.PictureUrl" class="img-responsive" /></td>
+                    <td>@item.Title</td>
+                    <td>@item.PrepareTime</td>
+                    <td>@item.Ingredients</td>
                 </tr>
             }
-
-            <tr>
-                <td width="100" align="center"><img src="/Upload/Images/@item.PictureUrl" style="width:100%" /></td>
-                <td width="100" align="center">@item.Title</td>
-                <td width="100" align="center">@item.PrepareTime</td>
-                <td width="100" align="center">@item.Ingredients</td>
-            </tr>
-        }
-    </table>
-    @Html.PagedListPager(Model.Recipes, page => Url.Action("Details", new {friendlyUrl = Model.SelectedCategory.FriendlyUrl, pageNumber = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+        </table>
+    </div>
+    @Html.PagedListPager(Model.Recipes, page => Url.Action("Details", new { pageNumber = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
 </body>

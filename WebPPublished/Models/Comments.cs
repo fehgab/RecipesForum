@@ -15,7 +15,7 @@ namespace WebPPublished.Models
         public string Text { get; set; }
 
         //[Column(TypeName = "date")]
-        public string CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
 
         public virtual int RecipesId { get; set; }
         [ForeignKey("RecipesId")]
