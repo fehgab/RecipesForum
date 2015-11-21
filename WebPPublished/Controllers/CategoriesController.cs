@@ -45,14 +45,15 @@ namespace WebPPublished.Controllers
             Recipes recipe = db.Recipes.Find(model.RecipesDB.ID);
             db.Recipes.Remove(recipe);
             System.IO.File.Delete(Path.Combine(Server.MapPath("~"), "Upload\\Images", recipe.PictureUrl));
+            db.SaveChanges();
 
             List<Comments> comments = new CommentManager().GetRecipeCommentsList(model.RecipesDB.ID);
             foreach (Comments comment in comments)
             {
                 db.Comments.Remove(comment);
             }
-
             db.SaveChanges();
+
             Categories category = db.Categories.Find(model.SelectedCategory.ID);
             model.Recipes = manager.GetRecipesInCategory(category.FriendlyUrl, pageNumber);
             model.SelectedCategory = model.AllCategory.FirstOrDefault(c => c.FriendlyUrl == category.FriendlyUrl);

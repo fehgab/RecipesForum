@@ -165,6 +165,8 @@ namespace WebPPublished.Migrations
             }
             );
 
+            context.SaveChanges();
+
             List<RecipeHeaderData> recipes = GetRecipes();
             foreach (RecipeHeaderData recipe in recipes)
             {
