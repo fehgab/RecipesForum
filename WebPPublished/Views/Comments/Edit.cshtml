@@ -19,7 +19,6 @@
             <hr />
            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
-                @Html.LabelFor(model => model.CommentsDB.Text, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-12">
                     @Html.TextAreaFor(model => model.CommentsDB.Text, new { @class = "form-control", @id = "newcomment", @name = "newcomment" })
                     @Html.ValidationMessageFor(model => model.CommentsDB.Text, "", new { @class = "text-danger" })

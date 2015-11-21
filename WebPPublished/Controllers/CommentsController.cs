@@ -33,8 +33,11 @@ namespace WebPPublished.Controllers
         {
             model.SelectedRecipe = new RecipeManager().GetRecipeHeaderData(model.SelectedRecipe.ID);
             Comments comment = db.Comments.Find(model.CommentsDB.Id);
-            db.Comments.Remove(comment);
-            db.SaveChanges();
+            if(comment != null)
+            {
+                db.Comments.Remove(comment);
+                db.SaveChanges();
+            }
             model.Comments = new CommentManager().GetRecipeComments(model.SelectedRecipe.ID, pageNumber);
             return View(model);
         }
@@ -45,7 +48,7 @@ namespace WebPPublished.Controllers
             var model = new CategoriesListData();
             model.SelectedRecipe = new RecipeManager().GetRecipeHeaderData(recipeId);
             model.CommentsDB = new Comments();
-            return View(model);
+            return PartialView(model);
         }
 
         // POST: Comments/Create
@@ -71,7 +74,7 @@ namespace WebPPublished.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Comments", "Comments", new { recipeId = model.SelectedRecipe.ID });
             }
-            return View(model);
+            return PartialView(model);
         }
 
         public ActionResult Edit(int? commentId)
@@ -87,7 +90,7 @@ namespace WebPPublished.Controllers
             {
                 return HttpNotFound();
             }
-            return View(model);
+            return PartialView(model);
         }
 
         // POST: Recipes/Edit/5
