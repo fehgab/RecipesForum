@@ -174,6 +174,15 @@ namespace WebPPublished.Migrations
                     CreatedDate = Convert.ToDateTime(DateTime.Now.ToString(new CultureInfo("hu-HU"))),
                     RecipesId = recipe.ID,
                     Text = "Ez az elsõ kommentem.",
+                    UserId = GetUserId("fgsboarder")
+                }
+                );
+                context.Comments.AddOrUpdate(
+                new Comments
+                {
+                    CreatedDate = Convert.ToDateTime(DateTime.Now.ToString(new CultureInfo("hu-HU"))),
+                    RecipesId = recipe.ID,
+                    Text = "Ez az elsõ kommentem.",
                     UserId = GetUserId("admin")
                 }
                 );

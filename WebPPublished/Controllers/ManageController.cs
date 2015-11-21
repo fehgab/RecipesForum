@@ -55,13 +55,13 @@ namespace WebPPublished.Controllers
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
-                : message == ManageMessageId.Error ? "An error has occurred."
-                : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
-                : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
-                : message == ManageMessageId.EditProfileSuccess ? "Your profile was updated."
+                message == ManageMessageId.ChangePasswordSuccess ? "A jelszó sikeresen megváltozott."
+                : message == ManageMessageId.SetPasswordSuccess ? "A jelszó mentése sikerült."
+                : message == ManageMessageId.SetTwoFactorSuccess ? "Sikeres beállítás."
+                : message == ManageMessageId.Error ? "Váratlan hiba történt."
+                : message == ManageMessageId.AddPhoneSuccess ? "Telefonszám sikeresen hozzádva."
+                : message == ManageMessageId.RemovePhoneSuccess ? "Telefonszám sikeresen eltávolítva."
+                : message == ManageMessageId.EditProfileSuccess ? "A profil sikeresen frissült."
                 : "";
 
             var userId = User.Identity.GetUserId();
@@ -107,7 +107,8 @@ namespace WebPPublished.Controllers
             }
             AddErrors(result);
             return View(model);
-        }
+        }
+
 
         //
         // POST: /Manage/RemoveLogin
@@ -224,7 +225,7 @@ namespace WebPPublished.Controllers
                 return RedirectToAction("Index", new { Message = ManageMessageId.AddPhoneSuccess });
             }
             // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "Failed to verify phone");
+            ModelState.AddModelError("", "Telefonszám ellenőrzés sikertelen");
             return View(model);
         }
 
@@ -313,8 +314,8 @@ namespace WebPPublished.Controllers
         public async Task<ActionResult> ManageLogins(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
-                : message == ManageMessageId.Error ? "An error has occurred."
+                message == ManageMessageId.RemoveLoginSuccess ? "Külső fiók eltávolítva"
+                : message == ManageMessageId.Error ? "Váratlan hiba történt"
                 : "";
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user == null)

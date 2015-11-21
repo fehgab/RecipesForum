@@ -250,3 +250,5 @@ C:\Users\Fehér\Desktop\RecipesForum-master\WebPPublished\obj\Debug\Web.csproj.G
 C:\Users\Fehér\Desktop\RecipesForum-master\WebPPublished\obj\Debug\WebPPublished.dll
 C:\Users\Fehér\Desktop\RecipesForum-master\WebPPublished\obj\Debug\WebPPublished.pdb
 D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\WebPPublished.Migrations.update7.resources
+C:\Users\u550349\Desktop\RecipesForum-master\WebPPublished\obj\Debug\WebPPublished.Migrations.update8.resources
+D:\Webportálok fejlesztése\Projects\WebPPublished\WebPPublished\obj\Debug\WebPPublished.Migrations.update8.resources

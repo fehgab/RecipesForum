@@ -1,114 +1,105 @@
-﻿@model WebPPublished.Models.Recipes
+﻿@model WebPPublished.Models.CategoriesListData
+@using Microsoft.AspNet.Identity
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Recept szerkesztése";
 }
-
-<h2>Edit</h2>
-
-
-@using (Html.BeginForm())
+@if (Request.IsAuthenticated)
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Recipes</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID)
+    <h3>@ViewBag.Title</h3>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Category_ID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Category_ID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Category_ID, "", new { @class = "text-danger" })
+
+    using (Html.BeginForm("Edit", "Recipes", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.RecipesDB.ID)
+        @Html.HiddenFor(model => model.RecipesDB.PictureUrl)
+        @Html.HiddenFor(model => model.RecipesDB.UserID)
+        <div class="form-horizontal">
+            <hr />            
+            <div class="form-group">
+                <div class="col-md-3">
+                    <img src="~/Upload/Images/@Model.RecipesDB.PictureUrl" style="width:250px" />
+                </div>
+                <div class="col-md-9">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.RecipesDB.CategoryID, htmlAttributes: new { @class = "control-label col-md-2" })
+                @foreach (var item in @Model.AllCategory)
+                {
+                    <div class="col-md-1 radio-button rounded">
+                        @Html.RadioButtonFor(model => model.RecipesDB.CategoryID, @item.ID)
+                        <span class="radio-button-text">@item.DisplayName</span>
+                    </div>
+                }
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-10">
+                        @Html.ValidationMessageFor(model => model.RecipesDB.CategoryID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.RecipesDB.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.RecipesDB.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.RecipesDB.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.RecipesDB.Ingredients, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.RecipesDB.Ingredients, new { @class = "form-control", @id = "ingredients", @name = "ingredients", rows = "5", cols = "40" })
+                    @Html.ValidationMessageFor(model => model.RecipesDB.Ingredients, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.RecipesDB.PrepareTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.RecipesDB.PrepareTime, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.RecipesDB.PrepareTime, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.RecipesDB.HowToPrepare, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.RecipesDB.HowToPrepare, new { @class = "form-control", @id = "howtoprepare", @name = "howtoprepare", rows = "10", cols = "40" })
+                    @Html.ValidationMessageFor(model => model.RecipesDB.HowToPrepare, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="picture" class="control-label col-md-2">Kép feltöltése</label>
+                <div class="col-md-10">
+                    <input type="file" name="picture" id="picture" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Mentés" class="btn btn-default" />
+                </div>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PageNumber, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PageNumber, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PageNumber, "", new { @class = "text-danger" })
-            </div>
+        <div>
+            <a href="javascript:location.href='@Url.Action("Comments", "Comments", new { @recipeId = Model.RecipesDB.ID})';">Vissza</a>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.SumRating, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SumRating, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SumRating, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.RaitingCount, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RaitingCount, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RaitingCount, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Ingredients, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Ingredients, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Ingredients, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PrepareTime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PrepareTime, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PrepareTime, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.HowToPrepare, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.HowToPrepare, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HowToPrepare, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.FriendlyUrl, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FriendlyUrl, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FriendlyUrl, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PictureUrl, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PictureUrl, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PictureUrl, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
+    }
+}
+else
+{
+    <div>
+        @Html.ActionLink("Bejelentkezés", "Login", "Account")
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/main")
 }

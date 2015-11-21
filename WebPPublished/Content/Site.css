@@ -5,6 +5,13 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    margin-top: 56px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.body-content-pagination {
+    margin-top: 85px;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -76,4 +83,39 @@ background-color:yellow
 #Facebook{
     width: 130px;
     text-align: center;
+}
+
+.facebook-text{
+    margin-top: 5px;
+    font-size:large;
+    color: blue;
+}
+
+.marign-top{
+    margin-top: 30px;
+}
+
+.radio-button{
+    width: 110px;
+    text-align: center;
+    background-color: #eee;
+    margin-top: 6px;
+    margin-left: 10px;
+}
+
+.radio-button-text{
+    color: black;
+}
+
+button
+{
+-webkit-appearance: none;
+outline: none;
+border: 0;
+background: transparent;
+}
+
+form.same-line{
+    float: right;
+    width: auto;
 }

@@ -34,7 +34,7 @@
                 <td width="100" align="center"><img src="/Upload/Images/@item.PictureUrl" style="width:100%" /></td>
                 <td width="100" align="center">@item.Title</td>
                 <td width="100" align="center">@item.PrepareTime</td>
-                <td width="100" align="center">@item.Ingredients</td>
+                <td width="100" align="center">@Html.Raw(@item.Ingredients)</td>
             </tr>
         }
     </table>

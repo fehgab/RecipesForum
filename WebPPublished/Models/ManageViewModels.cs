@@ -16,11 +16,14 @@ namespace WebPPublished.Models
 
     public class EditProfileViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Hiányzik a teljes név.")]
+        [Display(Name = "Teljes név")]
         public string DisplayName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Hiányzik az Email cím.")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Hiányzik a felhasználónév.")]
+        [Display(Name = "Felhasználónév")]
         public string UserName { get; set; }
     }
 
@@ -37,34 +40,34 @@ namespace WebPPublished.Models
 
     public class SetPasswordViewModel
     {
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "Hiányzik a jelszó.")]
+        [StringLength(100, ErrorMessage = "A {0} legalább {2} karkter hosszú legyen.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(Name = "Új jelszó")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Display(Name = "Jelszó újra")]
+        [Compare("NewPassword", ErrorMessage = "A jelszavak nem egyeznek meg.")]
         public string ConfirmPassword { get; set; }
     }
 
     public class ChangePasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Hiányzik a régi jelszó.")]
         [DataType(DataType.Password)]
-        [Display(Name = "Current password")]
+        [Display(Name = "Régi jelszó")]
         public string OldPassword { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "Hiányzik az új jelszó.")]
+        [StringLength(100, ErrorMessage = "A {0} legalább {2} karkter hosszú legyen.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(Name = "Új jelszó")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Display(Name = "Jelszó újra")]
+        [Compare("NewPassword", ErrorMessage = "A jelszavak nem egyeznek meg.")]
         public string ConfirmPassword { get; set; }
     }
 

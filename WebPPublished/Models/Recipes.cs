@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace WebPPublished.Models
 {
@@ -21,8 +22,8 @@ namespace WebPPublished.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
-        [Required]
-        [StringLength(100)]
+        [Required(ErrorMessage = "Hiányzik az étel neve.")]
+        [StringLength(40)]
         [Display(Name = "Étel neve")]
         public string Title { get; set; }
 
@@ -33,21 +34,24 @@ namespace WebPPublished.Models
         [Display(Name = "Kép")]
         public string PictureUrl { get; set; }
 
-        [Required]
-        [StringLength(500)]
+        [AllowHtml]
+        [Required(ErrorMessage = "Hiányoznak a hozzávalók.")]
+        [StringLength(100)]
         [Display(Name = "Hozzávalók")]
         public string Ingredients { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage = "Hiányzik az elkészítési idő.")]
+        [StringLength(10)]
         [Display(Name = "Elkészítési idő")]
         public string PrepareTime { get; set; }
 
-        [Required]
+        [AllowHtml]
+        [Required(ErrorMessage = "Hiányzik az elkészítés menete.")]
         [StringLength(500)]
         [Display(Name = "Elkészítés")]
         public string HowToPrepare { get; set; }
         [Display(Name = "Kategória")]
+        [Required(ErrorMessage = "Hiányzik a kategória.")]
         public virtual int CategoryID { get; set; }
         [ForeignKey("CategoryID")]
         public virtual Categories Category { get; set; }

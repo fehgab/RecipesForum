@@ -190,6 +190,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="Helpers\FriendlyUrlHelper.cs" />
     <Compile Include="Manager\CategoryManager.cs" />
     <Compile Include="Manager\CommentManager.cs" />
     <Compile Include="Manager\RecipeManager.cs" />
@@ -233,6 +234,10 @@
     <Compile Include="Migrations\201511151027156_update7.cs" />
     <Compile Include="Migrations\201511151027156_update7.Designer.cs">
       <DependentUpon>201511151027156_update7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511170930212_update8.cs" />
+    <Compile Include="Migrations\201511170930212_update8.Designer.cs">
+      <DependentUpon>201511170930212_update8.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -301,12 +306,10 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Recipes\Create.cshtml" />
@@ -321,7 +324,9 @@
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Manage\EditProfile.cshtml" />
     <Content Include="Views\Comments\Comments.cshtml" />
-    <Content Include="Views\Comments\Comment.cshtml" />
+    <Content Include="Views\Comments\Create.cshtml" />
+    <Content Include="Views\Recipes\Search.cshtml" />
+    <Content Include="Views\Comments\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -365,6 +370,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511151027156_update7.resx">
       <DependentUpon>201511151027156_update7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511170930212_update8.resx">
+      <DependentUpon>201511170930212_update8.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

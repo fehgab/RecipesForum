@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Spatial;
+using System.Web.Mvc;
 
 namespace WebPPublished.Models
 {
@@ -11,7 +12,9 @@ namespace WebPPublished.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [AllowHtml]
+        [StringLength(500)]
+        [Required(ErrorMessage = "Hiányzik a komment szövege.")]
         public string Text { get; set; }
 
         //[Column(TypeName = "date")]

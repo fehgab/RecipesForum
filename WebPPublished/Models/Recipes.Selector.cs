@@ -20,6 +20,7 @@ namespace WebPPublished.Models
                 Ingredients = p.Ingredients,
                 PrepareTime = p.PrepareTime,
                 HowToPrepare = p.HowToPrepare,
+                User = p.User
                 //PageNumber = p.PageNumber,
                 //RaitingCount = p.RaitingCount,
                 //SumRating = p.SumRating

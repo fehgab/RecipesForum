@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -8,15 +10,29 @@ namespace WebPPublished.Helpers
 {
     public class FileHelper
     {
-        public static string GetFileName(string userName, HttpPostedFileBase picture)
+        public static string GetFileName(string recipeId, HttpPostedFileBase picture)
         {
-            if (picture != null && picture.ContentLength > 0)
+            try
             {
-                // TODO: Validáció, hogy tényleg kép-e?
-                var pictureFileName = Path.GetFileName(picture.FileName);
-                return userName + "_" + pictureFileName;
+                if (picture != null && picture.ContentLength > 0)
+                {
+                    using (Image img = Image.FromStream(picture.InputStream))
+                    {
+                        if (img.RawFormat.Equals(ImageFormat.Bmp)
+                        || img.RawFormat.Equals(ImageFormat.Gif)
+                        || img.RawFormat.Equals(ImageFormat.Jpeg)
+                        || img.RawFormat.Equals(ImageFormat.Png))
+                        {
+                            var pictureFileName = Path.GetFileName(picture.FileName);
+                            return recipeId + "_" + pictureFileName;
+                        }
+                    }
+                }
             }
+            catch (Exception)
+            {}
             return null;
         }
-    }
+    }
+
 }

@@ -14,6 +14,7 @@ namespace WebPPublished.Models
         public IPagedList<RecipeHeaderData> Recipes { get; set; }
         public Recipes RecipesDB { get; set; }
         public IPagedList<CommentHeaderData> Comments { get; set; }
+        public Comments CommentsDB { get; set; }
         public RecipeHeaderData SelectedRecipe { get; set; }
     }
 }

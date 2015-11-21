@@ -31,6 +31,41 @@ namespace WebPPublished.Manager
                 return recipesFromCategory;
             }
         }
+
+        public IPagedList<RecipeHeaderData> GetRecipesInCategory(string categoryUrl, string sortBy, int pageNumber)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                IPagedList<RecipeHeaderData> allRecipes;
+                switch (sortBy)
+                {
+                    case "Title":
+                        allRecipes = context.Recipes
+                        .Where(r => r.Category.FriendlyUrl == categoryUrl)
+                        .OrderBy(r => r.Title)
+                        .Select(Recipes.SelectHeader)
+                        .ToPagedList(pageNumber, 8);
+                        break;
+
+                    case "PrepareTime":
+                        allRecipes = context.Recipes
+                        .Where(r => r.Category.FriendlyUrl == categoryUrl)
+                        .OrderBy(r => r.PrepareTime)
+                        .Select(Recipes.SelectHeader)
+                        .ToPagedList(pageNumber, 8);
+                        break;
+
+                    default:
+                        allRecipes = context.Recipes
+                        .Where(r => r.Category.FriendlyUrl == categoryUrl)
+                        .OrderBy(r => r.Title)
+                        .Select(Recipes.SelectHeader)
+                        .ToPagedList(pageNumber, 8);
+                        break;
+                }
+                return allRecipes;
+            }
+        }
     }
     
 }

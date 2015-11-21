@@ -5,8 +5,7 @@
     if (loginProviders.Count() == 0) {
         <div>
             <p>
-                There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support logging in via external services.
+                Még nincs külső fiók csatolva a felhasználói fiókodhoz.
             </p>
         </div>
     }
@@ -17,7 +16,7 @@
                 <p>
                     @foreach (AuthenticationDescription p in loginProviders)
                     {
-                        <button type="submit" class="btn btn-block btn-facebook" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType login</button>
+                        <button type="submit" class="btn btn-block btn-facebook" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Bejelentkezés @p.Caption fiókkal">@p.AuthenticationType bejelentkezés</button>
                     }
                 </p>
             </div>

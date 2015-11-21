@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using WebPPublished.Models;
 
 namespace WebPPublished.DTO
 {
@@ -18,5 +19,6 @@ namespace WebPPublished.DTO
         public string HowToPrepare { get; set; }
         public string FriendlyUrl { get; set; }
         public string PictureUrl { get; set; }
+        public ApplicationUser User { get; set; }
     }
 }

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using WebPPublished.Manager;
 using WebPPublished.DTO;
 using WebPPublished.Models;
+using System.IO;
 
 namespace WebPPublished.Controllers
 {
@@ -23,15 +24,38 @@ namespace WebPPublished.Controllers
         }
 
         // GET: Categories/Details/5
-        public ActionResult Details(string friendlyUrl, int pageNumber = 1)
+        public ActionResult Details(string friendlyUrl, string sortBy, int pageNumber = 1)
         {
             var manager = new CategoryManager();
             var model = new CategoriesListData
             {
-                Recipes = manager.GetRecipesInCategory(friendlyUrl, pageNumber),
+                Recipes = manager.GetRecipesInCategory(friendlyUrl, sortBy, pageNumber),
                 AllCategory = manager.GetAllCategory()
             };
             model.SelectedCategory = model.AllCategory.FirstOrDefault(c => c.FriendlyUrl == friendlyUrl);
+            return View(model);
+        }
+
+        [HttpDelete]
+        public ActionResult Details(CategoriesListData model, int pageNumber = 1)
+        {
+            CategoryManager manager = new CategoryManager();
+            model.AllCategory = manager.GetAllCategory();
+
+            Recipes recipe = db.Recipes.Find(model.RecipesDB.ID);
+            db.Recipes.Remove(recipe);
+            System.IO.File.Delete(Path.Combine(Server.MapPath("~"), "Upload\\Images", recipe.PictureUrl));
+
+            List<Comments> comments = new CommentManager().GetRecipeCommentsList(model.RecipesDB.ID);
+            foreach (Comments comment in comments)
+            {
+                db.Comments.Remove(comment);
+            }
+
+            db.SaveChanges();
+            Categories category = db.Categories.Find(model.SelectedCategory.ID);
+            model.Recipes = manager.GetRecipesInCategory(category.FriendlyUrl, pageNumber);
+            model.SelectedCategory = model.AllCategory.FirstOrDefault(c => c.FriendlyUrl == category.FriendlyUrl);
             return View(model);
         }
 

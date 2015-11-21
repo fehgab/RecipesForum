@@ -2,19 +2,21 @@
 @model WebPPublished.Models.CategoriesListData
 
 @{ ViewBag.Title = "Recept Fórum";
+    ViewBag.SortBytitle = "Title";
+    ViewBag.SortByPrepareTime = "PrepareTime";
     var j = 0;
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Recept Fórum</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-
-<body>
+@if (@Model.Recipes.PageCount > 1)
+{
+    <div class="col-md-12 text-right">
+        @Html.PagedListPager(Model.Recipes, page => Url.Action("Details", new { pageNumber = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    </div>
+}
+else
+{
+    <script>document.getElementById('pagination-visible').className = 'container body-content-pagination';</script>
+}
+<div class="col-md-12">
     <div class="table-responsive">
         <table class="table table-hover text-center">
             @foreach (var item in @Model.Recipes)
@@ -24,9 +26,16 @@
                     j = 1;
                     <tr>
                         <td>Kép</td>
-                        <td>Étel neve</td>
-                        <td>Elkészítési idő</td>
+                        <td>
+                            Étel Neve
+                            @Html.ActionLink(" ", "Details", new { sortBy = ViewBag.SortByTitle }, new { @class = "glyphicon glyphicon-sort-by-alphabet" })
+                        </td>
+                        <td>
+                            Elkészítési idő
+                            @Html.ActionLink(" ", "Details", new { sortBy = ViewBag.SortByPrepareTime }, new { @class = "glyphicon glyphicon-sort-by-alphabet" })
+                        </td>
                         <td>Hozzávalók</td>
+                        <td></td>
                     </tr>
                 }
 
@@ -34,13 +43,30 @@
                     <td width="250"><img src="/Upload/Images/@item.PictureUrl" class="img-responsive" /></td>
                     <td>@item.Title</td>
                     <td>@item.PrepareTime</td>
-                    <td>@item.Ingredients</td>
+                    <td>@Html.Raw(@item.Ingredients)</td>
+                    <td>
+                        @if (Request.IsAuthenticated)
+                        {
+                            if (@item.User.UserName == HttpContext.Current.User.Identity.Name || HttpContext.Current.User.IsInRole("Administrators"))
+                            {
+                                using (Html.BeginForm())
+                                {
+                                    @Html.HiddenFor(model => model.RecipesDB.ID, new { @Value = @item.ID })
+                                    <label>
+                                        <button type="submit" name="X-HTTP-Method-Override" value="DELETE" onclick="return confirm('Are you sure?')">
+                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                        </button>
+                                    </label>
+                                }
+                            }
+                        }
+                    </td>
                 </tr>
             }
         </table>
     </div>
+</div>
+@if (@Model.Recipes.PageCount > 1)
+{
     @Html.PagedListPager(Model.Recipes, page => Url.Action("Details", new { pageNumber = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-</body>
-</html>
+}

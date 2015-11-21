@@ -5,16 +5,16 @@ namespace WebPPublished.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Hiányzik az Email cím.")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
-        [Display(Name = "User name")]
+        [Required(ErrorMessage = "Hiányzik a felhasználónév.")]
+        [Display(Name = "Felhasználónév")]
         public string UserName { get; set; }
 
-        [Required]
-        [Display(Name = "Full name")]
+        [Required(ErrorMessage = "Hiányzik a teljes név.")]
+        [Display(Name = "Teljes név")]
         public string DisplayName { get; set; }
     }
 
@@ -36,82 +36,83 @@ namespace WebPPublished.Models
         [Required]
         public string Provider { get; set; }
 
-        [Required]
-        [Display(Name = "Code")]
+        [Required(ErrorMessage = "Hiányzik a kód.")]
+        [Display(Name = "Kód")]
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
 
-        [Display(Name = "Remember this browser?")]
+        [Display(Name = "Emlékezz rá!")]
         public bool RememberBrowser { get; set; }
 
+        [Display(Name = "Emlékezz rám!")]
         public bool RememberMe { get; set; }
     }
 
     public class ForgotViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Hiányzik az Email cím.")]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
 
     public class LoginViewModel
     {
-        [Required]
-        [Display(Name = "User name")]
+        [Required(ErrorMessage = "Hiányzik a felhasználónév.")]
+        [Display(Name = "Felhasználónév")]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Hiányzik a jelszó.")]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Jelszó")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Emlékezz rám!")]
         public bool RememberMe { get; set; }
     }
 
     public class RegisterViewModel
     {
-        [Required]
-        [Display(Name = "User name")]
+        [Required(ErrorMessage = "Hiányzik a felhasználónév.")]
+        [Display(Name = "Felhasználónév")]
         public string UserName { get; set; }
 
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Hiányzik az Email cím.")]
+        [EmailAddress(ErrorMessage = "nem megfelelő formátumú Email cím.")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "Hiányzik a jelszó.")]
+        [StringLength(100, ErrorMessage = "A {0} legalább {2} karkter hosszú legyen.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Jelszó")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Jelszó újra")]
+        [Compare("Password", ErrorMessage = "A jelszavak nem egyeznek meg.")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
-        [Display(Name = "Full name")]
+        [Required(ErrorMessage = "Hiányzik a teljes név.")]
+        [Display(Name = "Teljes név")]
         public string DisplayName { get; set; }
     }
 
     public class ResetPasswordViewModel
     {
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Hiányzik az Email cím.")]
+        [EmailAddress(ErrorMessage = "nem megfelelő formátumú Email cím.")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "Hiányzik a jelszó.")]
+        [StringLength(100, ErrorMessage = "A {0} legalább {2} karkter hosszú legyen.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Jelszó")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Jelszó újra")]
+        [Compare("Password", ErrorMessage = "A jelszavak nem egyeznek meg.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
@@ -119,8 +120,8 @@ namespace WebPPublished.Models
 
     public class ForgotPasswordViewModel
     {
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Hiányzik az Email cím.")]
+        [EmailAddress(ErrorMessage = "nem megfelelő formátumú Email cím.")]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }

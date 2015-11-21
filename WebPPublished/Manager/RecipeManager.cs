@@ -21,6 +21,49 @@ namespace WebPPublished.Manager
                 return allRecipes;
             }
         }
+        public IPagedList<RecipeHeaderData> GetAllRecipeHeaderData(string sortBy, int pageNumber)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                IPagedList<RecipeHeaderData> allRecipes;
+                switch (sortBy)
+                {
+                    case "Title":
+                        allRecipes = context.Recipes
+                        .OrderBy(r => r.Title)
+                        .Select(Recipes.SelectHeader)
+                        .ToPagedList(pageNumber, 8);
+                        break;
+
+                    case "PrepareTime":
+                        allRecipes = context.Recipes
+                        .OrderBy(r => r.PrepareTime)
+                        .Select(Recipes.SelectHeader)
+                        .ToPagedList(pageNumber, 8);
+                        break;
+
+                    default:
+                        allRecipes = context.Recipes
+                        .OrderBy(r => r.Title)
+                        .Select(Recipes.SelectHeader)
+                        .ToPagedList(pageNumber, 8);
+                        break;
+                }
+                return allRecipes;
+            }
+        }
+
+        public List<RecipeHeaderData> GetAllRecipes()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var allRecipes = context.Recipes
+                    .OrderBy(r => r.Title)
+                    .Select(Recipes.SelectHeader)
+                    .ToList();
+                return allRecipes;
+            }
+        }
 
         public RecipeHeaderData GetRecipeHeaderData(int recipeId)
         {
@@ -43,6 +86,41 @@ namespace WebPPublished.Manager
                     .Select(Recipes.SelectHeader)
                     .ToPagedList(pageNumber, 8);
                 return UserRecipes;
+            }
+        }
+
+        public IPagedList<RecipeHeaderData> GetUserRecipes(string sortBy, string UserName, int pageNumber)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                IPagedList<RecipeHeaderData> allRecipes;
+                switch (sortBy)
+                {
+                    case "Title":
+                        allRecipes = context.Recipes
+                        .Where(r => r.User.UserName == UserName)
+                        .OrderBy(r => r.Title)
+                        .Select(Recipes.SelectHeader)
+                        .ToPagedList(pageNumber, 8);
+                        break;
+
+                    case "PrepareTime":
+                        allRecipes = context.Recipes
+                        .Where(r => r.User.UserName == UserName)
+                        .OrderBy(r => r.PrepareTime)
+                        .Select(Recipes.SelectHeader)
+                        .ToPagedList(pageNumber, 8);
+                        break;
+
+                    default:
+                        allRecipes = context.Recipes
+                        .Where(r => r.User.UserName == UserName)
+                        .OrderBy(r => r.Title)
+                        .Select(Recipes.SelectHeader)
+                        .ToPagedList(pageNumber, 8);
+                        break;
+                }
+                return allRecipes;
             }
         }
     }

@@ -1,19 +1,18 @@
 ﻿@model WebPPublished.Models.ManageLoginsViewModel
 @using Microsoft.Owin.Security
 @{
-    ViewBag.Title = "Manage your external logins";
+    ViewBag.Title = "Külső fiókok";
 }
 
-<h2>@ViewBag.Title.</h2>
-
+<h3>@ViewBag.Title</h3>
+<hr />
 <p class="text-success">@ViewBag.StatusMessage</p>
 @{
     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
     if (loginProviders.Count() == 0) {
         <div>
             <p>
-                There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=313242">this article</a>
-                for details on setting up this ASP.NET application to support logging in via external services.
+                Még nincs külső fiókod. Bejelentkezésnél felvehetsz újat.
             </p>
         </div>
     }
@@ -21,35 +20,30 @@
     {
         if (Model.CurrentLogins.Count > 0)
         {
-            <h4>Registered Logins</h4>
-            <table class="table">
-                <tbody>
-                    @foreach (var account in Model.CurrentLogins)
+            foreach (var account in Model.CurrentLogins)
+            {
+                <div class="row">
+                    <div class="col-md-1 text-center facebook-text">
+                        @account.LoginProvider
+                    </div>
+                    @if (ViewBag.ShowRemoveButton)
                     {
-                        <tr>
-                            <td>@account.LoginProvider</td>
-                            <td>
-                                @if (ViewBag.ShowRemoveButton)
-                                {
-                                    using (Html.BeginForm("RemoveLogin", "Manage"))
-                                    {
-                                        @Html.AntiForgeryToken()
-                                        <div>
-                                            @Html.Hidden("loginProvider", account.LoginProvider)
-                                            @Html.Hidden("providerKey", account.ProviderKey)
-                                            <input type="submit" class="btn btn-default" value="Remove" title="Remove this @account.LoginProvider login from your account" />
-                                        </div>
-                                    }
-                                }
-                                else
-                                {
-                                    @: &nbsp;
-                                }
-                            </td>
-                        </tr>
+                        using (Html.BeginForm("RemoveLogin", "Manage"))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="col-md-1">
+                                @Html.Hidden("loginProvider", account.LoginProvider)
+                                @Html.Hidden("providerKey", account.ProviderKey)
+                                <input type="submit" class="btn btn-default" value="Törlés" title="@account.LoginProvider bejelentkezés eltávolítása" />
+                            </div>
+                        }
                     }
-                </tbody>
-            </table>
+                    else
+                    {
+                        @: &nbsp;
+                    }
+                </div>
+            }
         }
         if (Model.OtherLogins.Count > 0)
         {
@@ -60,7 +54,7 @@
                 <p>
                     @foreach (AuthenticationDescription p in Model.OtherLogins)
                     {
-                        <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
+                        <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Bejelentkezés @p.Caption felhasználói fiókkal">@p.AuthenticationType</button>
                     }
                 </p>
                 </div>
@@ -68,3 +62,8 @@
         }
     }
 }
+<div class="row marign-top">
+    <div class="col-md-2">
+        @Html.ActionLink("Vissza", "Index", "Manage")
+    </div>
+</div>
