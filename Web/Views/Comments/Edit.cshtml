@@ -1,0 +1,45 @@
+﻿@model WebPPublished.Models.CategoriesListData
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+        String onSuccessGetComments = String.Format("RecipeForum.GetComments( '{0}', '{1}' );", Url.Action("ListComments", "Comments"), Model.CommentsDB.RecipesId);
+        String onSuccessCreateComment = String.Format("RecipeForum.CreateCommentField( '{0}', '{1}' );", Url.Action("Create", "Comments"), Model.CommentsDB.RecipesId);
+        String onSuccess = onSuccessGetComments + onSuccessCreateComment;
+        using (Ajax.BeginForm("Edit", "Comments",
+                                        new AjaxOptions
+                                        {
+                                            UpdateTargetId = "create_comment",
+                                            InsertionMode = InsertionMode.Replace,
+                                            HttpMethod = "POST",
+                                            OnSuccess = onSuccess
+                                                },
+                                        new { @class = "form-horizontal", role = "form" }))
+        {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.CommentsDB.Id)
+        @Html.HiddenFor(model => model.CommentsDB.RecipesId)
+        @Html.HiddenFor(model => model.CommentsDB.UserId)
+        <div class="form-horizontal">
+            <hr />
+           @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.TextAreaFor(model => model.CommentsDB.Text, new { @class = "form-control", @id = "newcomment", @name = "newcomment" })
+                    @Html.ValidationMessageFor(model => model.CommentsDB.Text, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12" style="padding-top:30px">
+                        <input type="submit" value="Mentés" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div>
+        @Html.ActionLink("Bejelentkezés", "Login", "Account")
+    </div>
+}
+@Scripts.Render("~/bundles/main")
