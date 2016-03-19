@@ -14,8 +14,8 @@ namespace WebPPublished.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         RecipesId = c.Int(nullable: false),
                         UserId = c.String(maxLength: 128),
-                        Text = c.String(nullable: false),
-                        CreatedDate = c.DateTime(nullable: false, storeType: "date"),
+                        Text = c.String(nullable: false, maxLength: 500),
+                        CreatedDate = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Recipes", t => t.RecipesId, cascadeDelete: true)

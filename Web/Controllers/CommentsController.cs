@@ -48,7 +48,8 @@ namespace WebPPublished.Controllers
             model.Comments = new CommentManager().GetRecipeComments(recipeId, pageNumber);
             model.SelectedRecipe = new RecipeManager().GetRecipeHeaderData(recipeId);
             return PartialView(model);
-        }
+        }
+
 
         // GET: Comments/Create
         public ActionResult Create(int recipeId)

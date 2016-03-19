@@ -74,6 +74,8 @@ namespace WebPPublished.Migrations
                 manager.AddToRole(user.Id, "Administrators");
             }
 
+            context.SaveChanges();
+
             if (!context.Categories.Any(u => u.DisplayName == "Reggeli"))
             {
                 context.Categories.AddOrUpdate(
@@ -117,6 +119,8 @@ namespace WebPPublished.Migrations
                     }
                  );
             }
+
+            context.SaveChanges();
 
             context.Recipes.AddOrUpdate(
             new Recipes
@@ -170,15 +174,6 @@ namespace WebPPublished.Migrations
             List<RecipeHeaderData> recipes = GetRecipes();
             foreach (RecipeHeaderData recipe in recipes)
             {
-                context.Comments.AddOrUpdate(
-                new Comments
-                {
-                    CreatedDate = Convert.ToDateTime(DateTime.Now.ToString(new CultureInfo("hu-HU"))),
-                    RecipesId = recipe.ID,
-                    Text = "Ez az elsõ kommentem.",
-                    UserId = GetUserId("fgsboarder")
-                }
-                );
                 context.Comments.AddOrUpdate(
                 new Comments
                 {

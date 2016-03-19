@@ -5,24 +5,39 @@ namespace WebPPublished.Migrations
     
     public partial class update : DbMigration
     {
+        
         public override void Up()
         {
-            DropTable("dbo.UserProfile");
+            CreateTable(
+                "dbo.Recipes",
+                c => new
+                {
+                    ID = c.Int(nullable: false, identity: true),
+                    Title = c.String(nullable: false, maxLength: 40),
+                    FriendlyUrl = c.String(nullable: false, maxLength: 100),
+                    PictureUrl = c.String(maxLength: 100),
+                    Ingredients = c.String(nullable: false, maxLength: 100),
+                    PrepareTime = c.String(nullable: false, maxLength: 10),
+                    HowToPrepare = c.String(nullable: false, maxLength: 500),
+                })
+                .PrimaryKey(t => t.ID);
+
+            CreateTable(
+                "dbo.Categories",
+                c => new
+                {
+                    Id = c.Int(nullable: false, identity: true),
+                    DisplayName = c.String(nullable: false),
+                    FriendlyUrl = c.String(nullable: false),
+
+                })
+                .PrimaryKey(t => t.Id);
         }
-        
+
         public override void Down()
         {
-            CreateTable(
-                "dbo.UserProfile",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        RealName = c.String(nullable: false, maxLength: 100),
-                        UserName = c.String(nullable: false, maxLength: 100),
-                        Email = c.String(nullable: false, maxLength: 100),
-                    })
-                .PrimaryKey(t => t.ID);
-            
+            DropTable("dbo.UserProfile");
+            DropTable("dbo.Categories");
         }
     }
 }

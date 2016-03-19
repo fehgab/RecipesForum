@@ -7,13 +7,13 @@ namespace WebPPublished.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class updte : IMigrationMetadata
+    public sealed partial class update9 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(updte));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(update9));
         
         string IMigrationMetadata.Id
         {
-            get { return "201511141351312_updte"; }
+            get { return "201603191953015_update9"; }
         }
         
         string IMigrationMetadata.Source
