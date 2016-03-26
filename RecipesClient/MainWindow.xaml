@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RecipesClient"
         mc:Ignorable="d"
-        Title="Recipes client" Width="600" Height="400" MinWidth="600" MinHeight="400">
+        Title="Recipes client" Width="600" Height="400" MinWidth="602" MinHeight="400" Visibility="Visible" Background="#FF515151" Foreground="#FFBBBBBB" BorderBrush="#FF515151" Icon="RecipesClient.ico">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="349*"/>
+        </Grid.RowDefinitions>
+        <GroupBox x:Name="gbMenu" Header="Menü" Margin="10,10,10,0" VerticalAlignment="Top" Height="65" Foreground="#FFBBBBBB" BorderBrush="{x:Null}" BorderThickness="0">
+            <Grid VerticalAlignment="Bottom">
+                <Label x:Name="label" Content="Kategóriák:" HorizontalAlignment="Left" Margin="10,-4,0,20" Width="120" Height="26" VerticalAlignment="Bottom" Background="{x:Null}" Foreground="#FFBBBBBB"/>
+                <ComboBox x:Name="cbCategories" HorizontalAlignment="Left" Margin="10,0,0,0" Width="120" Height="20" VerticalAlignment="Bottom" Text="Kategóriák" SelectedIndex="0"/>
+                <TextBox x:Name="tbSearch" Margin="135,0,0,0" TextWrapping="Wrap" Text="Étel neve" FontStyle="Italic" TextDecorations="{x:Null}" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200"/>
+                <Button x:Name="btSearch" Content="Keresés" Margin="340,0,0,0" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="75"/>
+                <ComboBox x:Name="cbUser" Margin="0,0,10,0" Height="20" Width="120" HorizontalAlignment="Right" VerticalAlignment="Bottom" Text="Felhasználó"/>
+                <Label x:Name="label_Copy" Content="Felhasználó:" Margin="0,-4,10,20" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="120" Background="{x:Null}" Foreground="#FFBBBBBB"/>
+            </Grid>
+        </GroupBox>
+        <ListView x:Name="listView" Margin="10,80,10,25">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Grid Height="25" VerticalAlignment="Bottom">
+            <Label x:Name="textBox" HorizontalAlignment="Left" Content="© 2016 - Recept Kliens" Width="135" Margin="18,0,0,0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFBBBBBB" FontSize="8" Height="20" VerticalAlignment="Top"/>
+        </Grid>
     </Grid>
 </Window>
