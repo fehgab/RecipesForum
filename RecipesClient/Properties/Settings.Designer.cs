@@ -22,5 +22,16 @@ namespace RecipesClient.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDb)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\RecipesDB.mdf" +
+            ";Initial Catalog=RecipesDB;Integrated Security=True")]
+        public string RecipesDB {
+            get {
+                return ((string)(this["RecipesDB"]));
+            }
+        }
     }
 }

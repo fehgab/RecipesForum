@@ -20,10 +20,42 @@
                 <Label x:Name="label_Copy" Content="Felhasználó:" Margin="0,-4,10,20" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="120" Background="{x:Null}" Foreground="#FFBBBBBB"/>
             </Grid>
         </GroupBox>
-        <ListView x:Name="listView" Margin="10,80,10,25">
+        <ListView x:Name="lwRecipes" Margin="10,80,10,25" Loaded="lwRecipes_Loaded" HorizontalContentAlignment="Stretch" LayoutUpdated="lwRecipes_LayoutUpdated">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn x:Name="gvcPicture" Header="Kép" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Path = PictureFullPath}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="gvcTitle" Header="Étel neve" DisplayMemberBinding="{Binding Title}">
+                        <GridViewColumn.CellTemplate>
+                            <ItemContainerTemplate>
+                                <TextBlock TextAlignment="Center"/>
+                            </ItemContainerTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="gvcPrepareTime" Header="Elkészítési idő" DisplayMemberBinding="{Binding PrepareTime}">
+                        <GridViewColumn.CellTemplate>
+                            <ItemContainerTemplate>
+                                <TextBlock TextAlignment="Center"/>
+                            </ItemContainerTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="gvcIngredients" Header="Hozzávalók" DisplayMemberBinding="{Binding Ingredients}">
+                        <GridViewColumn.CellTemplate>
+                            <ItemContainerTemplate>
+                                <TextBlock TextAlignment="Center"/>
+                            </ItemContainerTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
