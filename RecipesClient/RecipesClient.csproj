@@ -107,6 +107,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="WindowManagers\ResizeListViewColums.cs" />
+    <Compile Include="WindowManagers\SortColumnSymbol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
