@@ -15,14 +15,14 @@
         <GroupBox x:Name="gbMenu" Header="Menü" Margin="10,10,10,0" VerticalAlignment="Top" Height="65" Foreground="#FFBBBBBB" BorderBrush="{x:Null}" BorderThickness="0">
             <Grid VerticalAlignment="Bottom">
                 <Label x:Name="label" Content="Kategóriák:" HorizontalAlignment="Left" Margin="10,-4,0,20" Width="120" Height="26" VerticalAlignment="Bottom" Background="{x:Null}" Foreground="#FFBBBBBB"/>
-                <ComboBox x:Name="cbCategories" HorizontalAlignment="Left" Margin="10,0,0,0" Width="120" Height="20" VerticalAlignment="Bottom" Text="Kategóriák" SelectedIndex="0"/>
-                <TextBox x:Name="tbSearch" Margin="135,0,0,0" TextWrapping="Wrap" Text="Étel neve" FontStyle="Italic" TextDecorations="{x:Null}" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200"/>
-                <Button x:Name="btSearch" Content="Keresés" Margin="340,0,0,0" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="75"/>
-                <ComboBox x:Name="cbUser" Margin="0,0,10,0" Height="20" Width="120" HorizontalAlignment="Right" VerticalAlignment="Bottom" Text="Felhasználó"/>
+                <ComboBox x:Name="cbCategories" HorizontalAlignment="Left" Margin="10,0,0,0" Width="120" Height="22" VerticalAlignment="Bottom" Text="Kategóriák" HorizontalContentAlignment="Center" SelectedIndex="0" SelectionChanged="cbCategories_SelectionChanged" Loaded="cbCategories_Loaded" IsReadOnly="True" IsEnabled="False"/>
+                <TextBox x:Name="tbSearch" Margin="135,0,0,0" TextWrapping="Wrap" Text="Étel neve" FontStyle="Italic" TextDecorations="{x:Null}" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200" IsEnabled="False" KeyDown="tbSearch_KeyDown" GotFocus="tbSearch_GotFocus" LostFocus="tbSearch_LostFocus"/>
+                <Button x:Name="btSearch" Content="Keresés" Margin="340,0,0,0" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="75" IsEnabled="False" Click="btSearch_Click"/>
+                <ComboBox x:Name="cbUser" Margin="0,0,10,0" Height="22" Width="120" HorizontalAlignment="Right" VerticalAlignment="Bottom" Text="Felhasználó" IsEnabled="False" IsReadOnly="True"/>
                 <Label x:Name="label_Copy" Content="Felhasználó:" Margin="0,-4,10,20" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="120" Background="{x:Null}" Foreground="#FFBBBBBB"/>
             </Grid>
         </GroupBox>
-        <ListView x:Name="lwRecipes" Margin="10,80,10,25" Loaded="lwRecipes_Loaded" HorizontalContentAlignment="Stretch" LayoutUpdated="lwRecipes_LayoutUpdated">
+        <ListView x:Name="lwRecipes" Margin="10,80,10,25" Loaded="lwRecipes_Loaded" HorizontalContentAlignment="Stretch" LayoutUpdated="lwRecipes_LayoutUpdated" IsEnabled="False">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Center" />
