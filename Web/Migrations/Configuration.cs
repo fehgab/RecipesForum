@@ -160,7 +160,7 @@ namespace WebPPublished.Migrations
             {
                 UserID = GetUserId("Admin"),
                 CategoryID = GetCategoryId("Elõétel"),
-                Title = "Hús leves",
+                Title = "Húsleves",
                 Ingredients = "Fél csirke, répa, krumpli, só",
                 PrepareTime = "2 óra",
                 HowToPrepare = "Kavard jól össze, és fozd meg.",

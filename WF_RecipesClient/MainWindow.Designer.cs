@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(recipeClientForm));
             this.gbMenu = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -36,11 +37,11 @@
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.cbCategories = new System.Windows.Forms.ComboBox();
             this.lwRecipes = new System.Windows.Forms.ListView();
-            this.label3 = new System.Windows.Forms.Label();
             this.chPicture = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chPrepareTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chIngredients = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lBottomLogo = new System.Windows.Forms.Label();
             this.gbMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +64,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(430, 16);
             this.label2.Name = "label2";
@@ -82,36 +84,45 @@
             // cbUser
             // 
             this.cbUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbUser.Enabled = false;
             this.cbUser.FormattingEnabled = true;
             this.cbUser.Location = new System.Drawing.Point(433, 32);
             this.cbUser.Name = "cbUser";
             this.cbUser.Size = new System.Drawing.Size(121, 21);
             this.cbUser.TabIndex = 3;
+            this.cbUser.SelectedValueChanged += new System.EventHandler(this.cbUser_SelectedValueChanged);
             // 
             // btSearch
             // 
+            this.btSearch.Enabled = false;
             this.btSearch.Location = new System.Drawing.Point(305, 31);
             this.btSearch.Name = "btSearch";
             this.btSearch.Size = new System.Drawing.Size(75, 23);
             this.btSearch.TabIndex = 2;
             this.btSearch.Text = "Keresés";
             this.btSearch.UseVisualStyleBackColor = true;
+            this.btSearch.Click += new System.EventHandler(this.btSearch_Click);
             // 
             // tbSearch
             // 
+            this.tbSearch.Enabled = false;
             this.tbSearch.Location = new System.Drawing.Point(134, 32);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(164, 20);
             this.tbSearch.TabIndex = 1;
             this.tbSearch.Text = "Étel neve";
+            this.tbSearch.Click += new System.EventHandler(this.tbSearch_Click);
+            this.tbSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSearch_KeyDown);
             // 
             // cbCategories
             // 
+            this.cbCategories.Enabled = false;
             this.cbCategories.FormattingEnabled = true;
             this.cbCategories.Location = new System.Drawing.Point(7, 32);
             this.cbCategories.Name = "cbCategories";
             this.cbCategories.Size = new System.Drawing.Size(121, 21);
             this.cbCategories.TabIndex = 0;
+            this.cbCategories.SelectedValueChanged += new System.EventHandler(this.cbCategories_SelectedValueChanged);
             // 
             // lwRecipes
             // 
@@ -123,21 +134,14 @@
             this.chTitle,
             this.chPrepareTime,
             this.chIngredients});
+            this.lwRecipes.Enabled = false;
             this.lwRecipes.Location = new System.Drawing.Point(12, 79);
             this.lwRecipes.Name = "lwRecipes";
             this.lwRecipes.Size = new System.Drawing.Size(560, 256);
             this.lwRecipes.TabIndex = 1;
             this.lwRecipes.UseCompatibleStateImageBehavior = false;
             this.lwRecipes.View = System.Windows.Forms.View.Details;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 339);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "label3";
+            this.lwRecipes.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lwRecipes_ColumnClick);
             // 
             // chPicture
             // 
@@ -162,17 +166,29 @@
             this.chIngredients.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.chIngredients.Width = 110;
             // 
+            // lBottomLogo
+            // 
+            this.lBottomLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lBottomLogo.AutoSize = true;
+            this.lBottomLogo.Location = new System.Drawing.Point(12, 339);
+            this.lBottomLogo.Name = "lBottomLogo";
+            this.lBottomLogo.Size = new System.Drawing.Size(118, 13);
+            this.lBottomLogo.TabIndex = 2;
+            this.lBottomLogo.Text = "© 2016 - Recept Kliens";
+            // 
             // recipeClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 361);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lBottomLogo);
             this.Controls.Add(this.lwRecipes);
             this.Controls.Add(this.gbMenu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "recipeClientForm";
             this.Text = "Recept kliens";
+            this.Load += new System.EventHandler(this.recipeClientForm_Load);
             this.gbMenu.ResumeLayout(false);
             this.gbMenu.PerformLayout();
             this.ResumeLayout(false);
@@ -189,7 +205,7 @@
         private System.Windows.Forms.Button btSearch;
         private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.ComboBox cbCategories;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lBottomLogo;
         private System.Windows.Forms.ListView lwRecipes;
         private System.Windows.Forms.ColumnHeader chPicture;
         private System.Windows.Forms.ColumnHeader chTitle;

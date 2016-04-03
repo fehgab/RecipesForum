@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WF_RecipesClient
 {
-    public partial class recipeClientForm : Form
+    public partial class LoginForm : Form
     {
-        public recipeClientForm()
+        public LoginForm()
         {
             InitializeComponent();
         }
