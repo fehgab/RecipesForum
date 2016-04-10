@@ -8,6 +8,7 @@ namespace WF_RecipesClient
     public partial class recipeClientForm : Form
     {
         private ColumnHeader SortingColumn = null;
+        public bool isLoggedIn = false;
 
         public recipeClientForm()
         {
@@ -18,24 +19,22 @@ namespace WF_RecipesClient
 
         private void recipeClientForm_Load(object sender, EventArgs e)
         {
-            using (var db = new RecipesModel.RecipesModel())
+            if (!isLoggedIn)
             {
-                var allRecipes = db.Recipes.ToList();
-                fillListView(allRecipes);
-
-                var allCategories = db.Categories.ToList();
-                foreach (var category in allCategories)
-                {
-                    cbCategories.Items.Add(category.DisplayName);
-                }
+                notLoggedIn();
+            }
+            else
+            {
+                loggedIn();
             }
 
+            loadDB();
+
+            cbRecord.Items.Add("Rekordok törlése");
+            cbRecord.Items.Add("Rekord módosítása");
+            cbRecord.SelectedIndex = -1;
             cbCategories.Items.Add("Összes");
             cbCategories.SelectedItem = "Összes";
-
-            cbUser.Items.Add("Bejelntkezés");
-            cbUser.Items.Add("Regisztráció");
-            cbUser.SelectedIndex = -1;
 
             cbCategories.Enabled = true;
             tbSearch.Enabled = true;
@@ -76,7 +75,10 @@ namespace WF_RecipesClient
 
         private void btSearch_Click(object sender, EventArgs e)
         {
-            searchRecipes();
+            if(tbSearch.Text.Length > 0)
+            {
+                searchRecipes();
+            }
         }
 
         private void lwRecipes_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -124,19 +126,52 @@ namespace WF_RecipesClient
         private void cbUser_SelectedValueChanged(object sender, EventArgs e)
         {
             string selectedText = cbUser.SelectedItem as string;
-            if(selectedText.Equals("Regisztráció"))
+            if(cbUser.SelectedIndex != -1)
             {
-                this.Enabled = false;
-                RegistrationForm rf = new RegistrationForm(this);
-                rf.Show();
-            }
+                if (selectedText.Equals("Regisztráció"))
+                {
+                    this.Enabled = false;
+                    RegistrationForm rf = new RegistrationForm(this);
+                    rf.Show();
+                }
 
-            if (selectedText.Equals("Bejelentkezés"))
-            {
-                this.Enabled = false;
-                RegistrationForm rf = new RegistrationForm(this);
-                rf.Show();
+                else if (selectedText.Equals("Bejelentkezés"))
+                {
+                    this.Enabled = false;
+                    LoginForm lf = new LoginForm(this);
+                    lf.Show();
+                }
+
+                else if (selectedText.Equals("Kijelentkezés"))
+                {
+                    notLoggedIn();
+                }
             }
+            cbUser.SelectedIndex = -1;
+        }
+
+        private void recipeClientForm_EnabledChanged(object sender, EventArgs e)
+        {
+            if (lwRecipes.Enabled)
+            {
+                if (!isLoggedIn)
+                {
+                    notLoggedIn();
+                }
+                else
+                {
+                    loggedIn();
+                }
+            }
+        }
+
+        private void cbRecord_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if(cbRecord.SelectedIndex != -1)
+            {
+
+            }
+            cbRecord.SelectedIndex = -1;
         }
     }
 }

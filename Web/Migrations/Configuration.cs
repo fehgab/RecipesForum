@@ -59,6 +59,13 @@ namespace WebPPublished.Migrations
                 var role = new IdentityRole { Name = "Administrators" };
                 manager.Create(role);
             }
+            if (!context.Roles.Any(r => r.Name == "Users"))
+            {
+                var store = new RoleStore<IdentityRole>(context);
+                var manager = new RoleManager<IdentityRole>(store);
+                var role = new IdentityRole { Name = "Users" };
+                manager.Create(role);
+            }
             if (!context.Users.Any(u => u.UserName == "admin"))
             {
                 var store = new UserStore<ApplicationUser>(context);
@@ -122,67 +129,70 @@ namespace WebPPublished.Migrations
 
             context.SaveChanges();
 
-            context.Recipes.AddOrUpdate(
-            new Recipes
+            if (!context.Recipes.Any())
             {
-                UserID = GetUserId("Admin"),
-                CategoryID = GetCategoryId("Desszert"),
-                Title = "Túrós gombóc",
-                Ingredients = "Tej, búzadara, túró, cukor",
-                PrepareTime = "30 perc",
-                HowToPrepare = "Kavard jól össze, de ne legyen túl kemény.",
-                FriendlyUrl = "turos_gomboc",
-                PictureUrl = "Finom-túrós-gombóc.jpg",
-            },
-            new Recipes
-            {
-                UserID = GetUserId("Admin"),
-                CategoryID = GetCategoryId("Reggeli"),
-                Title = "Rántotta",
-                Ingredients = "tojás, kolbász, szalonna, só",
-                PrepareTime = "20 perc",
-                HowToPrepare = "Kavard jól össze, és süsd meg.",
-                FriendlyUrl = "rantotta",
-                PictureUrl = "rantotta.jpg",
-            },
-            new Recipes
-            {
-                UserID = GetUserId("Admin"),
-                CategoryID = GetCategoryId("Fõétel"),
-                Title = "Paprikás csirke",
-                Ingredients = "csirkecomb, paprika, hagyma, paradicsom, só",
-                PrepareTime = "1,5 óra",
-                HowToPrepare = "Kavard jól össze, párold meg és süsd ki.",
-                FriendlyUrl = "paprikas_csirke",
-                PictureUrl = "paprikas_csirke.jpg",
-            },
-            new Recipes
-            {
-                UserID = GetUserId("Admin"),
-                CategoryID = GetCategoryId("Elõétel"),
-                Title = "Húsleves",
-                Ingredients = "Fél csirke, répa, krumpli, só",
-                PrepareTime = "2 óra",
-                HowToPrepare = "Kavard jól össze, és fozd meg.",
-                FriendlyUrl = "hus_leves",
-                PictureUrl = "husleves.jpg",
-            }
-            );
-
-            context.SaveChanges();
-
-            List<RecipeHeaderData> recipes = GetRecipes();
-            foreach (RecipeHeaderData recipe in recipes)
-            {
-                context.Comments.AddOrUpdate(
-                new Comments
+                context.Recipes.AddOrUpdate(
+                new Recipes
                 {
-                    CreatedDate = Convert.ToDateTime(DateTime.Now.ToString(new CultureInfo("hu-HU"))),
-                    RecipesId = recipe.ID,
-                    Text = "Ez az elsõ kommentem.",
-                    UserId = GetUserId("admin")
+                    UserID = GetUserId("Admin"),
+                    CategoryID = GetCategoryId("Desszert"),
+                    Title = "Túrós gombóc",
+                    Ingredients = "Tej, búzadara, túró, cukor",
+                    PrepareTime = "30 perc",
+                    HowToPrepare = "Kavard jól össze, de ne legyen túl kemény.",
+                    FriendlyUrl = "turos_gomboc",
+                    PictureUrl = "Finom-túrós-gombóc.jpg",
+                },
+                new Recipes
+                {
+                    UserID = GetUserId("Admin"),
+                    CategoryID = GetCategoryId("Reggeli"),
+                    Title = "Rántotta",
+                    Ingredients = "tojás, kolbász, szalonna, só",
+                    PrepareTime = "20 perc",
+                    HowToPrepare = "Kavard jól össze, és süsd meg.",
+                    FriendlyUrl = "rantotta",
+                    PictureUrl = "rantotta.jpg",
+                },
+                new Recipes
+                {
+                    UserID = GetUserId("Admin"),
+                    CategoryID = GetCategoryId("Fõétel"),
+                    Title = "Paprikás csirke",
+                    Ingredients = "csirkecomb, paprika, hagyma, paradicsom, só",
+                    PrepareTime = "1,5 óra",
+                    HowToPrepare = "Kavard jól össze, párold meg és süsd ki.",
+                    FriendlyUrl = "paprikas_csirke",
+                    PictureUrl = "paprikas_csirke.jpg",
+                },
+                new Recipes
+                {
+                    UserID = GetUserId("Admin"),
+                    CategoryID = GetCategoryId("Elõétel"),
+                    Title = "Húsleves",
+                    Ingredients = "Fél csirke, répa, krumpli, só",
+                    PrepareTime = "2 óra",
+                    HowToPrepare = "Kavard jól össze, és fozd meg.",
+                    FriendlyUrl = "hus_leves",
+                    PictureUrl = "husleves.jpg",
                 }
                 );
+
+                context.SaveChanges();
+
+                List<RecipeHeaderData> recipes = GetRecipes();
+                foreach (RecipeHeaderData recipe in recipes)
+                {
+                    context.Comments.AddOrUpdate(
+                    new Comments
+                    {
+                        CreatedDate = Convert.ToDateTime(DateTime.Now.ToString(new CultureInfo("hu-HU"))),
+                        RecipesId = recipe.ID,
+                        Text = "Ez az elsõ kommentem.",
+                        UserId = GetUserId("admin")
+                    }
+                    );
+                }
             }
         }
     }

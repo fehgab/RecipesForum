@@ -1,4 +1,7 @@
-﻿namespace WF_RecipesClient
+﻿using System;
+using System.Windows.Forms;
+
+namespace WF_RecipesClient
 {
     partial class LoginForm
     {
@@ -29,7 +32,7 @@
         private void InitializeComponent()
         {
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tbEmail = new System.Windows.Forms.TextBox();
@@ -49,21 +52,23 @@
             this.label5.TabIndex = 23;
             this.label5.Text = "Bejelentkezés a recept alkalmazásba";
             // 
-            // button1
+            // btnLogin
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.Location = new System.Drawing.Point(243, 125);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 23);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Bejelentkezés";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnLogin.Location = new System.Drawing.Point(243, 125);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(84, 23);
+            this.btnLogin.TabIndex = 22;
+            this.btnLogin.Text = "Bejelentkezés";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // tbPassword
             // 
             this.tbPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbPassword.Location = new System.Drawing.Point(158, 99);
             this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(169, 20);
             this.tbPassword.TabIndex = 19;
             // 
@@ -117,7 +122,7 @@
             this.lPasswordError.Size = new System.Drawing.Size(0, 13);
             this.lPasswordError.TabIndex = 25;
             // 
-            // LoginForm
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -125,13 +130,14 @@
             this.Controls.Add(this.lPasswordError);
             this.Controls.Add(this.lEmailError);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbEmail);
             this.Controls.Add(this.label2);
-            this.Name = "LoginForm";
+            this.Name = "Login";
             this.Text = "Bejelentkezés";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,7 +145,7 @@
 
         #endregion
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbEmail;

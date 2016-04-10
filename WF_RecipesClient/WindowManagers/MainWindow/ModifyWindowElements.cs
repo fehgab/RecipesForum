@@ -27,7 +27,7 @@ namespace WF_RecipesClient
             lwRecipes.Items.Clear();
             foreach (var recipe in recipes)
             {
-                string picturePath = System.IO.Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Web", "Upload", "Images", recipe.PictureUrl);
+                string picturePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Web", "Upload", "Images", recipe.PictureUrl);
                 ListViewItem items = new ListViewItem(new[] { picturePath, recipe.Title, recipe.Ingredients, recipe.PrepareTime });
                 lwRecipes.Items.Add(items);
                 lwRecipes.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
@@ -54,6 +54,45 @@ namespace WF_RecipesClient
                 }
                 fillListView(searchedRecipes);
             }
+        }
+
+        private void loadDB()
+        {
+            using (var db = new RecipesModel.RecipesModel())
+            {
+                var allRecipes = db.Recipes.ToList();
+                fillListView(allRecipes);
+
+                var allCategories = db.Categories.ToList();
+                foreach (var category in allCategories)
+                {
+                    cbCategories.Items.Add(category.DisplayName);
+                }
+            }
+        }
+
+        private void notLoggedIn()
+        {
+            cbCategories.Items.Clear();
+            cbUser.Items.Clear();
+            lRecord.Visible = false;
+            cbRecord.Visible = false;
+
+            cbUser.Items.Add("Bejelentkezés");
+            cbUser.Items.Add("Regisztráció");
+            cbUser.SelectedIndex = -1;
+        }
+
+        private void loggedIn()
+        {
+            cbCategories.Items.Clear();
+            cbUser.Items.Clear();
+            lRecord.Visible = true;
+            cbRecord.Visible = true;
+
+            cbUser.Items.Add("Profil");
+            cbUser.Items.Add("Kijelentkezés");
+            cbUser.SelectedIndex = -1;
         }
     }
 }

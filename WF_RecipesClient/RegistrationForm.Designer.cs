@@ -37,7 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbConfirmPassword = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRegistration = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.lDisplayNameError = new System.Windows.Forms.Label();
             this.lEmailError = new System.Windows.Forms.Label();
@@ -86,6 +86,7 @@
             this.tbPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbPassword.Location = new System.Drawing.Point(147, 130);
             this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(169, 20);
             this.tbPassword.TabIndex = 5;
             // 
@@ -104,6 +105,7 @@
             this.tbConfirmPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbConfirmPassword.Location = new System.Drawing.Point(147, 156);
             this.tbConfirmPassword.Name = "tbConfirmPassword";
+            this.tbConfirmPassword.PasswordChar = '*';
             this.tbConfirmPassword.Size = new System.Drawing.Size(169, 20);
             this.tbConfirmPassword.TabIndex = 7;
             // 
@@ -117,16 +119,16 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Jelszó újra";
             // 
-            // button1
+            // btnRegistration
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.Location = new System.Drawing.Point(241, 182);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Regisztráció";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnRegistration.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRegistration.Location = new System.Drawing.Point(241, 182);
+            this.btnRegistration.Name = "btnRegistration";
+            this.btnRegistration.Size = new System.Drawing.Size(75, 23);
+            this.btnRegistration.TabIndex = 8;
+            this.btnRegistration.Text = "Regisztráció";
+            this.btnRegistration.UseVisualStyleBackColor = true;
+            this.btnRegistration.Click += new System.EventHandler(this.button1_Click);
             // 
             // label5
             // 
@@ -193,7 +195,7 @@
             this.Controls.Add(this.lEmailError);
             this.Controls.Add(this.lDisplayNameError);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnRegistration);
             this.Controls.Add(this.tbConfirmPassword);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tbPassword);
@@ -222,7 +224,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbConfirmPassword;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRegistration;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lDisplayNameError;
         private System.Windows.Forms.Label lEmailError;

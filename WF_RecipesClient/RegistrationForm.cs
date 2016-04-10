@@ -26,12 +26,24 @@ namespace WF_RecipesClient
 
         private void button1_Click(object sender, EventArgs e)
         {
+            btnRegistration.Enabled = false;
+            tbEmail.Enabled = false;
+            tbPassword.Enabled = false;
+            tbConfirmPassword.Enabled = false;
+            tbDisplayName.Enabled = false;
+
             createUser();
-            if(validation)
+
+            if (validation)
                 this.Close();
             else
             {
                 this.Size = new Size(800, this.Height);
+                btnRegistration.Enabled = true;
+                tbEmail.Enabled = true;
+                tbPassword.Enabled = true;
+                tbConfirmPassword.Enabled = true;
+                tbDisplayName.Enabled = true;
             }
         }
     }

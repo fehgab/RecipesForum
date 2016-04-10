@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using WebPPublished.Models;
 using WF_RecipesClient.RecipesModel;
 
 namespace WF_RecipesClient
@@ -61,13 +64,19 @@ namespace WF_RecipesClient
 
             if(validation)
             {
-                AspNetUsers user = new AspNetUsers{
-                    Email = email,
-                    UserName = displayName
-                };
-                using (var db = new RecipesModel.RecipesModel())
+                using (var db = new ApplicationDbContext())
                 {
-                    db.AspNetUsers.Add(user);
+                    var store = new UserStore<ApplicationUser>(db);
+                    var manager = new UserManager<ApplicationUser>(store);
+                    var user = new ApplicationUser
+                    {
+                        UserName = displayName,
+                        Email = email,
+                        EmailConfirmed = true
+                    };
+                    manager.Create(user, password);
+                    manager.AddToRole(user.Id, "Users");
+                    db.SaveChanges();
                 }
             }
         }
@@ -78,6 +87,7 @@ namespace WF_RecipesClient
             lEmailError.Text = "";
             lPasswordError.Text = "";
             lConfirmPasswordError.Text = "";
+            validation = true;
         }
     }
 }
