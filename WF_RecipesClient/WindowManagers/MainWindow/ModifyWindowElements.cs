@@ -29,6 +29,7 @@ namespace WF_RecipesClient
             {
                 string picturePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Web", "Upload", "Images", recipe.PictureUrl);
                 ListViewItem items = new ListViewItem(new[] { picturePath, recipe.Title, recipe.Ingredients, recipe.PrepareTime });
+                items.Tag = recipe.UserID as string;
                 lwRecipes.Items.Add(items);
                 lwRecipes.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
                 SetMinColumsWidth();

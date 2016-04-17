@@ -25,13 +25,12 @@ namespace WF_RecipesClient
             mainWindow.Enabled = true;
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
             btnLogin.Enabled = false;
-            tbEmail.Enabled = false;
+            tbUserName.Enabled = false;
             tbPassword.Enabled = false;
-            login();
-            if (validation)
+            if (await login())
             {
                 mainWindow.isLoggedIn = true;
                 this.Close();
@@ -40,7 +39,7 @@ namespace WF_RecipesClient
             {
                 this.Size = new Size(800, this.Height);
                 btnLogin.Enabled = true;
-                tbEmail.Enabled = true;
+                tbUserName.Enabled = true;
                 tbPassword.Enabled = true;
             }
         }

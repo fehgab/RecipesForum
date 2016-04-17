@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(recipeClientForm));
             this.gbMenu = new System.Windows.Forms.GroupBox();
+            this.lRecord = new System.Windows.Forms.Label();
+            this.cbRecord = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cbUser = new System.Windows.Forms.ComboBox();
@@ -42,8 +44,6 @@
             this.chPrepareTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chIngredients = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lBottomLogo = new System.Windows.Forms.Label();
-            this.cbRecord = new System.Windows.Forms.ComboBox();
-            this.lRecord = new System.Windows.Forms.Label();
             this.gbMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,6 +65,28 @@
             this.gbMenu.TabIndex = 0;
             this.gbMenu.TabStop = false;
             this.gbMenu.Text = "Menü";
+            // 
+            // lRecord
+            // 
+            this.lRecord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lRecord.AutoSize = true;
+            this.lRecord.Location = new System.Drawing.Point(403, 16);
+            this.lRecord.Name = "lRecord";
+            this.lRecord.Size = new System.Drawing.Size(97, 13);
+            this.lRecord.TabIndex = 7;
+            this.lRecord.Text = "Rekord módosítás:";
+            this.lRecord.Visible = false;
+            // 
+            // cbRecord
+            // 
+            this.cbRecord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbRecord.FormattingEnabled = true;
+            this.cbRecord.Location = new System.Drawing.Point(406, 32);
+            this.cbRecord.Name = "cbRecord";
+            this.cbRecord.Size = new System.Drawing.Size(121, 21);
+            this.cbRecord.TabIndex = 6;
+            this.cbRecord.Visible = false;
+            this.cbRecord.SelectedValueChanged += new System.EventHandler(this.cbRecord_SelectedValueChanged);
             // 
             // label2
             // 
@@ -147,6 +169,7 @@
             this.lwRecipes.UseCompatibleStateImageBehavior = false;
             this.lwRecipes.View = System.Windows.Forms.View.Details;
             this.lwRecipes.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lwRecipes_ColumnClick);
+            this.lwRecipes.SelectedIndexChanged += new System.EventHandler(this.lwRecipes_SelectedIndexChanged);
             // 
             // chPicture
             // 
@@ -180,28 +203,6 @@
             this.lBottomLogo.Size = new System.Drawing.Size(118, 13);
             this.lBottomLogo.TabIndex = 2;
             this.lBottomLogo.Text = "© 2016 - Recept Kliens";
-            // 
-            // cbRecord
-            // 
-            this.cbRecord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbRecord.FormattingEnabled = true;
-            this.cbRecord.Location = new System.Drawing.Point(406, 32);
-            this.cbRecord.Name = "cbRecord";
-            this.cbRecord.Size = new System.Drawing.Size(121, 21);
-            this.cbRecord.TabIndex = 6;
-            this.cbRecord.Visible = false;
-            this.cbRecord.SelectedValueChanged += new System.EventHandler(this.cbRecord_SelectedValueChanged);
-            // 
-            // lRecord
-            // 
-            this.lRecord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lRecord.AutoSize = true;
-            this.lRecord.Location = new System.Drawing.Point(403, 16);
-            this.lRecord.Name = "lRecord";
-            this.lRecord.Size = new System.Drawing.Size(97, 13);
-            this.lRecord.TabIndex = 7;
-            this.lRecord.Text = "Rekord módosítás:";
-            this.lRecord.Visible = false;
             // 
             // recipeClientForm
             // 

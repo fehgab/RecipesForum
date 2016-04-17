@@ -10,6 +10,8 @@ namespace WF_RecipesClient
         private ColumnHeader SortingColumn = null;
         public bool isLoggedIn = false;
 
+        public string userName = "";
+
         public recipeClientForm()
         {
             InitializeComponent();
@@ -167,11 +169,53 @@ namespace WF_RecipesClient
 
         private void cbRecord_SelectedValueChanged(object sender, EventArgs e)
         {
-            if(cbRecord.SelectedIndex != -1)
+            string selectedText = cbRecord.SelectedItem as string;
+            if (cbRecord.SelectedIndex != -1)
             {
+                if (selectedText.Equals("Rekordok törlése"))
+                {
+                    DialogResult dialogResult = MessageBox.Show("Biztosan törlöd a kijelölt recepteket?", "izé", MessageBoxButtons.YesNo);
+                    if(dialogResult == DialogResult.Yes)
+                    {
+                        ListView.SelectedListViewItemCollection recipes = lwRecipes.SelectedItems;
+                        if (recipes.Count > 0)
+                        {
+                            using (var db = new RecipesModel.RecipesModel())
+                            {
+                                var user = db.AspNetUsers.Where(u => u.UserName.Equals(userName)).First();
+                                var userID = user.Id;
+                                foreach (ListViewItem recipe in recipes)
+                                {
+                                    if (recipe.Tag.Equals(userID))
+                                    {
+                                        var userRecipe = db.Recipes.Where(r => r.UserID.Equals(userID) && r.PictureUrl.Equals(recipe.SubItems[0])).First();
+                                        db.Recipes.Remove(userRecipe);
+                                        db.SaveChanges();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
 
+                else if (selectedText.Equals("Bejelentkezés"))
+                {
+                    this.Enabled = false;
+                    LoginForm lf = new LoginForm(this);
+                    lf.Show();
+                }
             }
             cbRecord.SelectedIndex = -1;
+        }
+
+        private void lwRecipes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(lwRecipes.SelectedItems.Count > 0)
+            {
+                this.Enabled = false;
+                RecipeDetails rd = new RecipeDetails(this, lwRecipes.SelectedItems);
+                rd.Show();
+            }
         }
     }
 }

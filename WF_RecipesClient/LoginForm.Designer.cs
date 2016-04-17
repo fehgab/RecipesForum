@@ -35,7 +35,7 @@ namespace WF_RecipesClient
             this.btnLogin = new System.Windows.Forms.Button();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.tbEmail = new System.Windows.Forms.TextBox();
+            this.tbUserName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lEmailError = new System.Windows.Forms.Label();
             this.lPasswordError = new System.Windows.Forms.Label();
@@ -82,23 +82,23 @@ namespace WF_RecipesClient
             this.label3.TabIndex = 18;
             this.label3.Text = "Jelszó";
             // 
-            // tbEmail
+            // tbUserName
             // 
-            this.tbEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tbEmail.Location = new System.Drawing.Point(158, 73);
-            this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(169, 20);
-            this.tbEmail.TabIndex = 17;
+            this.tbUserName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tbUserName.Location = new System.Drawing.Point(158, 73);
+            this.tbUserName.Name = "tbUserName";
+            this.tbUserName.Size = new System.Drawing.Size(169, 20);
+            this.tbUserName.TabIndex = 17;
             // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(117, 76);
+            this.label2.Location = new System.Drawing.Point(71, 76);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(81, 13);
             this.label2.TabIndex = 16;
-            this.label2.Text = "E-mail";
+            this.label2.Text = "Felhasználónév";
             // 
             // lEmailError
             // 
@@ -122,7 +122,7 @@ namespace WF_RecipesClient
             this.lPasswordError.Size = new System.Drawing.Size(0, 13);
             this.lPasswordError.TabIndex = 25;
             // 
-            // Login
+            // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -133,9 +133,9 @@ namespace WF_RecipesClient
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.tbEmail);
+            this.Controls.Add(this.tbUserName);
             this.Controls.Add(this.label2);
-            this.Name = "Login";
+            this.Name = "LoginForm";
             this.Text = "Bejelentkezés";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_FormClosing);
             this.ResumeLayout(false);
@@ -148,7 +148,7 @@ namespace WF_RecipesClient
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbEmail;
+        private System.Windows.Forms.TextBox tbUserName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lEmailError;
         private System.Windows.Forms.Label lPasswordError;
