@@ -110,6 +110,9 @@
     <Compile Include="WindowManagers\MainWindow\ModifyWindowElements.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="WindowManagers\RecipeDetails\RecipeDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="WindowManagers\RegistrationWindow\CreateUser.cs">
       <SubType>Form</SubType>
     </Compile>

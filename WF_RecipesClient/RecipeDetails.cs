@@ -11,12 +11,12 @@ using WF_RecipesClient.RecipesModel;
 
 namespace WF_RecipesClient
 {
-    public partial class RecipeDetails : Form
+    public partial class RecipeDetailsForm : Form
     {
         recipeClientForm mainWindow;
         ListView.SelectedListViewItemCollection selectedRecipe;
 
-        public RecipeDetails(recipeClientForm mainWindow, ListView.SelectedListViewItemCollection selectedRecipe)
+        public RecipeDetailsForm(recipeClientForm mainWindow, ListView.SelectedListViewItemCollection selectedRecipe)
         {
             this.mainWindow = mainWindow;
             this.selectedRecipe = selectedRecipe;
@@ -47,6 +47,19 @@ namespace WF_RecipesClient
         private void RecipeDetails_FormClosing(object sender, FormClosingEventArgs e)
         {
             mainWindow.Enabled = true;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            if (RecipeValidation())
+            {
+                this.Close();
+            }
+            else
+            {
+                this.Enabled = true;
+            }
         }
     }
 }

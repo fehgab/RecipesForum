@@ -213,7 +213,7 @@ namespace WF_RecipesClient
             if(lwRecipes.SelectedItems.Count > 0)
             {
                 this.Enabled = false;
-                RecipeDetails rd = new RecipeDetails(this, lwRecipes.SelectedItems);
+                RecipeDetailsForm rd = new RecipeDetailsForm(this, lwRecipes.SelectedItems);
                 rd.Show();
             }
         }

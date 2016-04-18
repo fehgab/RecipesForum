@@ -74,10 +74,9 @@ namespace WF_RecipesClient
 
         private void notLoggedIn()
         {
-            cbCategories.Items.Clear();
             cbUser.Items.Clear();
-            lRecord.Visible = false;
-            cbRecord.Visible = false;
+            //lRecord.Visible = false;
+            //cbRecord.Visible = false;
 
             cbUser.Items.Add("Bejelentkezés");
             cbUser.Items.Add("Regisztráció");
@@ -86,10 +85,9 @@ namespace WF_RecipesClient
 
         private void loggedIn()
         {
-            cbCategories.Items.Clear();
             cbUser.Items.Clear();
-            lRecord.Visible = true;
-            cbRecord.Visible = true;
+            //lRecord.Visible = true;
+            //cbRecord.Visible = true;
 
             cbUser.Items.Add("Profil");
             cbUser.Items.Add("Kijelentkezés");

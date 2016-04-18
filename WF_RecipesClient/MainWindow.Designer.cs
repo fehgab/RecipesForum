@@ -75,7 +75,6 @@
             this.lRecord.Size = new System.Drawing.Size(97, 13);
             this.lRecord.TabIndex = 7;
             this.lRecord.Text = "Rekord módosítás:";
-            this.lRecord.Visible = false;
             // 
             // cbRecord
             // 
@@ -85,7 +84,6 @@
             this.cbRecord.Name = "cbRecord";
             this.cbRecord.Size = new System.Drawing.Size(121, 21);
             this.cbRecord.TabIndex = 6;
-            this.cbRecord.Visible = false;
             this.cbRecord.SelectedValueChanged += new System.EventHandler(this.cbRecord_SelectedValueChanged);
             // 
             // label2
@@ -97,6 +95,7 @@
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Felhasználó:";
+            this.label2.Visible = false;
             // 
             // label1
             // 
@@ -116,6 +115,7 @@
             this.cbUser.Name = "cbUser";
             this.cbUser.Size = new System.Drawing.Size(121, 21);
             this.cbUser.TabIndex = 3;
+            this.cbUser.Visible = false;
             this.cbUser.SelectedValueChanged += new System.EventHandler(this.cbUser_SelectedValueChanged);
             // 
             // btSearch

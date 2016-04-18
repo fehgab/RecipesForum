@@ -1,6 +1,6 @@
 ﻿namespace WF_RecipesClient
 {
-    partial class RecipeDetails
+    partial class RecipeDetailsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -108,6 +108,7 @@
             this.btnSave.TabIndex = 22;
             this.btnSave.Text = "Mentés";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // tbPrepareTime
             // 
