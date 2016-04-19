@@ -29,7 +29,7 @@ namespace WF_RecipesClient
             {
                 string picturePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Web", "Upload", "Images", recipe.PictureUrl);
                 ListViewItem items = new ListViewItem(new[] { picturePath, recipe.Title, recipe.Ingredients, recipe.PrepareTime });
-                items.Tag = recipe.UserID as string;
+                items.Tag = recipe.ID.ToString();
                 lwRecipes.Items.Add(items);
                 lwRecipes.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
                 SetMinColumsWidth();
@@ -64,34 +64,15 @@ namespace WF_RecipesClient
                 var allRecipes = db.Recipes.ToList();
                 fillListView(allRecipes);
 
-                var allCategories = db.Categories.ToList();
-                foreach (var category in allCategories)
+                if(cbCategories.Items.Count == 0)
                 {
-                    cbCategories.Items.Add(category.DisplayName);
+                    var allCategories = db.Categories.ToList();
+                    foreach (var category in allCategories)
+                    {
+                        cbCategories.Items.Add(category.DisplayName);
+                    }
                 }
             }
-        }
-
-        private void notLoggedIn()
-        {
-            cbUser.Items.Clear();
-            //lRecord.Visible = false;
-            //cbRecord.Visible = false;
-
-            cbUser.Items.Add("Bejelentkezés");
-            cbUser.Items.Add("Regisztráció");
-            cbUser.SelectedIndex = -1;
-        }
-
-        private void loggedIn()
-        {
-            cbUser.Items.Clear();
-            //lRecord.Visible = true;
-            //cbRecord.Visible = true;
-
-            cbUser.Items.Add("Profil");
-            cbUser.Items.Add("Kijelentkezés");
-            cbUser.SelectedIndex = -1;
         }
     }
 }

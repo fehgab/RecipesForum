@@ -173,7 +173,7 @@ namespace WebPPublished.Migrations
                     Ingredients = "Fél csirke, répa, krumpli, só",
                     PrepareTime = "2 óra",
                     HowToPrepare = "Kavard jól össze, és fozd meg.",
-                    FriendlyUrl = "hus_leves",
+                    FriendlyUrl = "husleves",
                     PictureUrl = "husleves.jpg",
                 }
                 );

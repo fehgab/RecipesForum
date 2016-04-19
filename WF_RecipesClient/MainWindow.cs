@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WF_RecipesClient
@@ -21,27 +23,16 @@ namespace WF_RecipesClient
 
         private void recipeClientForm_Load(object sender, EventArgs e)
         {
-            if (!isLoggedIn)
-            {
-                notLoggedIn();
-            }
-            else
-            {
-                loggedIn();
-            }
-
             loadDB();
 
-            cbRecord.Items.Add("Rekordok törlése");
-            cbRecord.Items.Add("Rekord módosítása");
-            cbRecord.SelectedIndex = -1;
             cbCategories.Items.Add("Összes");
             cbCategories.SelectedItem = "Összes";
 
             cbCategories.Enabled = true;
             tbSearch.Enabled = true;
             lwRecipes.Enabled = true;
-            cbUser.Enabled = true;
+            btnNewRecord.Enabled = true;
+            btnDeleteRecord.Enabled = true;
         }
 
         private void cbCategories_SelectedValueChanged(object sender, EventArgs e)
@@ -125,87 +116,25 @@ namespace WF_RecipesClient
             lwRecipes.Sort();
         }
 
-        private void cbUser_SelectedValueChanged(object sender, EventArgs e)
+        private async Task<int> deleteRecipes(ListView.SelectedListViewItemCollection recipes)
         {
-            string selectedText = cbUser.SelectedItem as string;
-            if(cbUser.SelectedIndex != -1)
+            using (var db = new RecipesModel.RecipesModel())
             {
-                if (selectedText.Equals("Regisztráció"))
+                foreach (ListViewItem recipe in recipes)
                 {
-                    this.Enabled = false;
-                    RegistrationForm rf = new RegistrationForm(this);
-                    rf.Show();
-                }
-
-                else if (selectedText.Equals("Bejelentkezés"))
-                {
-                    this.Enabled = false;
-                    LoginForm lf = new LoginForm(this);
-                    lf.Show();
-                }
-
-                else if (selectedText.Equals("Kijelentkezés"))
-                {
-                    notLoggedIn();
-                }
-            }
-            cbUser.SelectedIndex = -1;
-        }
-
-        private void recipeClientForm_EnabledChanged(object sender, EventArgs e)
-        {
-            if (lwRecipes.Enabled)
-            {
-                if (!isLoggedIn)
-                {
-                    notLoggedIn();
-                }
-                else
-                {
-                    loggedIn();
-                }
-            }
-        }
-
-        private void cbRecord_SelectedValueChanged(object sender, EventArgs e)
-        {
-            string selectedText = cbRecord.SelectedItem as string;
-            if (cbRecord.SelectedIndex != -1)
-            {
-                if (selectedText.Equals("Rekordok törlése"))
-                {
-                    DialogResult dialogResult = MessageBox.Show("Biztosan törlöd a kijelölt recepteket?", "izé", MessageBoxButtons.YesNo);
-                    if(dialogResult == DialogResult.Yes)
+                    var selectedRecipe = db.Recipes.Where(r => r.ID.ToString().Equals(recipe.Tag)).First();
+                    db.Recipes.Remove(selectedRecipe);
+                    File.Delete(selectedRecipe.PictureUrl);
+                    db.SaveChanges();
+                    var selectedRecipeComments = db.Comments.Where(c => c.RecipesId.ToString().Equals(recipe.Tag));
+                    foreach (var selectedRecipeComment in selectedRecipeComments)
                     {
-                        ListView.SelectedListViewItemCollection recipes = lwRecipes.SelectedItems;
-                        if (recipes.Count > 0)
-                        {
-                            using (var db = new RecipesModel.RecipesModel())
-                            {
-                                var user = db.AspNetUsers.Where(u => u.UserName.Equals(userName)).First();
-                                var userID = user.Id;
-                                foreach (ListViewItem recipe in recipes)
-                                {
-                                    if (recipe.Tag.Equals(userID))
-                                    {
-                                        var userRecipe = db.Recipes.Where(r => r.UserID.Equals(userID) && r.PictureUrl.Equals(recipe.SubItems[0])).First();
-                                        db.Recipes.Remove(userRecipe);
-                                        db.SaveChanges();
-                                    }
-                                }
-                            }
-                        }
+                        db.Comments.Remove(selectedRecipeComment);
+                        db.SaveChanges();
                     }
                 }
-
-                else if (selectedText.Equals("Bejelentkezés"))
-                {
-                    this.Enabled = false;
-                    LoginForm lf = new LoginForm(this);
-                    lf.Show();
-                }
             }
-            cbRecord.SelectedIndex = -1;
+            return 1;
         }
 
         private void lwRecipes_SelectedIndexChanged(object sender, EventArgs e)
@@ -215,6 +144,39 @@ namespace WF_RecipesClient
                 this.Enabled = false;
                 RecipeDetailsForm rd = new RecipeDetailsForm(this, lwRecipes.SelectedItems);
                 rd.Show();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void brnDeleteRecord_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Biztosan törlöd a kijelölt recepteket?", "izé", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                ListView.SelectedListViewItemCollection recipes = lwRecipes.SelectedItems;
+                if (recipes.Count > 0)
+                {
+                    await deleteRecipes(recipes);
+                }
+            }
+        }
+
+        private void btnNewRecord_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            RecipeDetailsForm rd = new RecipeDetailsForm(this);
+            rd.Show();
+        }
+
+        private void recipeClientForm_EnabledChanged(object sender, EventArgs e)
+        {
+            if(this.Enabled == true)
+            {
+                loadDB();
             }
         }
     }
