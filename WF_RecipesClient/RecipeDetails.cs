@@ -77,53 +77,13 @@ namespace WF_RecipesClient
             this.Enabled = false;
             if (RecipeValidation())
             {
-                using (var db = new RecipesModel.RecipesModel())
+                if(currentRecipe != null)
                 {
-                    if(currentRecipe != null)
-                    {
-                        currentRecipe.Title = tbTitle.Text;
-                        db.Recipes.Attach(currentRecipe);
-                        currentRecipe.Ingredients = tbIngredients.Text;
-                        db.Recipes.Attach(currentRecipe);
-                        currentRecipe.PrepareTime = tbPrepareTime.Text;
-                        db.Recipes.Attach(currentRecipe);
-                        currentRecipe.CategoryID = db.Categories.Where(c => c.DisplayName == cbCategory.SelectedItem.ToString()).First().Id;
-                        db.Recipes.Attach(currentRecipe);
-                        currentRecipe.HowToPrepare = tbHowToPrepare.Text;
-                        db.Recipes.Attach(currentRecipe);
-                    }
-                    else
-                    {
-                        currentRecipe = new Recipes();
-                        currentRecipe.Title = tbTitle.Text;
-                        currentRecipe.Ingredients = tbIngredients.Text;
-                        currentRecipe.PrepareTime = tbPrepareTime.Text;
-                        currentRecipe.CategoryID = db.Categories.Where(c => c.DisplayName == cbCategory.SelectedItem.ToString()).First().Id;
-                        currentRecipe.HowToPrepare = tbHowToPrepare.Text;
-                        currentRecipe.UserID = db.AspNetUsers.Where(u => u.UserName == "Admin").First().Id;
-                        currentRecipe.FriendlyUrl = FriendlyUrlHelper.RemoveDiacritics(tbTitle.Text);
-                        currentRecipe.PictureUrl = "";
-                        db.Recipes.Add(currentRecipe);
-                    }
-                    try
-                    {
-                        db.SaveChanges();
-                    }
-                    catch (DbEntityValidationException err)
-                    {
-                        foreach (var eve in err.EntityValidationErrors)
-                        {
-                            Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                                eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                            foreach (var ve in eve.ValidationErrors)
-                            {
-                                Console.WriteLine("- Property: \"{0}\", Value: \"{1}\", Error: \"{2}\"",
-                                    ve.PropertyName,
-                                    eve.Entry.CurrentValues.GetValue<object>(ve.PropertyName),
-                                    ve.ErrorMessage);
-                            }
-                        }
-                    }
+                    updateRecipe();
+                }
+                else
+                {
+                    addRecipe();
                 }
                 this.Close();
             }

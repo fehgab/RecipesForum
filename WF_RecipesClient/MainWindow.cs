@@ -116,43 +116,12 @@ namespace WF_RecipesClient
             lwRecipes.Sort();
         }
 
-        private async Task<int> deleteRecipes(ListView.SelectedListViewItemCollection recipes)
-        {
-            using (var db = new RecipesModel.RecipesModel())
-            {
-                foreach (ListViewItem recipe in recipes)
-                {
-                    var selectedRecipe = db.Recipes.Where(r => r.ID.ToString().Equals(recipe.Tag)).First();
-                    db.Recipes.Remove(selectedRecipe);
-                    File.Delete(selectedRecipe.PictureUrl);
-                    db.SaveChanges();
-                    var selectedRecipeComments = db.Comments.Where(c => c.RecipesId.ToString().Equals(recipe.Tag));
-                    foreach (var selectedRecipeComment in selectedRecipeComments)
-                    {
-                        db.Comments.Remove(selectedRecipeComment);
-                        db.SaveChanges();
-                    }
-                }
-            }
-            return 1;
-        }
-
         private void lwRecipes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(lwRecipes.SelectedItems.Count > 0)
-            {
-                this.Enabled = false;
-                RecipeDetailsForm rd = new RecipeDetailsForm(this, lwRecipes.SelectedItems);
-                rd.Show();
-            }
+            
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private async void brnDeleteRecord_Click(object sender, EventArgs e)
+        private void brnDeleteRecord_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Biztosan törlöd a kijelölt recepteket?", "izé", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
@@ -160,7 +129,7 @@ namespace WF_RecipesClient
                 ListView.SelectedListViewItemCollection recipes = lwRecipes.SelectedItems;
                 if (recipes.Count > 0)
                 {
-                    await deleteRecipes(recipes);
+                    deleteRecipes(recipes);
                 }
             }
         }
@@ -177,6 +146,16 @@ namespace WF_RecipesClient
             if(this.Enabled == true)
             {
                 loadDB();
+            }
+        }
+
+        private void lwRecipes_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (lwRecipes.SelectedItems.Count > 0)
+            {
+                this.Enabled = false;
+                RecipeDetailsForm rd = new RecipeDetailsForm(this, lwRecipes.SelectedItems);
+                rd.Show();
             }
         }
     }

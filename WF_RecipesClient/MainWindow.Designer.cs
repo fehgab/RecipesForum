@@ -159,6 +159,7 @@
             this.lwRecipes.View = System.Windows.Forms.View.Details;
             this.lwRecipes.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lwRecipes_ColumnClick);
             this.lwRecipes.SelectedIndexChanged += new System.EventHandler(this.lwRecipes_SelectedIndexChanged);
+            this.lwRecipes.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lwRecipes_MouseDoubleClick);
             // 
             // chPicture
             // 

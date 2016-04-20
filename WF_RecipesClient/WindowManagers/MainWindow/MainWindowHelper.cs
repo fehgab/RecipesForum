@@ -57,6 +57,28 @@ namespace WF_RecipesClient
             }
         }
 
+        private void deleteRecipes(ListView.SelectedListViewItemCollection recipes)
+        {
+            using (var db = new RecipesModel.RecipesModel())
+            {
+                foreach (ListViewItem recipe in recipes)
+                {
+                    var selectedRecipe = db.Recipes.Where(r => r.ID.ToString() == (recipe.Tag.ToString())).First();
+                    db.Recipes.Remove(selectedRecipe);
+                    string picturePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Web", "Upload", "Images", selectedRecipe.PictureUrl);
+                    File.Delete(picturePath);
+                    db.SaveChanges();
+                    var selectedRecipeComments = db.Comments.Where(c => c.RecipesId.ToString() == (recipe.Tag.ToString()));
+                    foreach (var selectedRecipeComment in selectedRecipeComments)
+                    {
+                        db.Comments.Remove(selectedRecipeComment);
+                        db.SaveChanges();
+                    }
+                }
+            }
+            loadDB();
+        }
+
         private void loadDB()
         {
             using (var db = new RecipesModel.RecipesModel())
