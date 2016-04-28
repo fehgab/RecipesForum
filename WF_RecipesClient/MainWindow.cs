@@ -2,6 +2,7 @@
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,9 +22,9 @@ namespace WF_RecipesClient
             WindowState = FormWindowState.Maximized;
         }
 
-        private void recipeClientForm_Load(object sender, EventArgs e)
+        private async void recipeClientForm_Load(object sender, EventArgs e)
         {
-            loadDB();
+            await loadDB();
 
             cbCategories.Items.Add("Összes");
             cbCategories.SelectedItem = "Összes";
@@ -141,11 +142,11 @@ namespace WF_RecipesClient
             rd.Show();
         }
 
-        private void recipeClientForm_EnabledChanged(object sender, EventArgs e)
+        private async void recipeClientForm_EnabledChanged(object sender, EventArgs e)
         {
             if(this.Enabled == true)
             {
-                loadDB();
+                await loadDB();
             }
         }
 
