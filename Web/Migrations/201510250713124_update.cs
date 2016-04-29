@@ -36,7 +36,7 @@ namespace WebPPublished.Migrations
 
         public override void Down()
         {
-            DropTable("dbo.UserProfile");
+            DropTable("dbo.Recipes");
             DropTable("dbo.Categories");
         }
     }

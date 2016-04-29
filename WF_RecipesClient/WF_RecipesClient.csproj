@@ -67,12 +67,6 @@
   <ItemGroup>
     <Compile Include="DTO\FileManager.cs" />
     <Compile Include="DTO\RecipesHeaderData.cs" />
-    <Compile Include="LoginForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,15 +91,6 @@
     <Compile Include="RecipesModel\IdentityModels.cs" />
     <Compile Include="RecipesModel\Recipes.cs" />
     <Compile Include="RecipesModel\RecipesModel.cs" />
-    <Compile Include="RegistrationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RegistrationForm.Designer.cs">
-      <DependentUpon>RegistrationForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WindowManagers\LoginWindow\Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="WindowManagers\MainWindow\ListViewSorter.cs" />
     <Compile Include="WindowManagers\MainWindow\MainWindowHelper.cs">
       <SubType>Form</SubType>
@@ -113,12 +98,6 @@
     <Compile Include="WindowManagers\RecipeDetails\RecipeDetailsHelper.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowManagers\RegistrationWindow\CreateUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <EmbeddedResource Include="LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -133,9 +112,6 @@
     </Compile>
     <EmbeddedResource Include="RecipeDetails.resx">
       <DependentUpon>RecipeDetails.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RegistrationForm.resx">
-      <DependentUpon>RegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

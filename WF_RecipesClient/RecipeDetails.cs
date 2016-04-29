@@ -89,7 +89,7 @@ namespace WF_RecipesClient
             }
             else
             {
-                this.Size = new Size(800, this.Height);
+                this.Size = new Size(900, this.Height);
                 this.Enabled = true;
             }
         }
