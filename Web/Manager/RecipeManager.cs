@@ -65,6 +65,18 @@ namespace WebPPublished.Manager
             }
         }
 
+        public List<RecipeHeaderData> WinApiGetAllRecipes()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var allRecipes = context.Recipes
+                    .OrderBy(r => r.Title)
+                    .Select(Recipes.WinApiSelectHeader)
+                    .ToList();
+                return allRecipes;
+            }
+        }
+
         public RecipeHeaderData GetRecipeHeaderData(int recipeId)
         {
             using (var context = new ApplicationDbContext())

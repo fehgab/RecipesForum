@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RecipesClient.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,7 +21,10 @@ namespace WF_RecipesClient
         recipeClientForm mainWindow;
         ListView.SelectedListViewItemCollection selectedRecipe;
 
-        Recipes currentRecipe = null;
+        List<RecipesHeaderData> allRecipes = null;
+        List<CategoryHeaderData> allCategories = null;
+
+        RecipesHeaderData currentRecipe = null;
 
         public RecipeDetailsForm(recipeClientForm mainWindow)
         {
@@ -37,8 +41,10 @@ namespace WF_RecipesClient
             }
         }
 
-        public RecipeDetailsForm(recipeClientForm mainWindow, ListView.SelectedListViewItemCollection selectedRecipe)
+        public RecipeDetailsForm(recipeClientForm mainWindow, List<RecipesHeaderData> allRecipes, List<CategoryHeaderData> allCategories, ListView.SelectedListViewItemCollection selectedRecipe)
         {
+            this.allRecipes = allRecipes;
+            this.allCategories = allCategories;
             this.mainWindow = mainWindow;
             this.selectedRecipe = selectedRecipe;
             InitializeComponent();
@@ -52,18 +58,14 @@ namespace WF_RecipesClient
                 tbPrepareTime.Text = recipe.SubItems[3].Text;
                 tbIngredients.Text = recipe.SubItems[2].Text;
 
-                using (var db = new RecipesModel.RecipesModel())
+                foreach (var category in allCategories)
                 {
-                    var allCategories = db.Categories.ToList();
-                    foreach (var category in allCategories)
-                    {
-                        cbCategory.Items.Add(category.DisplayName);
-                    }
-                    currentRecipe = db.Recipes.Where(r => r.ID.ToString() == recipeId).First();
-                    var CurrentCategory = currentRecipe.Categories.DisplayName as string;
-                    cbCategory.SelectedItem = CurrentCategory;
-                    tbHowToPrepare.Text = currentRecipe.HowToPrepare;
+                    cbCategory.Items.Add(category.DisplayName);
                 }
+                currentRecipe = allRecipes.Where(r => r.ID.ToString() == recipeId).First();
+                var currentCategory = allCategories.Where(c => c.ID == currentRecipe.Category_ID).First();
+                cbCategory.SelectedItem = currentCategory.DisplayName;
+                tbHowToPrepare.Text = currentRecipe.HowToPrepare;
             }
         }
 

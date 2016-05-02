@@ -10,9 +10,6 @@ namespace WebPPublished.DTO
     {
         public int ID { get; set; }
         public int? Category_ID { get; set; }
-        public int? PageNumber { get; set; }
-        public int? SumRating { get; set; }
-        public int? RaitingCount { get; set; }
         public string Title { get; set; }
         public string Ingredients { get; set; }
         public string PrepareTime { get; set; }
@@ -20,5 +17,6 @@ namespace WebPPublished.DTO
         public string FriendlyUrl { get; set; }
         public string PictureUrl { get; set; }
         public ApplicationUser User { get; set; }
+        public string UserId { get; set; }
     }
 }

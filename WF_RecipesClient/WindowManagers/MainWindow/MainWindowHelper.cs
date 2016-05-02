@@ -1,7 +1,9 @@
-﻿using System;
+﻿using RecipesClient.DTO;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,6 +14,9 @@ namespace WF_RecipesClient
 {
     partial class recipeClientForm
     {
+        List<CategoryHeaderData> allCategories;
+        List<RecipesHeaderData> allRecipes;
+
         private void SetMinColumsWidth()
         {
             if (chPicture.Width < 200)
@@ -23,7 +28,7 @@ namespace WF_RecipesClient
             if (chIngredients.Width < 110)
                 chIngredients.Width = 110;
         }
-        private void fillListView(List<Recipes> recipes)
+        private void fillListView(List<RecipesHeaderData> recipes)
         {
             lwRecipes.Items.Clear();
             foreach (var recipe in recipes)
@@ -38,21 +43,18 @@ namespace WF_RecipesClient
         }
         private void searchRecipes()
         {
-            using (var db = new RecipesModel.RecipesModel())
+            if (tbSearch.Text.Length > 0)
             {
-                List<Recipes> searchedRecipes = null;
-                if (tbSearch.Text.Length > 0 && !((string)cbCategories.SelectedItem).Equals("Összes"))
+                List<RecipesHeaderData> searchedRecipes = null;
+
+                if (!((string)cbCategories.SelectedItem).Equals("Összes"))
                 {
-                    searchedRecipes = db.Recipes.Where(r => r.Categories.DisplayName.Equals((string)cbCategories.SelectedItem)
-                                                 && r.Title.Contains(tbSearch.Text)).ToList();
-                }
-                else if (tbSearch.Text.Length > 0)
-                {
-                    searchedRecipes = db.Recipes.Where(r => r.Title.Contains(tbSearch.Text)).ToList();
+                    var category = allCategories.Where(c => c.DisplayName.Equals((string)cbCategories.SelectedItem)).First();
+                    searchedRecipes = allRecipes.Where(r => r.Title.Contains(tbSearch.Text) && r.Category_ID == category.ID).ToList();
                 }
                 else
                 {
-                    searchedRecipes = db.Recipes.ToList();
+                    searchedRecipes = allRecipes.Where(r => r.Title.Contains(tbSearch.Text)).ToList();
                 }
                 fillListView(searchedRecipes);
             }
@@ -80,24 +82,30 @@ namespace WF_RecipesClient
                     }
                 }
             }
-            await loadDB();
+            await loadRecipes();
         }
 
-        private async Task loadDB()
+        private async Task loadCategories()
         {
-            using (var db = new RecipesModel.RecipesModel())
+            using (HttpClient client = new HttpClient())
             {
-                var allRecipes = db.Recipes.ToList();
-                fillListView(allRecipes);
+                var categoryResp = await client.GetAsync("https://localhost:44300/api/Categories");
+                allCategories = await categoryResp.Content.ReadAsAsync<List<CategoryHeaderData>>();
 
-                if(cbCategories.Items.Count == 0)
+                foreach (var category in allCategories)
                 {
-                    var allCategories = db.Categories.ToList();
-                    foreach (var category in allCategories)
-                    {
-                        cbCategories.Items.Add(category.DisplayName);
-                    }
+                    cbCategories.Items.Add(category.DisplayName);
                 }
+            }
+        }
+
+        private async Task loadRecipes()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var recipeResp = await client.GetAsync("https://localhost:44300/api/Recipes");
+                allRecipes = await recipeResp.Content.ReadAsAsync<List<RecipesHeaderData>>();
+                fillListView(allRecipes);
             }
         }
     }

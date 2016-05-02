@@ -11,7 +11,7 @@ namespace WF_RecipesClient
     public partial class recipeClientForm : Form
     {
         private ColumnHeader SortingColumn = null;
-        public bool isLoggedIn = false;
+        bool recipesLoaded = false;
 
         public string userName = "";
 
@@ -24,7 +24,14 @@ namespace WF_RecipesClient
 
         private async void recipeClientForm_Load(object sender, EventArgs e)
         {
-            await loadDB();
+            await loadCategories();
+            if (!recipesLoaded)
+            {
+                recipesLoaded = true;
+                await loadRecipes();
+            }
+
+            recipesLoaded = true;
 
             cbCategories.Items.Add("Összes");
             cbCategories.SelectedItem = "Összes";
@@ -38,18 +45,16 @@ namespace WF_RecipesClient
 
         private void cbCategories_SelectedValueChanged(object sender, EventArgs e)
         {
-            using (var db = new RecipesModel.RecipesModel())
+   
+            if (!((string)cbCategories.SelectedItem).Equals("Összes"))
             {
-                if (!((string)cbCategories.SelectedItem).Equals("Összes"))
-                {
-                    var allRecipesInCategory = db.Recipes.Where(r => r.Categories.DisplayName == (string)cbCategories.SelectedItem).ToList();
-                    fillListView(allRecipesInCategory);
-                }
-                else
-                {
-                    var allRecipes = db.Recipes.ToList();
-                    fillListView(allRecipes);
-                }
+                var category = allCategories.Where(c => c.DisplayName.Equals((string)cbCategories.SelectedItem)).First();
+                var allRecipesInCategory = allRecipes.Where(r => r.Category_ID == category.ID).ToList();
+                fillListView(allRecipesInCategory);
+            }
+            else
+            {
+                fillListView(allRecipes);
             }
         }
 
@@ -144,9 +149,10 @@ namespace WF_RecipesClient
 
         private async void recipeClientForm_EnabledChanged(object sender, EventArgs e)
         {
-            if(this.Enabled == true)
+            if(this.Enabled == true && !recipesLoaded)
             {
-                await loadDB();
+                recipesLoaded = true;
+                await loadRecipes();
             }
         }
 
@@ -155,7 +161,7 @@ namespace WF_RecipesClient
             if (lwRecipes.SelectedItems.Count > 0)
             {
                 this.Enabled = false;
-                RecipeDetailsForm rd = new RecipeDetailsForm(this, lwRecipes.SelectedItems);
+                RecipeDetailsForm rd = new RecipeDetailsForm(this, allRecipes, allCategories, lwRecipes.SelectedItems);
                 rd.Show();
             }
         }

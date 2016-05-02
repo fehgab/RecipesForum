@@ -58,61 +58,61 @@ namespace WF_RecipesClient
 
         private void addRecipe()
         {
-            using (var db = new RecipesModel.RecipesModel())
-            {
-                currentRecipe = new Recipes();
-                currentRecipe.Title = tbTitle.Text;
-                currentRecipe.Ingredients = tbIngredients.Text;
-                currentRecipe.PrepareTime = tbPrepareTime.Text;
-                currentRecipe.CategoryID = db.Categories.Where(c => c.DisplayName == cbCategory.SelectedItem.ToString()).First().Id;
-                currentRecipe.HowToPrepare = tbHowToPrepare.Text;
-                currentRecipe.UserID = db.AspNetUsers.Where(u => u.UserName == "Admin").First().Id;
-                currentRecipe.FriendlyUrl = FriendlyUrlHelper.RemoveDiacritics(tbTitle.Text);
-                currentRecipe.PictureUrl = "";
-                db.Recipes.Add(currentRecipe);
-                db.SaveChanges();
-                string pictureUrl = GetFileName(currentRecipe.ID.ToString(), tbFilePath.Text);
-                if (pictureUrl != null)
-                {
-                    currentRecipe.PictureUrl = pictureUrl;
-                    string webImagePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Web", "Upload", "Images", pictureUrl);
-                    File.Copy(tbFilePath.Text, webImagePath);
-                    db.Recipes.Attach(currentRecipe);
-                    db.Entry(currentRecipe).Property(r => r.PictureUrl).IsModified = true;
-                    db.SaveChanges();
-                }
-            }
+            //using (var db = new RecipesModel.RecipesModel())
+            //{
+            //    currentRecipe = new Recipes();
+            //    currentRecipe.Title = tbTitle.Text;
+            //    currentRecipe.Ingredients = tbIngredients.Text;
+            //    currentRecipe.PrepareTime = tbPrepareTime.Text;
+            //    currentRecipe.CategoryID = db.Categories.Where(c => c.DisplayName == cbCategory.SelectedItem.ToString()).First().Id;
+            //    currentRecipe.HowToPrepare = tbHowToPrepare.Text;
+            //    currentRecipe.UserID = db.AspNetUsers.Where(u => u.UserName == "Admin").First().Id;
+            //    currentRecipe.FriendlyUrl = FriendlyUrlHelper.RemoveDiacritics(tbTitle.Text);
+            //    currentRecipe.PictureUrl = "";
+            //    db.Recipes.Add(currentRecipe);
+            //    db.SaveChanges();
+            //    string pictureUrl = GetFileName(currentRecipe.ID.ToString(), tbFilePath.Text);
+            //    if (pictureUrl != null)
+            //    {
+            //        currentRecipe.PictureUrl = pictureUrl;
+            //        string webImagePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Web", "Upload", "Images", pictureUrl);
+            //        File.Copy(tbFilePath.Text, webImagePath);
+            //        db.Recipes.Attach(currentRecipe);
+            //        db.Entry(currentRecipe).Property(r => r.PictureUrl).IsModified = true;
+            //        db.SaveChanges();
+            //    }
+            //}
         }
 
         private void updateRecipe()
         {
-            using (var db = new RecipesModel.RecipesModel())
-            {
-                currentRecipe.Title = tbTitle.Text;
-                db.Recipes.Attach(currentRecipe);
-                db.Entry(currentRecipe).Property(r => r.Title).IsModified = true;
-                db.SaveChanges();
+            //using (var db = new RecipesModel.RecipesModel())
+            //{
+            //    currentRecipe.Title = tbTitle.Text;
+            //    db.Recipes.Attach(currentRecipe);
+            //    db.Entry(currentRecipe).Property(r => r.Title).IsModified = true;
+            //    db.SaveChanges();
 
-                currentRecipe.Ingredients = tbIngredients.Text;
-                db.Recipes.Attach(currentRecipe);
-                db.Entry(currentRecipe).Property(r => r.Ingredients).IsModified = true;
-                db.SaveChanges();
+            //    currentRecipe.Ingredients = tbIngredients.Text;
+            //    db.Recipes.Attach(currentRecipe);
+            //    db.Entry(currentRecipe).Property(r => r.Ingredients).IsModified = true;
+            //    db.SaveChanges();
 
-                currentRecipe.PrepareTime = tbPrepareTime.Text;
-                db.Recipes.Attach(currentRecipe);
-                db.Entry(currentRecipe).Property(r => r.PrepareTime).IsModified = true;
-                db.SaveChanges();
+            //    currentRecipe.PrepareTime = tbPrepareTime.Text;
+            //    db.Recipes.Attach(currentRecipe);
+            //    db.Entry(currentRecipe).Property(r => r.PrepareTime).IsModified = true;
+            //    db.SaveChanges();
 
-                currentRecipe.CategoryID = db.Categories.Where(c => c.DisplayName == cbCategory.SelectedItem.ToString()).First().Id;
-                db.Recipes.Attach(currentRecipe);
-                db.Entry(currentRecipe).Property(r => r.CategoryID).IsModified = true;
-                db.SaveChanges();
+            //    currentRecipe.CategoryID = db.Categories.Where(c => c.DisplayName == cbCategory.SelectedItem.ToString()).First().Id;
+            //    db.Recipes.Attach(currentRecipe);
+            //    db.Entry(currentRecipe).Property(r => r.CategoryID).IsModified = true;
+            //    db.SaveChanges();
 
-                currentRecipe.HowToPrepare = tbHowToPrepare.Text;
-                db.Recipes.Attach(currentRecipe);
-                db.Entry(currentRecipe).Property(r => r.HowToPrepare).IsModified = true;
-                db.SaveChanges();
-            }
+            //    currentRecipe.HowToPrepare = tbHowToPrepare.Text;
+            //    db.Recipes.Attach(currentRecipe);
+            //    db.Entry(currentRecipe).Property(r => r.HowToPrepare).IsModified = true;
+            //    db.SaveChanges();
+            //}
         }
 
 

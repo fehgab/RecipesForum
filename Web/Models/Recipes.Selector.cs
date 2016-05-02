@@ -21,10 +21,20 @@ namespace WebPPublished.Models
                 PrepareTime = p.PrepareTime,
                 HowToPrepare = p.HowToPrepare,
                 User = p.User
-                //PageNumber = p.PageNumber,
-                //RaitingCount = p.RaitingCount,
-                //SumRating = p.SumRating
+            };
 
+        public static readonly Expression<Func<Recipes, RecipeHeaderData>> WinApiSelectHeader =
+            p => new RecipeHeaderData
+            {
+                ID = p.ID,
+                Category_ID = p.CategoryID,
+                Title = p.Title,
+                FriendlyUrl = p.FriendlyUrl,
+                PictureUrl = p.PictureUrl,
+                Ingredients = p.Ingredients,
+                PrepareTime = p.PrepareTime,
+                HowToPrepare = p.HowToPrepare,
+                UserId = p.User.Id
             };
     }
 }

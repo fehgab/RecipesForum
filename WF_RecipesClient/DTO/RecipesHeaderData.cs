@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RecipesClient.DTO
 {
-    class RecipesHeaderData
+    public class RecipesHeaderData
     {
         public int ID { get; set; }
         public int? Category_ID { get; set; }
@@ -14,6 +14,6 @@ namespace RecipesClient.DTO
         public string Ingredients { get; set; }
         public string PrepareTime { get; set; }
         public string HowToPrepare { get; set; }
-        public string PictureFullPath { get; set; }
+        public string PictureUrl { get; set; }
     }
 }
