@@ -26,18 +26,15 @@ namespace WF_RecipesClient
 
         RecipesHeaderData currentRecipe = null;
 
-        public RecipeDetailsForm(recipeClientForm mainWindow)
+        public RecipeDetailsForm(recipeClientForm mainWindow, List<CategoryHeaderData> allCategories)
         {
             this.mainWindow = mainWindow;
+            this.allCategories = allCategories;
             InitializeComponent();
 
-            using (var db = new RecipesModel.RecipesModel())
+            foreach (var category in allCategories)
             {
-                var allCategories = db.Categories.ToList();
-                foreach (var category in allCategories)
-                {
-                    cbCategory.Items.Add(category.DisplayName);
-                }
+                cbCategory.Items.Add(category.DisplayName);
             }
         }
 
@@ -87,7 +84,6 @@ namespace WF_RecipesClient
                 {
                     addRecipe();
                 }
-                this.Close();
             }
             else
             {

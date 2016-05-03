@@ -11,9 +11,6 @@ namespace WF_RecipesClient
     public partial class recipeClientForm : Form
     {
         private ColumnHeader SortingColumn = null;
-        bool recipesLoaded = false;
-
-        public string userName = "";
 
         public recipeClientForm()
         {
@@ -25,20 +22,13 @@ namespace WF_RecipesClient
         private async void recipeClientForm_Load(object sender, EventArgs e)
         {
             await loadCategories();
-            if (!recipesLoaded)
-            {
-                recipesLoaded = true;
-                await loadRecipes();
-            }
-
-            recipesLoaded = true;
+            await loadRecipes();
 
             cbCategories.Items.Add("Összes");
             cbCategories.SelectedItem = "Összes";
 
             cbCategories.Enabled = true;
             tbSearch.Enabled = true;
-            lwRecipes.Enabled = true;
             btnNewRecord.Enabled = true;
             btnDeleteRecord.Enabled = true;
         }
@@ -122,11 +112,6 @@ namespace WF_RecipesClient
             lwRecipes.Sort();
         }
 
-        private void lwRecipes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void brnDeleteRecord_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Biztosan törlöd a kijelölt recepteket?", "izé", MessageBoxButtons.YesNo);
@@ -143,15 +128,14 @@ namespace WF_RecipesClient
         private void btnNewRecord_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
-            RecipeDetailsForm rd = new RecipeDetailsForm(this);
+            RecipeDetailsForm rd = new RecipeDetailsForm(this, allCategories);
             rd.Show();
         }
 
         private async void recipeClientForm_EnabledChanged(object sender, EventArgs e)
         {
-            if(this.Enabled == true && !recipesLoaded)
+            if(this.Enabled == true)
             {
-                recipesLoaded = true;
                 await loadRecipes();
             }
         }

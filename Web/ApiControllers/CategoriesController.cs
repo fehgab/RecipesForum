@@ -15,8 +15,7 @@ namespace WebPPublished.ApiControllers
         [HttpGet]
         public IEnumerable<CategoryHeaderData> Get()
         {
-            var categor = new CategoryManager().GetAllCategory();
-            return categor;
+            return new CategoryManager().GetAllCategory();
         }
     }
 }

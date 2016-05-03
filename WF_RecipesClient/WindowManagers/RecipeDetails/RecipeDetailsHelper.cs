@@ -1,9 +1,11 @@
-﻿using System;
+﻿using RecipesClient.DTO;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using WebPPublished.Helpers;
@@ -56,63 +58,70 @@ namespace WF_RecipesClient
             return validation;
         }
 
-        private void addRecipe()
+        private async void addRecipe()
         {
-            //using (var db = new RecipesModel.RecipesModel())
-            //{
-            //    currentRecipe = new Recipes();
-            //    currentRecipe.Title = tbTitle.Text;
-            //    currentRecipe.Ingredients = tbIngredients.Text;
-            //    currentRecipe.PrepareTime = tbPrepareTime.Text;
-            //    currentRecipe.CategoryID = db.Categories.Where(c => c.DisplayName == cbCategory.SelectedItem.ToString()).First().Id;
-            //    currentRecipe.HowToPrepare = tbHowToPrepare.Text;
-            //    currentRecipe.UserID = db.AspNetUsers.Where(u => u.UserName == "Admin").First().Id;
-            //    currentRecipe.FriendlyUrl = FriendlyUrlHelper.RemoveDiacritics(tbTitle.Text);
-            //    currentRecipe.PictureUrl = "";
-            //    db.Recipes.Add(currentRecipe);
-            //    db.SaveChanges();
-            //    string pictureUrl = GetFileName(currentRecipe.ID.ToString(), tbFilePath.Text);
-            //    if (pictureUrl != null)
-            //    {
-            //        currentRecipe.PictureUrl = pictureUrl;
-            //        string webImagePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Web", "Upload", "Images", pictureUrl);
-            //        File.Copy(tbFilePath.Text, webImagePath);
-            //        db.Recipes.Attach(currentRecipe);
-            //        db.Entry(currentRecipe).Property(r => r.PictureUrl).IsModified = true;
-            //        db.SaveChanges();
-            //    }
-            //}
+            using (HttpClient client = new HttpClient())
+            {
+                var category = allCategories.Where(c => c.DisplayName == cbCategory.Text).First();
+                var friendlyUrl = FriendlyUrlHelper.RemoveDiacritics(tbTitle.Text);
+                RecipesHeaderData recipeHeader = new RecipesHeaderData()
+                {
+                    HowToPrepare = tbHowToPrepare.Text,
+                    Ingredients = tbIngredients.Text,
+                    PrepareTime = tbPrepareTime.Text,
+                    Title = tbTitle.Text,
+                    Category_ID = category.ID,
+                    FriendlyUrl = friendlyUrl,
+                    PictureUrl = "default"
+                };
+                var postResponse = await client.PostAsJsonAsync("https://localhost:44300/api/Recipes", recipeHeader);
+                int recipeId = await postResponse.Content.ReadAsAsync<int>();
+
+                string pictureUrl = GetFileName(recipeId.ToString(), tbFilePath.Text);
+                if (pictureUrl != null)
+                {
+                    string webImagePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Web", "Upload", "Images", pictureUrl);
+                    File.Copy(tbFilePath.Text, webImagePath);
+                    RecipesHeaderData recipeHeaderUpdate = new RecipesHeaderData()
+                    {
+                        ID = recipeId,
+                        PictureUrl = pictureUrl,
+                        HowToPrepare = tbHowToPrepare.Text,
+                        Ingredients = tbIngredients.Text,
+                        PrepareTime = tbPrepareTime.Text,
+                        Title = tbTitle.Text,
+                        Category_ID = category.ID,
+                        FriendlyUrl = friendlyUrl
+                    };
+                    var putResponse = await client.PutAsJsonAsync("https://localhost:44300/api/Recipes", recipeHeaderUpdate);
+                    bool returnValue = await putResponse.Content.ReadAsAsync<bool>();
+                }
+
+                this.Close();
+            }
         }
 
-        private void updateRecipe()
+        private async void updateRecipe()
         {
-            //using (var db = new RecipesModel.RecipesModel())
-            //{
-            //    currentRecipe.Title = tbTitle.Text;
-            //    db.Recipes.Attach(currentRecipe);
-            //    db.Entry(currentRecipe).Property(r => r.Title).IsModified = true;
-            //    db.SaveChanges();
-
-            //    currentRecipe.Ingredients = tbIngredients.Text;
-            //    db.Recipes.Attach(currentRecipe);
-            //    db.Entry(currentRecipe).Property(r => r.Ingredients).IsModified = true;
-            //    db.SaveChanges();
-
-            //    currentRecipe.PrepareTime = tbPrepareTime.Text;
-            //    db.Recipes.Attach(currentRecipe);
-            //    db.Entry(currentRecipe).Property(r => r.PrepareTime).IsModified = true;
-            //    db.SaveChanges();
-
-            //    currentRecipe.CategoryID = db.Categories.Where(c => c.DisplayName == cbCategory.SelectedItem.ToString()).First().Id;
-            //    db.Recipes.Attach(currentRecipe);
-            //    db.Entry(currentRecipe).Property(r => r.CategoryID).IsModified = true;
-            //    db.SaveChanges();
-
-            //    currentRecipe.HowToPrepare = tbHowToPrepare.Text;
-            //    db.Recipes.Attach(currentRecipe);
-            //    db.Entry(currentRecipe).Property(r => r.HowToPrepare).IsModified = true;
-            //    db.SaveChanges();
-            //}
+            using (HttpClient client = new HttpClient())
+            {
+                var category = allCategories.Where(c => c.DisplayName == cbCategory.Text).First();
+                RecipesHeaderData recipeHeader = new RecipesHeaderData()
+                {
+                    ID = currentRecipe.ID,
+                    HowToPrepare = tbHowToPrepare.Text,
+                    Ingredients = tbIngredients.Text,
+                    PrepareTime = tbPrepareTime.Text,
+                    Title = tbTitle.Text,
+                    Category_ID = category.ID,
+                    FriendlyUrl = currentRecipe.FriendlyUrl,
+                    PictureUrl = currentRecipe.PictureUrl,
+                    UserId = currentRecipe.UserId
+                };
+                var response = await client.PutAsJsonAsync("https://localhost:44300/api/Recipes", recipeHeader);
+                bool returnValue = await response.Content.ReadAsAsync<bool>();
+                this.Close();
+            }    
         }
 
 

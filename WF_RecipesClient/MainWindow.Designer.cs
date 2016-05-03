@@ -149,7 +149,6 @@
             this.chTitle,
             this.chPrepareTime,
             this.chIngredients});
-            this.lwRecipes.Enabled = false;
             this.lwRecipes.FullRowSelect = true;
             this.lwRecipes.Location = new System.Drawing.Point(12, 79);
             this.lwRecipes.Name = "lwRecipes";
@@ -158,7 +157,6 @@
             this.lwRecipes.UseCompatibleStateImageBehavior = false;
             this.lwRecipes.View = System.Windows.Forms.View.Details;
             this.lwRecipes.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lwRecipes_ColumnClick);
-            this.lwRecipes.SelectedIndexChanged += new System.EventHandler(this.lwRecipes_SelectedIndexChanged);
             this.lwRecipes.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lwRecipes_MouseDoubleClick);
             // 
             // chPicture

@@ -14,6 +14,8 @@ namespace RecipesClient.DTO
         public string Ingredients { get; set; }
         public string PrepareTime { get; set; }
         public string HowToPrepare { get; set; }
+        public string FriendlyUrl { get; set; }
         public string PictureUrl { get; set; }
+        public string UserId { get; set; }
     }
 }

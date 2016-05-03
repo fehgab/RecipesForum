@@ -62,24 +62,12 @@ namespace WF_RecipesClient
 
         private async void deleteRecipes(ListView.SelectedListViewItemCollection recipes)
         {
-            using (var db = new RecipesModel.RecipesModel())
+            using (HttpClient client = new HttpClient())
             {
                 foreach (ListViewItem recipe in recipes)
                 {
-                    var selectedRecipe = db.Recipes.Where(r => r.ID.ToString() == (recipe.Tag.ToString())).First();
-                    db.Recipes.Remove(selectedRecipe);
-                    string picturePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Web", "Upload", "Images", selectedRecipe.PictureUrl);
-                    FileAttributes attributes = File.GetAttributes(picturePath);
-                    attributes = attributes & ~FileAttributes.ReadOnly;
-                    File.SetAttributes(picturePath, attributes);
-                    File.Delete(picturePath);
-                    db.SaveChanges();
-                    var selectedRecipeComments = db.Comments.Where(c => c.RecipesId.ToString() == (recipe.Tag.ToString()));
-                    foreach (var selectedRecipeComment in selectedRecipeComments)
-                    {
-                        db.Comments.Remove(selectedRecipeComment);
-                        db.SaveChanges();
-                    }
+                    var resp = await client.DeleteAsync("https://localhost:44300/api/Recipes/" + recipe.Tag.ToString());
+                    bool returnValue = await resp.Content.ReadAsAsync<bool>();
                 }
             }
             await loadRecipes();
