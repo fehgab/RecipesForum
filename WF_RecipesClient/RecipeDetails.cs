@@ -26,6 +26,8 @@ namespace WF_RecipesClient
 
         RecipesHeaderData currentRecipe = null;
 
+        bool validation = true;
+
         public RecipeDetailsForm(recipeClientForm mainWindow, List<CategoryHeaderData> allCategories)
         {
             this.mainWindow = mainWindow;
@@ -74,7 +76,7 @@ namespace WF_RecipesClient
         private void btnSave_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
-            if (RecipeValidation())
+            if (validation)
             {
                 if(currentRecipe != null)
                 {
@@ -87,7 +89,6 @@ namespace WF_RecipesClient
             }
             else
             {
-                this.Size = new Size(900, this.Height);
                 this.Enabled = true;
             }
         }
@@ -101,6 +102,96 @@ namespace WF_RecipesClient
             if (dialogResult == DialogResult.OK)
             {
                 tbFilePath.Text = fileDialog.FileName;
+            }
+        }
+
+        private void tbTitle_Validating(object sender, CancelEventArgs e)
+        {
+            if (tbTitle.Text.Length == 0 || tbTitle.Text.Length > 40)
+            {
+                this.Size = new Size(900, this.Height);
+                lTitleError.Text = "Kérlek add meg az étel nevét! Maximum 40 karakter.";
+                validation = false;
+            }
+            else
+            {
+                validation = true;
+                lTitleError.Text = "";
+            }
+        }
+
+        private void cbCategory_Validating(object sender, CancelEventArgs e)
+        {
+            if (cbCategory.SelectedIndex < 0)
+            {
+                this.Size = new Size(900, this.Height);
+                lCategoryError.Text = "Kérlek add meg a kategóriát!";
+                validation = false;
+            }
+            else
+            {
+                validation = true;
+                lCategoryError.Text = "";
+            }
+        }
+
+        private void tbIngredients_Validating(object sender, CancelEventArgs e)
+        {
+            if (tbIngredients.Text.Length == 0 || tbIngredients.Text.Length > 100)
+            {
+                this.Size = new Size(900, this.Height);
+                lIngredientsError.Text = "Kérlek add meg a hozzávalókat! Maximum 100 karakter.";
+                validation = false;
+            }
+            else
+            {
+                validation = true;
+                lIngredientsError.Text = "";
+            }
+        }
+
+        private void tbPrepareTime_Validating(object sender, CancelEventArgs e)
+        {
+            if (tbPrepareTime.Text.Length == 0 || tbPrepareTime.Text.Length > 10)
+            {
+                this.Size = new Size(900, this.Height);
+                lPrepareTimeError.Text = "Kérlek add meg az elkészítési időt! Maximum 10 karakter.";
+                validation = false;
+            }
+            else
+            {
+                validation = true;
+                lPrepareTimeError.Text = "";
+            }
+        }
+
+        private void tbHowToPrepare_Validating(object sender, CancelEventArgs e)
+        {
+            if (tbHowToPrepare.Text.Length == 0 || tbHowToPrepare.Text.Length > 500)
+            {
+                this.Size = new Size(900, this.Height);
+                lHowToPrepareError.Text = "Kérlek add meg az étel elkészítésének módját!";
+                validation = false;
+            }
+            else
+            {
+                validation = true;
+                lHowToPrepareError.Text = "";
+            }
+        }
+
+        private void tbFilePath_Validating(object sender, CancelEventArgs e)
+        {
+            if (tbFilePath.Text.Length == 0)
+            {
+                this.Size = new Size(900, this.Height);
+                lFileMissingError.Text = "Kérlek add meg a kép elérési útját!";
+                validation = false;
+            }
+            else
+            {
+                validation = true;
+                lFileMissingError.Text = "";
             }
         }
     }

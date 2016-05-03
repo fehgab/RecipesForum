@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(recipeClientForm));
             this.gbMenu = new System.Windows.Forms.GroupBox();
+            this.btChangeLanguage = new System.Windows.Forms.Button();
             this.btnNewRecord = new System.Windows.Forms.Button();
             this.btnDeleteRecord = new System.Windows.Forms.Button();
             this.lRecord = new System.Windows.Forms.Label();
@@ -48,8 +49,8 @@
             // 
             // gbMenu
             // 
-            this.gbMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.gbMenu, "gbMenu");
+            this.gbMenu.Controls.Add(this.btChangeLanguage);
             this.gbMenu.Controls.Add(this.btnNewRecord);
             this.gbMenu.Controls.Add(this.btnDeleteRecord);
             this.gbMenu.Controls.Add(this.lRecord);
@@ -57,103 +58,71 @@
             this.gbMenu.Controls.Add(this.btSearch);
             this.gbMenu.Controls.Add(this.tbSearch);
             this.gbMenu.Controls.Add(this.cbCategories);
-            this.gbMenu.Location = new System.Drawing.Point(12, 12);
             this.gbMenu.Name = "gbMenu";
-            this.gbMenu.Size = new System.Drawing.Size(660, 61);
-            this.gbMenu.TabIndex = 0;
             this.gbMenu.TabStop = false;
-            this.gbMenu.Text = "Menü";
+            // 
+            // btChangeLanguage
+            // 
+            resources.ApplyResources(this.btChangeLanguage, "btChangeLanguage");
+            this.btChangeLanguage.Name = "btChangeLanguage";
+            this.btChangeLanguage.UseVisualStyleBackColor = true;
+            this.btChangeLanguage.Click += new System.EventHandler(this.btChangeLanguage_Click);
             // 
             // btnNewRecord
             // 
-            this.btnNewRecord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNewRecord.Enabled = false;
-            this.btnNewRecord.Location = new System.Drawing.Point(570, 31);
+            resources.ApplyResources(this.btnNewRecord, "btnNewRecord");
             this.btnNewRecord.Name = "btnNewRecord";
-            this.btnNewRecord.Size = new System.Drawing.Size(84, 23);
-            this.btnNewRecord.TabIndex = 10;
-            this.btnNewRecord.Text = "Új rekord";
             this.btnNewRecord.UseVisualStyleBackColor = true;
             this.btnNewRecord.Click += new System.EventHandler(this.btnNewRecord_Click);
             // 
             // btnDeleteRecord
             // 
-            this.btnDeleteRecord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDeleteRecord.Enabled = false;
-            this.btnDeleteRecord.Location = new System.Drawing.Point(480, 31);
+            resources.ApplyResources(this.btnDeleteRecord, "btnDeleteRecord");
             this.btnDeleteRecord.Name = "btnDeleteRecord";
-            this.btnDeleteRecord.Size = new System.Drawing.Size(84, 23);
-            this.btnDeleteRecord.TabIndex = 8;
-            this.btnDeleteRecord.Text = "Törlés";
             this.btnDeleteRecord.UseVisualStyleBackColor = true;
             this.btnDeleteRecord.Click += new System.EventHandler(this.brnDeleteRecord_Click);
             // 
             // lRecord
             // 
-            this.lRecord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lRecord.AutoSize = true;
-            this.lRecord.Location = new System.Drawing.Point(491, 14);
+            resources.ApplyResources(this.lRecord, "lRecord");
             this.lRecord.Name = "lRecord";
-            this.lRecord.Size = new System.Drawing.Size(97, 13);
-            this.lRecord.TabIndex = 7;
-            this.lRecord.Text = "Rekord módosítás:";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Kategóriák:";
             // 
             // btSearch
             // 
-            this.btSearch.Enabled = false;
-            this.btSearch.Location = new System.Drawing.Point(305, 31);
+            resources.ApplyResources(this.btSearch, "btSearch");
             this.btSearch.Name = "btSearch";
-            this.btSearch.Size = new System.Drawing.Size(75, 23);
-            this.btSearch.TabIndex = 2;
-            this.btSearch.Text = "Keresés";
             this.btSearch.UseVisualStyleBackColor = true;
             this.btSearch.Click += new System.EventHandler(this.btSearch_Click);
             // 
             // tbSearch
             // 
-            this.tbSearch.Enabled = false;
-            this.tbSearch.Location = new System.Drawing.Point(134, 32);
+            resources.ApplyResources(this.tbSearch, "tbSearch");
             this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(164, 20);
-            this.tbSearch.TabIndex = 1;
-            this.tbSearch.Text = "Étel neve";
             this.tbSearch.Click += new System.EventHandler(this.tbSearch_Click);
             this.tbSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSearch_KeyDown);
             // 
             // cbCategories
             // 
-            this.cbCategories.Enabled = false;
+            resources.ApplyResources(this.cbCategories, "cbCategories");
             this.cbCategories.FormattingEnabled = true;
-            this.cbCategories.Location = new System.Drawing.Point(7, 32);
             this.cbCategories.Name = "cbCategories";
-            this.cbCategories.Size = new System.Drawing.Size(121, 21);
-            this.cbCategories.TabIndex = 0;
             this.cbCategories.SelectedValueChanged += new System.EventHandler(this.cbCategories_SelectedValueChanged);
             // 
             // lwRecipes
             // 
-            this.lwRecipes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.lwRecipes, "lwRecipes");
             this.lwRecipes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.chPicture,
             this.chTitle,
             this.chPrepareTime,
             this.chIngredients});
             this.lwRecipes.FullRowSelect = true;
-            this.lwRecipes.Location = new System.Drawing.Point(12, 79);
             this.lwRecipes.Name = "lwRecipes";
-            this.lwRecipes.Size = new System.Drawing.Size(660, 256);
-            this.lwRecipes.TabIndex = 1;
             this.lwRecipes.UseCompatibleStateImageBehavior = false;
             this.lwRecipes.View = System.Windows.Forms.View.Details;
             this.lwRecipes.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lwRecipes_ColumnClick);
@@ -161,49 +130,33 @@
             // 
             // chPicture
             // 
-            this.chPicture.Text = "Kép";
-            this.chPicture.Width = 150;
+            resources.ApplyResources(this.chPicture, "chPicture");
             // 
             // chTitle
             // 
-            this.chTitle.Text = "Étel neve";
-            this.chTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.chTitle.Width = 100;
+            resources.ApplyResources(this.chTitle, "chTitle");
             // 
             // chPrepareTime
             // 
-            this.chPrepareTime.Text = "Elkészítési idő";
-            this.chPrepareTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.chPrepareTime.Width = 120;
+            resources.ApplyResources(this.chPrepareTime, "chPrepareTime");
             // 
             // chIngredients
             // 
-            this.chIngredients.Text = "Hozzávalók";
-            this.chIngredients.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.chIngredients.Width = 110;
+            resources.ApplyResources(this.chIngredients, "chIngredients");
             // 
             // lBottomLogo
             // 
-            this.lBottomLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lBottomLogo.AutoSize = true;
-            this.lBottomLogo.Location = new System.Drawing.Point(12, 339);
+            resources.ApplyResources(this.lBottomLogo, "lBottomLogo");
             this.lBottomLogo.Name = "lBottomLogo";
-            this.lBottomLogo.Size = new System.Drawing.Size(118, 13);
-            this.lBottomLogo.TabIndex = 2;
-            this.lBottomLogo.Text = "© 2016 - Recept Kliens";
             // 
             // recipeClientForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 361);
             this.Controls.Add(this.lBottomLogo);
             this.Controls.Add(this.lwRecipes);
             this.Controls.Add(this.gbMenu);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(700, 400);
             this.Name = "recipeClientForm";
-            this.Text = "Recept kliens";
             this.Load += new System.EventHandler(this.recipeClientForm_Load);
             this.EnabledChanged += new System.EventHandler(this.recipeClientForm_EnabledChanged);
             this.gbMenu.ResumeLayout(false);
@@ -229,6 +182,7 @@
         private System.Windows.Forms.Label lRecord;
         private System.Windows.Forms.Button btnNewRecord;
         private System.Windows.Forms.Button btnDeleteRecord;
+        private System.Windows.Forms.Button btChangeLanguage;
     }
 }
 

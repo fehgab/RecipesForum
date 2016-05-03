@@ -107,6 +107,9 @@
     <Compile Include="WindowManagers\RecipeDetails\RecipeDetailsHelper.cs">
       <SubType>Form</SubType>
     </Compile>
+    <EmbeddedResource Include="MainWindow.en-GB.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +122,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RecipeDetails.en-GB.resx">
+      <DependentUpon>RecipeDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RecipeDetails.resx">
       <DependentUpon>RecipeDetails.cs</DependentUpon>
     </EmbeddedResource>

@@ -15,49 +15,7 @@ namespace WF_RecipesClient
 {
     partial class RecipeDetailsForm
     {
-        private bool RecipeValidation()
-        {
-            bool validation = true;
-            lTitleError.Text = "";
-            lPrepareTimeError.Text = "";
-            lIngredientsError.Text = "";
-            lCategoryError.Text = "";
-            lHowToPrepareError.Text = "";
-            lFileMissingError.Text = "";
-
-            if (tbTitle.Text.Length == 0 || tbTitle.Text.Length > 40)
-            {
-                lTitleError.Text = "Kérlek add meg az étel nevét! Maximum 40 karakter.";
-                validation = false;
-            }
-            if (tbPrepareTime.Text.Length == 0 || tbPrepareTime.Text.Length > 10)
-            {
-                lPrepareTimeError.Text = "Kérlek add meg az elkészítési időt! Maximum 10 karakter.";
-                validation = false;
-            }
-            if (tbIngredients.Text.Length == 0 || tbIngredients.Text.Length > 100)
-            {
-                lIngredientsError.Text = "Kérlek add meg a hozzávalókat! Maximum 100 karakter.";
-                validation = false;
-            }
-            if (cbCategory.SelectedIndex < 0)
-            {
-                lCategoryError.Text = "Kérlek add meg a kategóriát!";
-                validation = false;
-            }
-            if (tbHowToPrepare.Text.Length == 0 || tbHowToPrepare.Text.Length > 500)
-            {
-                lHowToPrepareError.Text = "Kérlek add meg az étel elkészítésének módját!";
-                validation = false;
-            }
-            if (tbFilePath.Text.Length == 0)
-            {
-                lFileMissingError.Text = "Kérlek add meg a kép elérési útját!";
-                validation = false;
-            }
-            return validation;
-        }
-
+      
         private async void addRecipe()
         {
             using (HttpClient client = new HttpClient())

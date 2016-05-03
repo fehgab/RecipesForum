@@ -149,5 +149,10 @@ namespace WF_RecipesClient
                 rd.Show();
             }
         }
+
+        private void btChangeLanguage_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
