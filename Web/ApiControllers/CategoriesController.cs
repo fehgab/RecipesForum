@@ -13,7 +13,7 @@ namespace WebPPublished.ApiControllers
     public class CategoriesController : ApiController
     {
         [HttpGet]
-        public IEnumerable<CategoryHeaderData> Get()
+        public IEnumerable<CategoryHeaderData> GetAllCategories()
         {
             return new CategoryManager().GetAllCategory();
         }

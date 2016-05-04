@@ -1,6 +1,7 @@
 ﻿using RecipesClient.DTO;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -77,7 +78,7 @@ namespace WF_RecipesClient
         {
             using (HttpClient client = new HttpClient())
             {
-                var categoryResp = await client.GetAsync("https://localhost:44300/api/Categories");
+                var categoryResp = await client.GetAsync("https://localhost:44300/api/Categories/AllCategories");
                 allCategories = await categoryResp.Content.ReadAsAsync<List<CategoryHeaderData>>();
 
                 foreach (var category in allCategories)
@@ -94,6 +95,15 @@ namespace WF_RecipesClient
                 var recipeResp = await client.GetAsync("https://localhost:44300/api/Recipes");
                 allRecipes = await recipeResp.Content.ReadAsAsync<List<RecipesHeaderData>>();
                 fillListView(allRecipes);
+            }
+        }
+
+        private void applyResources(ComponentResourceManager resources, Control.ControlCollection ctls)
+        {
+            foreach (Control ctl in ctls)
+            {
+                resources.ApplyResources(ctl, ctl.Name);
+                applyResources(resources, ctl.Controls);
             }
         }
     }

@@ -30,7 +30,11 @@ namespace WebPPublished.Controllers
 
             Recipes recipe = db.Recipes.Find(model.RecipesDB.ID);
             db.Recipes.Remove(recipe);
-            System.IO.File.Delete(Path.Combine(Server.MapPath("~"), "Upload\\Images", recipe.PictureUrl));
+            try
+            {
+                System.IO.File.Delete(Path.Combine(Server.MapPath("~"), "Upload\\Images", recipe.PictureUrl));
+            }
+            catch { }
             db.SaveChanges();
 
             List<Comments> comments = new CommentManager().GetRecipeCommentsList(model.RecipesDB.ID);

@@ -47,7 +47,11 @@ namespace WebPPublished.Controllers
 
             Recipes recipe = db.Recipes.Find(model.RecipesDB.ID);
             db.Recipes.Remove(recipe);
-            System.IO.File.Delete(Path.Combine(Server.MapPath("~"), "Upload\\Images", recipe.PictureUrl));
+            try
+            {
+                System.IO.File.Delete(Path.Combine(Server.MapPath("~"), "Upload\\Images", recipe.PictureUrl));
+            }
+            catch { }
 
             List<Comments> comments = new CommentManager().GetRecipeCommentsList(model.RecipesDB.ID);
             foreach (Comments comment in comments)
@@ -78,7 +82,11 @@ namespace WebPPublished.Controllers
 
             Recipes recipe = db.Recipes.Find(model.RecipesDB.ID);
             db.Recipes.Remove(recipe);
-            System.IO.File.Delete(Path.Combine(Server.MapPath("~"), "Upload\\Images", recipe.PictureUrl));
+            try
+            {
+                System.IO.File.Delete(Path.Combine(Server.MapPath("~"), "Upload\\Images", recipe.PictureUrl));
+            }
+            catch { }
             db.SaveChanges();
 
             List<Comments> comments = new CommentManager().GetRecipeCommentsList(model.RecipesDB.ID);
@@ -157,7 +165,11 @@ namespace WebPPublished.Controllers
             if (pictureUrl != null)
             {
                 rec.PictureUrl = pictureUrl;
-                picture.SaveAs(Path.Combine(Server.MapPath("~"), "Upload\\Images", pictureUrl));
+                try
+                {
+                    picture.SaveAs(Path.Combine(Server.MapPath("~"), "Upload\\Images", pictureUrl));
+                }
+                catch { }                
             }
             db.SaveChanges();
 
@@ -198,17 +210,21 @@ namespace WebPPublished.Controllers
                 {
                     model.RecipesDB.PictureUrl = pictureUrl;
                     List<string> pictureUrlElements = new List<string>(pictureUrl.Split(new string[] { "_" }, StringSplitOptions.None));
-                    var files = Directory.GetFiles(Path.Combine(Server.MapPath("~"), "Upload\\Images")).ToList();
-                    foreach(string file in files)
+                    try
                     {
-                        string fileName = Path.GetFileName(file);
-                        List<string> fileElemets = new List<string>(fileName.Split(new string[] { "_" }, StringSplitOptions.None));
-                        if (fileElemets.First().Equals(pictureUrlElements.First()))
+                        var files = Directory.GetFiles(Path.Combine(Server.MapPath("~"), "Upload\\Images")).ToList();
+                        foreach(string file in files)
                         {
-                            System.IO.File.Delete(file);
+                            string fileName = Path.GetFileName(file);
+                            List<string> fileElemets = new List<string>(fileName.Split(new string[] { "_" }, StringSplitOptions.None));
+                            if (fileElemets.First().Equals(pictureUrlElements.First()))
+                            {
+                                System.IO.File.Delete(file);
+                            }
                         }
+                        picture.SaveAs(Path.Combine(Server.MapPath("~"), "Upload\\Images", pictureUrl));
                     }
-                    picture.SaveAs(Path.Combine(Server.MapPath("~"), "Upload\\Images", pictureUrl));
+                    catch { }
                 }
                 else if(picture != null)
                 {

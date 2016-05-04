@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Data;
 using System.IO;
 using System.Linq;
@@ -14,9 +15,14 @@ namespace WF_RecipesClient
 
         public recipeClientForm()
         {
+            var language = Properties.Settings.Default.lang;
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(language);
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(recipeClientForm));
+            resources.ApplyResources(this, "$this");
+            applyResources(resources, this.Controls);
+
             InitializeComponent();
             DoubleBuffered = true;
-            WindowState = FormWindowState.Maximized;
         }
 
         private async void recipeClientForm_Load(object sender, EventArgs e)
@@ -31,6 +37,7 @@ namespace WF_RecipesClient
             tbSearch.Enabled = true;
             btnNewRecord.Enabled = true;
             btnDeleteRecord.Enabled = true;
+            btChangeLanguage.Enabled = true;
         }
 
         private void cbCategories_SelectedValueChanged(object sender, EventArgs e)
@@ -152,7 +159,27 @@ namespace WF_RecipesClient
 
         private void btChangeLanguage_Click(object sender, EventArgs e)
         {
+            if (btChangeLanguage.Text.Equals("HU"))
+            {
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-GB");
+                Properties.Settings.Default.lang = "en-GB";
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("hu-HU");
+                Properties.Settings.Default.lang = "hu-HU";
+                Properties.Settings.Default.Save();
+            }
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(recipeClientForm));
+            resources.ApplyResources(this, "$this");
+            applyResources(resources, Controls);
 
+            cbCategories.Enabled = true;
+            tbSearch.Enabled = true;
+            btnNewRecord.Enabled = true;
+            btnDeleteRecord.Enabled = true;
+            btChangeLanguage.Enabled = true;
         }
     }
 }

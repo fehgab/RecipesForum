@@ -157,6 +157,7 @@
             this.Controls.Add(this.lwRecipes);
             this.Controls.Add(this.gbMenu);
             this.Name = "recipeClientForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.recipeClientForm_Load);
             this.EnabledChanged += new System.EventHandler(this.recipeClientForm_EnabledChanged);
             this.gbMenu.ResumeLayout(false);
