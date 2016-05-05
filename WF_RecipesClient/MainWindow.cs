@@ -12,6 +12,7 @@ namespace WF_RecipesClient
     public partial class recipeClientForm : Form
     {
         private ColumnHeader SortingColumn = null;
+        public bool isLoggedIn = false;
 
         public recipeClientForm()
         {
@@ -23,6 +24,10 @@ namespace WF_RecipesClient
 
             InitializeComponent();
             DoubleBuffered = true;
+
+            this.Enabled = false;
+            LoginForm lf = new LoginForm(this);
+            lf.Show();
         }
 
         private async void recipeClientForm_Load(object sender, EventArgs e)
@@ -38,6 +43,10 @@ namespace WF_RecipesClient
             btnNewRecord.Enabled = true;
             btnDeleteRecord.Enabled = true;
             btChangeLanguage.Enabled = true;
+            if (!isLoggedIn)
+            {
+                btLogin.Enabled = true;
+            }
         }
 
         private void cbCategories_SelectedValueChanged(object sender, EventArgs e)
@@ -159,7 +168,7 @@ namespace WF_RecipesClient
 
         private void btChangeLanguage_Click(object sender, EventArgs e)
         {
-            if (btChangeLanguage.Text.Equals("HU"))
+            if (btChangeLanguage.Text.Equals("GB"))
             {
                 Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-GB");
                 Properties.Settings.Default.lang = "en-GB";
@@ -180,6 +189,11 @@ namespace WF_RecipesClient
             btnNewRecord.Enabled = true;
             btnDeleteRecord.Enabled = true;
             btChangeLanguage.Enabled = true;
+        }
+
+        private void btLogin_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

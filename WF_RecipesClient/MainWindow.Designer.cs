@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(recipeClientForm));
             this.gbMenu = new System.Windows.Forms.GroupBox();
+            this.btLogin = new System.Windows.Forms.Button();
             this.btChangeLanguage = new System.Windows.Forms.Button();
             this.btnNewRecord = new System.Windows.Forms.Button();
             this.btnDeleteRecord = new System.Windows.Forms.Button();
@@ -50,6 +51,7 @@
             // gbMenu
             // 
             resources.ApplyResources(this.gbMenu, "gbMenu");
+            this.gbMenu.Controls.Add(this.btLogin);
             this.gbMenu.Controls.Add(this.btChangeLanguage);
             this.gbMenu.Controls.Add(this.btnNewRecord);
             this.gbMenu.Controls.Add(this.btnDeleteRecord);
@@ -60,6 +62,13 @@
             this.gbMenu.Controls.Add(this.cbCategories);
             this.gbMenu.Name = "gbMenu";
             this.gbMenu.TabStop = false;
+            // 
+            // btLogin
+            // 
+            resources.ApplyResources(this.btLogin, "btLogin");
+            this.btLogin.Name = "btLogin";
+            this.btLogin.UseVisualStyleBackColor = true;
+            this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
             // 
             // btChangeLanguage
             // 
@@ -184,6 +193,7 @@
         private System.Windows.Forms.Button btnNewRecord;
         private System.Windows.Forms.Button btnDeleteRecord;
         private System.Windows.Forms.Button btChangeLanguage;
+        private System.Windows.Forms.Button btLogin;
     }
 }
 

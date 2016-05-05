@@ -108,6 +108,12 @@
     <Compile Include="DTO\CategoryHeaderData.cs" />
     <Compile Include="DTO\FileManager.cs" />
     <Compile Include="DTO\RecipesHeaderData.cs" />
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     <Compile Include="RecipesModel\IdentityModels.cs" />
     <Compile Include="RecipesModel\Recipes.cs" />
     <Compile Include="RecipesModel\RecipesModel.cs" />
+    <Compile Include="WindowManagers\Login\LoginWindowHelper.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="WindowManagers\MainWindow\ListViewSorter.cs" />
     <Compile Include="WindowManagers\MainWindow\MainWindowHelper.cs">
       <SubType>Form</SubType>
@@ -139,6 +148,12 @@
     <Compile Include="WindowManagers\RecipeDetails\RecipeDetailsHelper.cs">
       <SubType>Form</SubType>
     </Compile>
+    <EmbeddedResource Include="LoginForm.en-GB.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.en-GB.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,6 +209,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

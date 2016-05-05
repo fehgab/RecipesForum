@@ -117,356 +117,296 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="gbMenu.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="btChangeLanguage.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btChangeLanguage.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btChangeLanguage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>621, 30</value>
-  </data>
-  <data name="btChangeLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 23</value>
-  </data>
-  <data name="btChangeLanguage.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="btChangeLanguage.Text" xml:space="preserve">
-    <value>HU</value>
-  </data>
-  <data name="&gt;&gt;btChangeLanguage.Name" xml:space="preserve">
-    <value>btChangeLanguage</value>
-  </data>
-  <data name="&gt;&gt;btChangeLanguage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btChangeLanguage.Parent" xml:space="preserve">
-    <value>gbMenu</value>
-  </data>
-  <data name="&gt;&gt;btChangeLanguage.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="btnNewRecord.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="btnNewRecord.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnNewRecord.Location" type="System.Drawing.Point, System.Drawing">
-    <value>546, 30</value>
-  </data>
-  <data name="btnNewRecord.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 23</value>
-  </data>
-  <data name="btnNewRecord.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="btnNewRecord.Text" xml:space="preserve">
-    <value>Új rekord</value>
-  </data>
-  <data name="&gt;&gt;btnNewRecord.Name" xml:space="preserve">
-    <value>btnNewRecord</value>
-  </data>
-  <data name="&gt;&gt;btnNewRecord.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnNewRecord.Parent" xml:space="preserve">
-    <value>gbMenu</value>
-  </data>
-  <data name="&gt;&gt;btnNewRecord.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnDeleteRecord.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="btnDeleteRecord.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnDeleteRecord.Location" type="System.Drawing.Point, System.Drawing">
-    <value>479, 30</value>
-  </data>
-  <data name="btnDeleteRecord.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 23</value>
-  </data>
-  <data name="btnDeleteRecord.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="btnDeleteRecord.Text" xml:space="preserve">
-    <value>Törlés</value>
-  </data>
-  <data name="&gt;&gt;btnDeleteRecord.Name" xml:space="preserve">
-    <value>btnDeleteRecord</value>
-  </data>
-  <data name="&gt;&gt;btnDeleteRecord.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnDeleteRecord.Parent" xml:space="preserve">
-    <value>gbMenu</value>
-  </data>
-  <data name="&gt;&gt;btnDeleteRecord.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="lRecord.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="lRecord.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lRecord.Location" type="System.Drawing.Point, System.Drawing">
-    <value>476, 15</value>
-  </data>
-  <data name="lRecord.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 13</value>
-  </data>
-  <data name="lRecord.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="lRecord.Text" xml:space="preserve">
-    <value>Rekord módosítás:</value>
-  </data>
-  <data name="&gt;&gt;lRecord.Name" xml:space="preserve">
-    <value>lRecord</value>
-  </data>
-  <data name="&gt;&gt;lRecord.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lRecord.Parent" xml:space="preserve">
-    <value>gbMenu</value>
-  </data>
-  <data name="&gt;&gt;lRecord.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 16</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 13</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>700, 400</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Kategóriák:</value>
   </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
+  <data name="btChangeLanguage.Text" xml:space="preserve">
+    <value>GB</value>
   </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btChangeLanguage.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
   </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnDeleteRecord.Parent" xml:space="preserve">
     <value>gbMenu</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="btSearch.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btSearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>305, 31</value>
-  </data>
-  <data name="btSearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="btSearch.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="btSearch.Text" xml:space="preserve">
-    <value>Keresés</value>
-  </data>
-  <data name="&gt;&gt;btSearch.Name" xml:space="preserve">
-    <value>btSearch</value>
-  </data>
-  <data name="&gt;&gt;btSearch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btSearch.Parent" xml:space="preserve">
-    <value>gbMenu</value>
-  </data>
-  <data name="&gt;&gt;btSearch.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="tbSearch.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="tbSearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>134, 32</value>
-  </data>
-  <data name="tbSearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 20</value>
-  </data>
-  <data name="tbSearch.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tbSearch.Text" xml:space="preserve">
-    <value>Étel neve</value>
-  </data>
-  <data name="&gt;&gt;tbSearch.Name" xml:space="preserve">
-    <value>tbSearch</value>
-  </data>
-  <data name="&gt;&gt;tbSearch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbSearch.Parent" xml:space="preserve">
-    <value>gbMenu</value>
-  </data>
-  <data name="&gt;&gt;tbSearch.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="cbCategories.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="cbCategories.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 32</value>
-  </data>
-  <data name="cbCategories.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
-  </data>
-  <data name="cbCategories.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cbCategories.Name" xml:space="preserve">
-    <value>cbCategories</value>
-  </data>
-  <data name="&gt;&gt;cbCategories.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbCategories.Parent" xml:space="preserve">
-    <value>gbMenu</value>
-  </data>
-  <data name="&gt;&gt;cbCategories.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="gbMenu.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="gbMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>660, 61</value>
-  </data>
-  <data name="gbMenu.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="gbMenu.Text" xml:space="preserve">
-    <value>Menü</value>
-  </data>
-  <data name="&gt;&gt;gbMenu.Name" xml:space="preserve">
-    <value>gbMenu</value>
-  </data>
-  <data name="&gt;&gt;gbMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gbMenu.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;gbMenu.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="lwRecipes.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="chPicture.Text" xml:space="preserve">
-    <value>Kép</value>
-  </data>
-  <data name="chPicture.Width" type="System.Int32, mscorlib">
-    <value>150</value>
-  </data>
-  <data name="chTitle.Text" xml:space="preserve">
-    <value>Étel neve</value>
-  </data>
-  <data name="chTitle.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="chTitle.Width" type="System.Int32, mscorlib">
-    <value>100</value>
   </data>
   <data name="chPrepareTime.Text" xml:space="preserve">
     <value>Elkészítési idő</value>
   </data>
-  <data name="chPrepareTime.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
+  <data name="tbSearch.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="chPrepareTime.Width" type="System.Int32, mscorlib">
-    <value>120</value>
-  </data>
-  <data name="chIngredients.Text" xml:space="preserve">
-    <value>Hozzávalók</value>
-  </data>
-  <data name="chIngredients.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
+  <data name="&gt;&gt;gbMenu.Name" xml:space="preserve">
+    <value>gbMenu</value>
   </data>
   <data name="chIngredients.Width" type="System.Int32, mscorlib">
     <value>110</value>
   </data>
-  <data name="lwRecipes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 79</value>
+  <data name="btnNewRecord.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 23</value>
   </data>
-  <data name="lwRecipes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>660, 256</value>
-  </data>
-  <data name="lwRecipes.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;lwRecipes.Name" xml:space="preserve">
-    <value>lwRecipes</value>
-  </data>
-  <data name="&gt;&gt;lwRecipes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lwRecipes.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lBottomLogo.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lwRecipes.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="lBottomLogo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
+  <data name="cbCategories.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="lBottomLogo.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;btnNewRecord.Parent" xml:space="preserve">
+    <value>gbMenu</value>
+  </data>
+  <data name="tbSearch.Text" xml:space="preserve">
+    <value>Étel neve</value>
+  </data>
+  <data name="&gt;&gt;btLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="chTitle.Text" xml:space="preserve">
+    <value>Étel neve</value>
+  </data>
+  <data name="chPicture.Text" xml:space="preserve">
+    <value>Kép</value>
+  </data>
+  <data name="btnDeleteRecord.Location" type="System.Drawing.Point, System.Drawing">
+    <value>386, 30</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;btSearch.Name" xml:space="preserve">
+    <value>btSearch</value>
+  </data>
+  <data name="tbSearch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 20</value>
+  </data>
+  <data name="&gt;&gt;chTitle.Name" xml:space="preserve">
+    <value>chTitle</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnNewRecord.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="tbSearch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>134, 32</value>
   </data>
   <data name="lBottomLogo.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 339</value>
   </data>
-  <data name="lBottomLogo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 13</value>
-  </data>
-  <data name="lBottomLogo.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="lBottomLogo.Text" xml:space="preserve">
-    <value>© 2016 - Recept Kliens</value>
-  </data>
-  <data name="&gt;&gt;lBottomLogo.Name" xml:space="preserve">
-    <value>lBottomLogo</value>
-  </data>
-  <data name="&gt;&gt;lBottomLogo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lBottomLogo.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="btSearch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>305, 31</value>
   </data>
   <data name="&gt;&gt;lBottomLogo.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="gbMenu.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>684, 361</value>
+  <data name="cbCategories.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="&gt;&gt;chPicture.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btChangeLanguage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>621, 30</value>
+  </data>
+  <data name="btnDeleteRecord.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="lRecord.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;tbSearch.Parent" xml:space="preserve">
+    <value>gbMenu</value>
+  </data>
+  <data name="chPrepareTime.Width" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>gbMenu</value>
+  </data>
+  <data name="btLogin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 23</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="btnDeleteRecord.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="&gt;&gt;btChangeLanguage.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lwRecipes.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="btnNewRecord.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;btSearch.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 13</value>
+  </data>
+  <data name="gbMenu.Text" xml:space="preserve">
+    <value>Menü</value>
+  </data>
+  <data name="lwRecipes.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;lRecord.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;btnDeleteRecord.Name" xml:space="preserve">
+    <value>btnDeleteRecord</value>
+  </data>
+  <data name="&gt;&gt;btChangeLanguage.Name" xml:space="preserve">
+    <value>btChangeLanguage</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 16</value>
+  </data>
+  <data name="&gt;&gt;btLogin.Name" xml:space="preserve">
+    <value>btLogin</value>
+  </data>
+  <data name="lBottomLogo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="lRecord.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="lBottomLogo.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chIngredients.Text" xml:space="preserve">
+    <value>Hozzávalók</value>
+  </data>
+  <data name="gbMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>660, 61</value>
+  </data>
+  <data name="&gt;&gt;btnDeleteRecord.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lwRecipes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>660, 256</value>
+  </data>
+  <data name="btnNewRecord.Text" xml:space="preserve">
+    <value>Új rekord</value>
+  </data>
+  <data name="&gt;&gt;chIngredients.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnNewRecord.Name" xml:space="preserve">
+    <value>btnNewRecord</value>
+  </data>
+  <data name="&gt;&gt;btChangeLanguage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btLogin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>528, 30</value>
+  </data>
+  <data name="btSearch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="tbSearch.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;btChangeLanguage.Parent" xml:space="preserve">
+    <value>gbMenu</value>
+  </data>
+  <data name="chPicture.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <data name="&gt;&gt;btSearch.Parent" xml:space="preserve">
+    <value>gbMenu</value>
+  </data>
+  <data name="lRecord.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbCategories.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;chPicture.Name" xml:space="preserve">
+    <value>chPicture</value>
+  </data>
+  <data name="&gt;&gt;btLogin.Parent" xml:space="preserve">
+    <value>gbMenu</value>
+  </data>
+  <data name="btnDeleteRecord.Text" xml:space="preserve">
+    <value>Törlés</value>
+  </data>
+  <data name="lRecord.Text" xml:space="preserve">
+    <value>Rekord módosítás:</value>
+  </data>
+  <data name="&gt;&gt;chIngredients.Name" xml:space="preserve">
+    <value>chIngredients</value>
+  </data>
+  <data name="btSearch.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btLogin.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="chIngredients.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;lBottomLogo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnNewRecord.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lBottomLogo.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="lRecord.Location" type="System.Drawing.Point, System.Drawing">
+    <value>383, 15</value>
+  </data>
+  <data name="&gt;&gt;tbSearch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbSearch.Name" xml:space="preserve">
+    <value>tbSearch</value>
+  </data>
+  <data name="btChangeLanguage.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btLogin.Text" xml:space="preserve">
+    <value>Bejelentkezés</value>
+  </data>
+  <data name="btSearch.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;btLogin.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="gbMenu.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="chTitle.Width" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="&gt;&gt;tbSearch.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btLogin.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;lwRecipes.Name" xml:space="preserve">
+    <value>lwRecipes</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4258,40 +4198,133 @@
         AAA=
 </value>
   </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>700, 400</value>
+  <data name="&gt;&gt;gbMenu.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Recept kliens</value>
-  </data>
-  <data name="&gt;&gt;chPicture.Name" xml:space="preserve">
-    <value>chPicture</value>
-  </data>
-  <data name="&gt;&gt;chPicture.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chTitle.Name" xml:space="preserve">
-    <value>chTitle</value>
-  </data>
-  <data name="&gt;&gt;chTitle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lRecord.Name" xml:space="preserve">
+    <value>lRecord</value>
   </data>
   <data name="&gt;&gt;chPrepareTime.Name" xml:space="preserve">
     <value>chPrepareTime</value>
   </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chTitle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btChangeLanguage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 23</value>
+  </data>
+  <data name="btChangeLanguage.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="btnNewRecord.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Recept kliens</value>
+  </data>
+  <data name="gbMenu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="chPrepareTime.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;lBottomLogo.Name" xml:space="preserve">
+    <value>lBottomLogo</value>
+  </data>
+  <data name="&gt;&gt;lRecord.Parent" xml:space="preserve">
+    <value>gbMenu</value>
+  </data>
+  <data name="&gt;&gt;lRecord.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lBottomLogo.Text" xml:space="preserve">
+    <value>© 2016 - Recept Kliens</value>
+  </data>
+  <data name="btnDeleteRecord.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;lwRecipes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbCategories.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;btnNewRecord.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;cbCategories.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btSearch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbCategories.Name" xml:space="preserve">
+    <value>cbCategories</value>
+  </data>
+  <data name="&gt;&gt;gbMenu.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="cbCategories.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 32</value>
+  </data>
+  <data name="&gt;&gt;btnDeleteRecord.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lwRecipes.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
   <data name="&gt;&gt;chPrepareTime.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;chIngredients.Name" xml:space="preserve">
-    <value>chIngredients</value>
+  <data name="btSearch.Text" xml:space="preserve">
+    <value>Keresés</value>
   </data>
-  <data name="&gt;&gt;chIngredients.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lBottomLogo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 13</value>
+  </data>
+  <data name="chTitle.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>684, 361</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>recipeClientForm</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;gbMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="lwRecipes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 79</value>
+  </data>
+  <data name="&gt;&gt;cbCategories.Parent" xml:space="preserve">
+    <value>gbMenu</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnDeleteRecord.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 23</value>
+  </data>
+  <data name="lRecord.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 13</value>
+  </data>
+  <data name="btLogin.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnNewRecord.Location" type="System.Drawing.Point, System.Drawing">
+    <value>453, 30</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>en-GB</value>
+  </metadata>
 </root>
