@@ -36,9 +36,9 @@ namespace WF_RecipesClient
             this.btnLogin = new System.Windows.Forms.Button();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.tbEmail = new System.Windows.Forms.TextBox();
+            this.tbUserName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.lEmailError = new System.Windows.Forms.Label();
+            this.lUserNameError = new System.Windows.Forms.Label();
             this.lPasswordError = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -58,27 +58,29 @@ namespace WF_RecipesClient
             // 
             resources.ApplyResources(this.tbPassword, "tbPassword");
             this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Validating += new System.ComponentModel.CancelEventHandler(this.tbPassword_Validating);
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
-            // tbEmail
+            // tbUserName
             // 
-            resources.ApplyResources(this.tbEmail, "tbEmail");
-            this.tbEmail.Name = "tbEmail";
+            resources.ApplyResources(this.tbUserName, "tbUserName");
+            this.tbUserName.Name = "tbUserName";
+            this.tbUserName.Validating += new System.ComponentModel.CancelEventHandler(this.tbUserName_Validating);
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
-            // lEmailError
+            // lUserNameError
             // 
-            resources.ApplyResources(this.lEmailError, "lEmailError");
-            this.lEmailError.ForeColor = System.Drawing.Color.DarkRed;
-            this.lEmailError.Name = "lEmailError";
+            resources.ApplyResources(this.lUserNameError, "lUserNameError");
+            this.lUserNameError.ForeColor = System.Drawing.Color.DarkRed;
+            this.lUserNameError.Name = "lUserNameError";
             // 
             // lPasswordError
             // 
@@ -91,12 +93,12 @@ namespace WF_RecipesClient
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lPasswordError);
-            this.Controls.Add(this.lEmailError);
+            this.Controls.Add(this.lUserNameError);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.tbEmail);
+            this.Controls.Add(this.tbUserName);
             this.Controls.Add(this.label2);
             this.Name = "LoginForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_FormClosing);
@@ -110,9 +112,9 @@ namespace WF_RecipesClient
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbEmail;
+        private System.Windows.Forms.TextBox tbUserName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lEmailError;
+        private System.Windows.Forms.Label lUserNameError;
         private System.Windows.Forms.Label lPasswordError;
     }
 }

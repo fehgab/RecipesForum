@@ -25,9 +25,9 @@ namespace WF_RecipesClient
             InitializeComponent();
             DoubleBuffered = true;
 
-            this.Enabled = false;
-            LoginForm lf = new LoginForm(this);
-            lf.Show();
+            //this.Enabled = false;
+            //LoginForm lf = new LoginForm(this);
+            //lf.Show();
         }
 
         private async void recipeClientForm_Load(object sender, EventArgs e)
@@ -43,10 +43,10 @@ namespace WF_RecipesClient
             btnNewRecord.Enabled = true;
             btnDeleteRecord.Enabled = true;
             btChangeLanguage.Enabled = true;
-            if (!isLoggedIn)
-            {
-                btLogin.Enabled = true;
-            }
+            //if (!isLoggedIn)
+            //{
+            //    btLogin.Enabled = true;
+            //}
         }
 
         private void cbCategories_SelectedValueChanged(object sender, EventArgs e)
