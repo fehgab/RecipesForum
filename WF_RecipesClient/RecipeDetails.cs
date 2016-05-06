@@ -76,6 +76,12 @@ namespace WF_RecipesClient
         private void btnSave_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
+            tbTitle_Validating(sender, new CancelEventArgs());
+            cbCategory_Validating(sender, new CancelEventArgs());
+            tbHowToPrepare_Validating(sender, new CancelEventArgs());
+            tbIngredients_Validating(sender, new CancelEventArgs());
+            tbPrepareTime_Validating(sender, new CancelEventArgs());
+            tbFilePath_Validating(sender, new CancelEventArgs());
             if (validation)
             {
                 if(currentRecipe != null)
@@ -89,6 +95,7 @@ namespace WF_RecipesClient
             }
             else
             {
+                this.Size = new Size(900, this.Height);
                 this.Enabled = true;
             }
         }
@@ -109,7 +116,6 @@ namespace WF_RecipesClient
         {
             if (tbTitle.Text.Length == 0 || tbTitle.Text.Length > 40)
             {
-                this.Size = new Size(900, this.Height);
                 lTitleError.Text = "Kérlek add meg az étel nevét! Maximum 40 karakter.";
                 validation = false;
             }
@@ -124,7 +130,6 @@ namespace WF_RecipesClient
         {
             if (cbCategory.SelectedIndex < 0)
             {
-                this.Size = new Size(900, this.Height);
                 lCategoryError.Text = "Kérlek add meg a kategóriát!";
                 validation = false;
             }
@@ -139,7 +144,6 @@ namespace WF_RecipesClient
         {
             if (tbIngredients.Text.Length == 0 || tbIngredients.Text.Length > 100)
             {
-                this.Size = new Size(900, this.Height);
                 lIngredientsError.Text = "Kérlek add meg a hozzávalókat! Maximum 100 karakter.";
                 validation = false;
             }
@@ -154,7 +158,6 @@ namespace WF_RecipesClient
         {
             if (tbPrepareTime.Text.Length == 0 || tbPrepareTime.Text.Length > 10)
             {
-                this.Size = new Size(900, this.Height);
                 lPrepareTimeError.Text = "Kérlek add meg az elkészítési időt! Maximum 10 karakter.";
                 validation = false;
             }
@@ -169,7 +172,6 @@ namespace WF_RecipesClient
         {
             if (tbHowToPrepare.Text.Length == 0 || tbHowToPrepare.Text.Length > 500)
             {
-                this.Size = new Size(900, this.Height);
                 lHowToPrepareError.Text = "Kérlek add meg az étel elkészítésének módját!";
                 validation = false;
             }
@@ -184,7 +186,6 @@ namespace WF_RecipesClient
         {
             if (tbFilePath.Text.Length == 0)
             {
-                this.Size = new Size(900, this.Height);
                 lFileMissingError.Text = "Kérlek add meg a kép elérési útját!";
                 validation = false;
             }
