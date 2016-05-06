@@ -120,6 +120,11 @@
             this.tbTitle.Name = "tbTitle";
             this.tbTitle.Validating += new System.ComponentModel.CancelEventHandler(this.tbTitle_Validating);
             // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
             // cbCategory
             // 
             resources.ApplyResources(this.cbCategory, "cbCategory");
